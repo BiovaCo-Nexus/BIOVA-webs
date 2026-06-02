@@ -6,6 +6,7 @@ import { supabase } from "@/lib/supabase";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui-custom/FadeIn";
 import { SignaturePad } from "@/components/SignaturePad";
 import { generateApplicationPDF } from "@/utils/pdfGenerator";
+import { Helmet } from "react-helmet-async";
 
 // We will derive departments dynamically from the database
 // const departments = [ ... ];
@@ -320,8 +321,56 @@ export default function Careers() {
     setSignatureError("");
   };
 
+  // Dynamic SEO Computation
+  const uniqueLocations = Array.from(new Set(openings.map(o => o.loc))).filter(Boolean);
+  const locationText = uniqueLocations.length > 0 ? ` in ${uniqueLocations.join(' & ')}` : '';
+  const pageTitle = `Careers at BiovaCo | Open Positions${locationText}`;
+  const pageDescription = openings.length > 0 
+    ? `Explore ${openings.length} open positions at BiovaCo Nexus across ${departments.slice(0,3).join(', ')}. Apply now to join our innovative team.`
+    : "Join BiovaCo Nexus. We are an innovation house that runs real brands and ships real products. Send us your spontaneous application today.";
+
+  const jobSchemas = openings.map(o => ({
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": o.title,
+    "description": o.desc || `Join BiovaCo Nexus as a ${o.title} in the ${o.dept} department.`,
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": "BiovaCo Nexus",
+      "value": o.key
+    },
+    "datePosted": new Date().toISOString().split('T')[0],
+    "employmentType": o.type === "Full-time" ? "FULL_TIME" : o.type === "Part-time" ? "PART_TIME" : o.type === "Contract" ? "CONTRACTOR" : "OTHER",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "BiovaCo Nexus Private Limited",
+      "sameAs": "https://biovaco.in",
+      "logo": "https://biovaco.in/Logo.png"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": o.loc.split(',')[0],
+        "addressRegion": o.loc.split(',')[1] ? o.loc.split(',')[1].trim() : "India",
+        "addressCountry": "IN"
+      }
+    }
+  }));
+
   return (
     <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        {/* Dynamic Schema.org for Google Jobs API */}
+        {jobSchemas.map((schema, index) => (
+          <script key={index} type="application/ld+json">
+            {JSON.stringify(schema)}
+          </script>
+        ))}
+      </Helmet>
+
       <PageHero
         eyebrow="Careers"
         title={<>Build the <span className="italic font-light text-[color:var(--green-deep)] dark:text-[color:var(--green)]">future</span> with us.</>}
