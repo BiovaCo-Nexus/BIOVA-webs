@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { PageHero } from "@/components/ui-custom/PageHero";
 import { Eyebrow } from "@/components/ui-custom/Section";
-import { ArrowUpRight, Loader2, Upload, CheckCircle, Copy, Download, ArrowLeft } from "lucide-react";
+import { ArrowUpRight, Loader2, Upload, CheckCircle, Copy, Download, ArrowLeft, MapPin, Briefcase, Clock, FileText } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { FadeIn } from "@/components/ui-custom/FadeIn";
 import { SignaturePad } from "@/components/SignaturePad";
@@ -241,6 +241,10 @@ export default function JobDetail() {
     }
   };
 
+  const scrollToForm = () => {
+    document.getElementById("application-form")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       <Helmet>
@@ -258,29 +262,57 @@ export default function JobDetail() {
         <script type="application/ld+json">{JSON.stringify(schemaJSON)}</script>
       </Helmet>
 
-      <div className="border-b border-border bg-[color:var(--section)] pt-24 pb-12 md:pt-32 md:pb-20">
+      <div className="border-b border-border bg-[color:var(--section)] pt-24 pb-16 md:pt-32 md:pb-24">
         <div className="container-x">
-          <Link to="/careers" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-[color:var(--green)] mb-8 transition-colors">
+          <Link to="/careers" className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-[color:var(--green-deep)] dark:hover:text-[color:var(--green)] mb-10 transition-colors">
             <ArrowLeft className="h-4 w-4" /> Back to all positions
           </Link>
-          <Eyebrow>{job.department}</Eyebrow>
-          <h1 className="mt-6 font-display text-4xl tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            {job.title}
-          </h1>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <span className="rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground">{job.location}</span>
-            <span className="rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground">{job.job_type}</span>
+          
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div className="max-w-3xl">
+              <Eyebrow>{job.department}</Eyebrow>
+              <h1 className="mt-4 font-display text-4xl tracking-tight text-foreground md:text-6xl lg:text-7xl leading-tight">
+                {job.title}
+              </h1>
+            </div>
+            <div className="flex-shrink-0 mb-2">
+              <button onClick={scrollToForm} className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-[color:var(--navy)] px-8 py-4 text-base font-medium text-white transition-all hover:bg-[color:var(--navy-deep)] dark:bg-[color:var(--green)] dark:text-[color:var(--navy-deep)] dark:hover:bg-white">
+                Apply Now <ArrowUpRight className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
+          
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="rounded-2xl border border-border bg-background p-6">
+              <MapPin className="h-6 w-6 text-muted-foreground mb-4" />
+              <div className="text-sm text-muted-foreground">Location</div>
+              <div className="mt-1 font-medium text-foreground">{job.location}</div>
+            </div>
+            <div className="rounded-2xl border border-border bg-background p-6">
+              <Briefcase className="h-6 w-6 text-muted-foreground mb-4" />
+              <div className="text-sm text-muted-foreground">Job Type</div>
+              <div className="mt-1 font-medium text-foreground">{job.job_type}</div>
+            </div>
+            <div className="rounded-2xl border border-border bg-background p-6">
+              <FileText className="h-6 w-6 text-muted-foreground mb-4" />
+              <div className="text-sm text-muted-foreground">Department</div>
+              <div className="mt-1 font-medium text-foreground">{job.department}</div>
+            </div>
+            <div className="rounded-2xl border border-border bg-background p-6">
+              <Clock className="h-6 w-6 text-muted-foreground mb-4" />
+              <div className="text-sm text-muted-foreground">Status</div>
+              <div className="mt-1 font-medium text-[color:var(--green-deep)] dark:text-[color:var(--green)]">Accepting Applications</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <section className="border-b border-border py-20">
-        <div className="container-x grid gap-16 lg:grid-cols-[1fr_1.5fr]">
-          <div>
-            <h3 className="font-display text-3xl text-foreground">Role Description</h3>
-          </div>
-          <div className="prose prose-invert max-w-none text-muted-foreground">
-            <p className="text-lg leading-relaxed whitespace-pre-wrap">{job.description}</p>
+      <section className="py-24 bg-background">
+        <div className="container-x max-w-4xl mx-auto">
+          <div className="prose prose-lg prose-invert max-w-none text-muted-foreground">
+            {job.description.split('\n\n').map((paragraph: string, i: number) => (
+              <p key={i} className="mb-6 leading-relaxed text-foreground/80 whitespace-pre-wrap">{paragraph}</p>
+            ))}
           </div>
         </div>
       </section>
@@ -295,8 +327,11 @@ export default function JobDetail() {
                   Join as a {job.title}
                 </h3>
                 <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                  We're looking for individuals who think deeply and want to spend a decade building with us.
+                  We're looking for individuals who think deeply and want to spend a decade building with us. Complete the form to apply for this position.
                 </p>
+                <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-[color:var(--green)]/30 bg-[color:var(--green)]/10 px-4 py-2 text-sm text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
+                  <Clock className="h-4 w-4" /> Takes about ~5 mins
+                </div>
               </div>
               
               <div>
