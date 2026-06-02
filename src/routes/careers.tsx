@@ -228,7 +228,7 @@ export default function Careers() {
       if (resume) {
         const fileExt = resume.name.split('.').pop();
         const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
-        const filePath = `resumes/${fileName}`;
+        const filePath = `${fileName}`;
 
         const { error: uploadError } = await supabase.storage
           .from('resumes')
