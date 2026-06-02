@@ -326,8 +326,15 @@ export default function Careers() {
   const locationText = uniqueLocations.length > 0 ? ` in ${uniqueLocations.join(' & ')}` : '';
   const pageTitle = `Careers at BiovaCo | Open Positions${locationText}`;
   const pageDescription = openings.length > 0 
-    ? `Explore ${openings.length} open positions at BiovaCo Nexus across ${departments.slice(0,3).join(', ')}. Apply now to join our innovative team.`
-    : "Join BiovaCo Nexus. We are an innovation house that runs real brands and ships real products. Send us your spontaneous application today.";
+    ? `BiovaCo Nexus is hiring! Explore ${openings.length} open positions in ${uniqueLocations.join(', ')} across ${departments.slice(0,4).join(', ')}. Submit your spontaneous application today and build the future with us.`
+    : "Join BiovaCo Nexus. We are an innovation house that runs real brands and ships real products. Send us your spontaneous application today to be considered for future openings.";
+
+  // Generate highly optimized dynamic keywords
+  const baseKeywords = ["BiovaCo Nexus careers", "startup jobs India", "food innovation jobs", "agriculture tech jobs", "spontaneous application"];
+  const dynamicKeywords = openings.flatMap(o => [`${o.title} jobs`, `${o.title} in ${o.loc}`, `${o.dept} roles`]);
+  const keywordsText = Array.from(new Set([...baseKeywords, ...dynamicKeywords])).join(', ');
+
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://biovaco.in/careers';
 
   const jobSchemas = openings.map(o => ({
     "@context": "https://schema.org/",
@@ -363,6 +370,24 @@ export default function Careers() {
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
+        <meta name="keywords" content={keywordsText} />
+        
+        {/* Open Graph / Facebook / LinkedIn */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={currentUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content="https://biovaco.in/og-careers.jpg" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={currentUrl} />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content="https://biovaco.in/og-careers.jpg" />
+
+        <link rel="canonical" href="https://biovaco.in/careers" />
+
         {/* Dynamic Schema.org for Google Jobs API */}
         {jobSchemas.map((schema, index) => (
           <script key={index} type="application/ld+json">
