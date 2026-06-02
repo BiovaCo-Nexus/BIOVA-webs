@@ -5,6 +5,7 @@ import { Footer } from "./components/layout/Footer";
 import Home from "./routes/index";
 import About from "./routes/about";
 import Careers from "./routes/careers";
+import JobDetail from "./routes/job-detail";
 import Contact from "./routes/contact";
 import Cravora from "./routes/cravora";
 import Innovation from "./routes/innovation";
@@ -63,6 +64,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="careers" element={<Careers />} />
+          <Route path="careers/:roleKey" element={<JobDetail />} />
           <Route path="contact" element={<Contact />} />
           <Route path="cravora" element={<Cravora />} />
           <Route path="innovation" element={<Innovation />} />

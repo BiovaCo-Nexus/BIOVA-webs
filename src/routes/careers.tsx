@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { PageHero } from "@/components/ui-custom/PageHero";
 import { Eyebrow } from "@/components/ui-custom/Section";
 import { ArrowUpRight, Loader2, Upload, CheckCircle, Copy, Download } from "lucide-react";
@@ -12,6 +13,7 @@ import { Helmet } from "react-helmet-async";
 // const departments = [ ... ];
 
 export default function Careers() {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [applicationId, setApplicationId] = useState("");
@@ -214,11 +216,7 @@ export default function Careers() {
   };
 
   const handleRoleSelect = (roleKey: string) => {
-    setFormData(prev => ({ ...prev, role: roleKey }));
-    const formElement = document.getElementById("application-form");
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: "smooth" });
-    }
+    navigate(`/careers/${roleKey}`);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
