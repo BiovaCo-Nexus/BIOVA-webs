@@ -1,6 +1,8 @@
+import { useState, useEffect } from "react";
 import { PageHero } from "@/components/ui-custom/PageHero";
 import { Eyebrow } from "@/components/ui-custom/Section";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui-custom/FadeIn";
+import { supabase } from "@/lib/supabase";
 
 const values = [
   { t: "Long Horizon", d: "We build companies, not campaigns. Every venture is designed to compound for decades." },
@@ -22,6 +24,26 @@ const leadership = [
 ];
 
 export default function About() {
+  const [interns, setInterns] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchInterns = async () => {
+      const { data, error } = await supabase
+        .from('interns')
+        .select('*')
+        .eq('status', 'Active'); // only fetch active interns
+        // if is_featured exists, you can order by it, but let's just fetch all active for now
+
+      if (error) {
+        console.error('Error fetching interns:', error);
+      } else {
+        setInterns(data || []);
+      }
+    };
+
+    fetchInterns();
+  }, []);
+
   return (
     <>
       <PageHero
@@ -112,6 +134,54 @@ export default function About() {
           </FadeInStagger>
         </div>
       </section>
+
+      {interns.length > 0 && (
+        <section className="border-b border-border bg-[color:var(--section)]/50">
+          <div className="container-x py-24 md:py-32">
+            <FadeIn>
+              <Eyebrow>Our Team & Interns</Eyebrow>
+              <h2 className="mt-5 max-w-3xl font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
+                The bright minds building the future with us.
+              </h2>
+            </FadeIn>
+            <FadeInStagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {interns.map((intern) => (
+                <FadeInItem key={intern.id}>
+                  <div className="group overflow-hidden rounded-3xl border border-border bg-background p-8 transition-colors hover:border-[color:var(--green)]">
+                    {intern.photo_url ? (
+                      <div className="relative h-20 w-20 overflow-hidden rounded-full border border-border bg-muted">
+                        <img 
+                          src={intern.photo_url} 
+                          alt={intern.name} 
+                          className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-110 group-hover:grayscale-0" 
+                        />
+                      </div>
+                    ) : (
+                      <div className="relative flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border border-border bg-[color:var(--navy)] text-2xl font-bold text-white">
+                        {intern.name.charAt(0)}
+                      </div>
+                    )}
+                    <h3 className="mt-8 font-display text-2xl text-foreground">{intern.name}</h3>
+                    <div className="mt-2 text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
+                      {intern.position || 'Intern'} • {intern.project_department}
+                    </div>
+                    {intern.college && (
+                      <div className="mt-2 text-sm text-muted-foreground">
+                        {intern.college}
+                      </div>
+                    )}
+                    {intern.bio && (
+                      <p className="mt-4 text-sm text-muted-foreground line-clamp-3">
+                        {intern.bio}
+                      </p>
+                    )}
+                  </div>
+                </FadeInItem>
+              ))}
+            </FadeInStagger>
+          </div>
+        </section>
+      )}
 
       <section>
         <div className="container-x py-24 md:py-32">

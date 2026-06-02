@@ -7,14 +7,8 @@ import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui-custom/FadeIn
 import { SignaturePad } from "@/components/SignaturePad";
 import { generateApplicationPDF } from "@/utils/pdfGenerator";
 
-const departments = [
-  "Food Innovation",
-  "Marketing",
-  "Business Development",
-  "Operations",
-  "Engineering",
-  "Research",
-];
+// We will derive departments dynamically from the database
+// const departments = [ ... ];
 
 export default function Careers() {
   const [loading, setLoading] = useState(false);
@@ -24,6 +18,7 @@ export default function Careers() {
   // Job Roles from DB
   const [jobRoles, setJobRoles] = useState<any[]>([]);
   const [openings, setOpenings] = useState<any[]>([]);
+  const [departments, setDepartments] = useState<string[]>([]);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -49,8 +44,9 @@ export default function Careers() {
     const fetchJobRoles = async () => {
       const { data, error } = await supabase
         .from('job_positions')
-        .select('role_key, title, department, location, job_type')
-        .eq('is_active', true);
+        .select('role_key, title, department, location, job_type, description')
+        .eq('is_active', true)
+        .order('display_order', { ascending: true });
 
       if (error) {
         console.error('Error fetching job roles:', error);
@@ -58,15 +54,19 @@ export default function Careers() {
         setJobRoles(data || []);
         
         // Populate openings for the UI
-        setOpenings(
-          (data || []).map((job) => ({
-            title: job.title,
-            dept: job.department,
-            loc: job.location,
-            type: job.job_type,
-            key: job.role_key
-          }))
-        );
+        const fetchedOpenings = (data || []).map((job) => ({
+          title: job.title,
+          dept: job.department,
+          loc: job.location,
+          type: job.job_type,
+          desc: job.description,
+          key: job.role_key
+        }));
+        setOpenings(fetchedOpenings);
+
+        // Derive unique departments dynamically
+        const uniqueDepartments = Array.from(new Set(fetchedOpenings.map(o => o.dept)));
+        setDepartments(uniqueDepartments);
       }
     };
 
@@ -346,12 +346,13 @@ export default function Careers() {
             {openings.length > 0 ? (
               <div className="divide-y divide-border">
                 {openings.map((o) => (
-                  <div key={o.title} onClick={() => handleRoleSelect(o.key)} className="cursor-pointer group grid items-center gap-4 p-6 transition-colors hover:bg-[color:var(--section)] md:grid-cols-[1fr_1fr_1fr_auto]">
+                  <div key={o.title} onClick={() => handleRoleSelect(o.key)} className="cursor-pointer group grid items-center gap-4 p-6 transition-colors hover:bg-[color:var(--section)] md:grid-cols-[2fr_1fr_1fr_auto]">
                     <div>
                       <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{o.dept}</div>
-                      <div className="mt-1 font-display text-xl text-foreground">{o.title}</div>
+                      <div className="mt-1 font-display text-xl text-foreground group-hover:text-[color:var(--green-deep)] dark:group-hover:text-[color:var(--green)] transition-colors">{o.title}</div>
+                      {o.desc && <p className="mt-2 text-sm text-muted-foreground line-clamp-2 pr-4">{o.desc}</p>}
                     </div>
-                    <div className="text-sm text-muted-foreground">{o.loc}</div>
+                    <div className="text-sm font-medium text-foreground">{o.loc}</div>
                     <div className="text-sm text-muted-foreground">{o.type}</div>
                   </div>
                 ))}
