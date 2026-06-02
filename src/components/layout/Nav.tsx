@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/ui-custom/Logo";
@@ -16,6 +16,8 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const isCravora = location.pathname === "/cravora";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -34,7 +36,7 @@ export function Nav() {
         }`}
       >
         <Link to="/" aria-label="BiovaCo Nexus home">
-          <Logo />
+          <Logo lightText={isCravora && !scrolled} />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
