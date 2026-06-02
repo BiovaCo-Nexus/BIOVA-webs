@@ -58,12 +58,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-border bg-[color:var(--section)] p-8">
-                <Eyebrow>Admin</Eyebrow>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  For internal coordination, partner onboarding and applicant tracking, BiovaCo operates a private admin portal.
-                </p>
-              </div>
+
             </div>
 
             <div>
