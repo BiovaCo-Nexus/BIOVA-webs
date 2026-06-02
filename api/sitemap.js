@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     .select('role_key, updated_at')
     .eq('is_active', true);
 
-  const baseUrl = 'https://biovaco.in';
+  const baseUrl = 'https://www.biovaco.in';
 
   let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

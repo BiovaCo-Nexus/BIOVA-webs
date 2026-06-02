@@ -17,7 +17,7 @@ export default async function handler(req, res) {
 
     // Handle Supabase Webhook default payload safely
     if (!url && req.body?.record?.role_key) {
-      url = `https://biovaco.in/careers/${req.body.record.role_key}`;
+      url = `https://www.biovaco.in/careers/${req.body.record.role_key}`;
     }
 
     if (!url) {
