@@ -9,7 +9,7 @@
     {
       "source": "/api/google-index",
       "destination": "/api/google-index.js"
-    },
+    }, 
     {
       "source": "/api/sitemap",
       "destination": "/api/sitemap.js"
