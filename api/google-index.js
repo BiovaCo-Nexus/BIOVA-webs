@@ -2,7 +2,12 @@ import { google } from "googleapis";
 
 export default async function handler(req, res) {
   try {
-    const { url } = req.body;
+    let url = req.body.url;
+
+    // Handle Supabase Webhook default payload
+    if (!url && req.body.record && req.body.record.role_key) {
+      url = `https://biovaco.in/careers/${req.body.record.role_key}`;
+    }
 
     if (!url) {
       return res.status(400).json({
