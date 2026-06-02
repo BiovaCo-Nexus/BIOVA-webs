@@ -1,7 +1,6 @@
 import { PageHero } from "@/components/ui-custom/PageHero";
 import { Eyebrow } from "@/components/ui-custom/Section";
-
-
+import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui-custom/FadeIn";
 
 const values = [
   { t: "Long Horizon", d: "We build companies, not campaigns. Every venture is designed to compound for decades." },
@@ -32,7 +31,7 @@ export default function About() {
       />
 
       <section className="border-b border-border">
-        <div className="container-x py-24 md:py-32">
+        <FadeIn className="container-x py-24 md:py-32">
           <div className="grid gap-16 lg:grid-cols-2">
             <div>
               <Eyebrow>Mission</Eyebrow>
@@ -47,28 +46,32 @@ export default function About() {
               </p>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       <section className="border-b border-border bg-[color:var(--section)]">
         <div className="container-x py-24 md:py-32">
-          <Eyebrow>Core values</Eyebrow>
-          <h2 className="mt-5 max-w-3xl font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
-            Principles that govern every venture we build.
-          </h2>
-          <div className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-2">
+          <FadeIn>
+            <Eyebrow>Core values</Eyebrow>
+            <h2 className="mt-5 max-w-3xl font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
+              Principles that govern every venture we build.
+            </h2>
+          </FadeIn>
+          <FadeInStagger className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-2">
             {values.map((v) => (
-              <div key={v.t} className="bg-background p-8">
-                <div className="font-display text-2xl text-foreground">{v.t}</div>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.d}</p>
-              </div>
+              <FadeInItem key={v.t}>
+                <div className="bg-background h-full p-8">
+                  <div className="font-display text-2xl text-foreground">{v.t}</div>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.d}</p>
+                </div>
+              </FadeInItem>
             ))}
-          </div>
+          </FadeInStagger>
         </div>
       </section>
 
       <section className="border-b border-border">
-        <div className="container-x py-24 md:py-32">
+        <FadeIn className="container-x py-24 md:py-32">
           <Eyebrow>Founder journey</Eyebrow>
           <h2 className="mt-5 max-w-3xl font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
             From a single product to a multi-venture house.
@@ -84,40 +87,48 @@ export default function About() {
               </p>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       <section className="border-b border-border bg-[color:var(--section)]">
         <div className="container-x py-24 md:py-32">
-          <Eyebrow>Leadership</Eyebrow>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <FadeIn>
+            <Eyebrow>Leadership</Eyebrow>
+          </FadeIn>
+          <FadeInStagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {leadership.map((l) => (
-              <div key={l.name} className="group overflow-hidden rounded-3xl border border-border bg-background p-8 transition-colors hover:border-[color:var(--green)]">
-                <div className="relative h-20 w-20 overflow-hidden rounded-full border border-border bg-muted">
-                  <img src={l.img} alt={l.name} className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-110 group-hover:grayscale-0" />
+              <FadeInItem key={l.name}>
+                <div className="group overflow-hidden rounded-3xl border border-border bg-background p-8 transition-colors hover:border-[color:var(--green)]">
+                  <div className="relative h-20 w-20 overflow-hidden rounded-full border border-border bg-muted">
+                    <img src={l.img} alt={l.name} className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-110 group-hover:grayscale-0" />
+                  </div>
+                  <h3 className="mt-8 font-display text-2xl text-foreground">{l.name}</h3>
+                  <div className="mt-2 text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
+                    {l.role}
+                  </div>
                 </div>
-                <h3 className="mt-8 font-display text-2xl text-foreground">{l.name}</h3>
-                <div className="mt-2 text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
-                  {l.role}
-                </div>
-              </div>
+              </FadeInItem>
             ))}
-          </div>
+          </FadeInStagger>
         </div>
       </section>
 
       <section>
         <div className="container-x py-24 md:py-32">
-          <Eyebrow>Future roadmap</Eyebrow>
-          <div className="mt-12 grid gap-6 md:grid-cols-4">
+          <FadeIn>
+            <Eyebrow>Future roadmap</Eyebrow>
+          </FadeIn>
+          <FadeInStagger className="mt-12 grid gap-6 md:grid-cols-4">
             {roadmap.map((r) => (
-              <div key={r.y} className="border-t border-border pt-6">
-                <div className="font-display text-3xl text-[color:var(--navy)] dark:text-foreground">{r.y}</div>
-                <div className="mt-3 text-sm font-medium uppercase tracking-[0.15em] text-[color:var(--green-deep)] dark:text-[color:var(--green)]">{r.t}</div>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{r.d}</p>
-              </div>
+              <FadeInItem key={r.y}>
+                <div className="border-t border-border pt-6">
+                  <div className="font-display text-3xl text-[color:var(--navy)] dark:text-foreground">{r.y}</div>
+                  <div className="mt-3 text-sm font-medium uppercase tracking-[0.15em] text-[color:var(--green-deep)] dark:text-[color:var(--green)]">{r.t}</div>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{r.d}</p>
+                </div>
+              </FadeInItem>
             ))}
-          </div>
+          </FadeInStagger>
         </div>
       </section>
     </>
