@@ -217,13 +217,18 @@ export default function JobDetail() {
         notes: "Application submitted successfully",
       });
 
-      await sendConfirmationEmail(
-        formData.email,
-        formData.fullName,
-        job.title,
-        data.application_id,
-      );
-      await sendAdminNotification(data.application_id, formData.fullName, formData.email);
+      try {
+        await sendConfirmationEmail(
+          formData.email,
+          formData.fullName,
+          job.title,
+          data.application_id,
+        );
+        await sendAdminNotification(data.application_id, formData.fullName, formData.email);
+      } catch (emailErr) {
+        console.error("Email notification failed, but application was saved:", emailErr);
+        // We don't throw here so the user still sees the success screen
+      }
 
       setApplicationId(data.application_id);
       setSubmitted(true);
