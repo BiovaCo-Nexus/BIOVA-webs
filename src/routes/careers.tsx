@@ -42,7 +42,7 @@ export default function Careers() {
         setOpenings(fetchedOpenings);
 
         // Derive unique departments dynamically
-        const uniqueDepartments = Array.from(new Set(fetchedOpenings.map(o => o.dept)));
+        const uniqueDepartments = Array.from(new Set(fetchedOpenings.map(o => o.dept))).filter(Boolean) as string[];
         setDepartments(uniqueDepartments);
       }
     };
@@ -135,22 +135,26 @@ export default function Careers() {
         description="Join an innovation house that runs real brands, ships real products, and is engineered to launch many more. Six disciplines. One mission."
       />
 
-      <section className="border-b border-border">
-        <div className="container-x py-20">
-          <FadeIn>
-            <Eyebrow>Departments</Eyebrow>
-          </FadeIn>
-          <FadeInStagger className="mt-8 flex flex-wrap gap-2">
-            {departments.map((d) => (
-              <FadeInItem key={d}>
-                <span className="rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground">
-                  {d}
-                </span>
-              </FadeInItem>
-            ))}
-          </FadeInStagger>
-        </div>
-      </section>
+      {departments.length > 0 && (
+        <section className="border-b border-border">
+          <div className="container-x py-20">
+            <FadeIn>
+              <Eyebrow>Departments</Eyebrow>
+            </FadeIn>
+            <FadeInStagger className="mt-8 flex flex-wrap gap-3">
+              {departments.map((d) => (
+                <FadeInItem key={d}>
+                  <div className="group flex items-center justify-center rounded-2xl border border-border bg-[color:var(--section)] px-6 py-4 transition-colors hover:border-[color:var(--green)] hover:bg-background">
+                    <span className="font-display text-lg tracking-wide text-foreground group-hover:text-[color:var(--green-deep)] dark:group-hover:text-[color:var(--green)]">
+                      {d}
+                    </span>
+                  </div>
+                </FadeInItem>
+              ))}
+            </FadeInStagger>
+          </div>
+        </section>
+      )}
 
       <section className="bg-[color:var(--section)] border-b border-border">
         <div className="container-x py-24 md:py-32">
