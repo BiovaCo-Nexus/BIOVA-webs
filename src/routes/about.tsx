@@ -17,6 +17,11 @@ const roadmap = [
   { y: "2028+", t: "Portfolio", d: "Continuous incubation of new ventures across the BiovaCo innovation areas." },
 ];
 
+const leadership = [
+  { name: "Nakul Mundhada", role: "Founder", img: "/Nakul_Photo.jpeg" },
+  { name: "Richa Rajan", role: "Co-Founder", img: "/Richa_photo.jpg" }
+];
+
 export default function About() {
   return (
     <>
@@ -78,6 +83,25 @@ export default function About() {
                 Build slowly. Ship deliberately. Compound forever.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-[color:var(--section)]">
+        <div className="container-x py-24 md:py-32">
+          <Eyebrow>Leadership</Eyebrow>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {leadership.map((l) => (
+              <div key={l.name} className="group overflow-hidden rounded-3xl border border-border bg-background p-8 transition-colors hover:border-[color:var(--green)]">
+                <div className="relative h-20 w-20 overflow-hidden rounded-full border border-border bg-muted">
+                  <img src={l.img} alt={l.name} className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-110 group-hover:grayscale-0" />
+                </div>
+                <h3 className="mt-8 font-display text-2xl text-foreground">{l.name}</h3>
+                <div className="mt-2 text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
+                  {l.role}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
