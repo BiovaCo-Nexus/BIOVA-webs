@@ -203,6 +203,14 @@ export default function Careers() {
     }
   };
 
+  const handleRoleSelect = (roleKey: string) => {
+    setFormData(prev => ({ ...prev, role: roleKey }));
+    const formElement = document.getElementById("application-form");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -338,7 +346,7 @@ export default function Careers() {
             {openings.length > 0 ? (
               <div className="divide-y divide-border">
                 {openings.map((o) => (
-                  <div key={o.title} onClick={() => setFormData({ ...formData, role: o.key })} className="cursor-pointer group grid items-center gap-4 p-6 transition-colors hover:bg-[color:var(--section)] md:grid-cols-[1fr_1fr_1fr_auto]">
+                  <div key={o.title} onClick={() => handleRoleSelect(o.key)} className="cursor-pointer group grid items-center gap-4 p-6 transition-colors hover:bg-[color:var(--section)] md:grid-cols-[1fr_1fr_1fr_auto]">
                     <div>
                       <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{o.dept}</div>
                       <div className="mt-1 font-display text-xl text-foreground">{o.title}</div>
