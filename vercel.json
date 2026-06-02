@@ -1,16 +1,34 @@
 {
+  "crons": [
+    {
+      "path": "/api/keep-alive",
+      "schedule": "0 0 * * *"
+    }
+  ],
   "rewrites": [
     {
-      "source": "/sitemap.xml",
-      "destination": "/api/sitemap"
+      "source": "/api/google-index",
+      "destination": "/api/google-index.js"
+    },
+    {
+      "source": "/api/sitemap",
+      "destination": "/api/sitemap.js"
     },
     {
       "source": "/api/send-email",
       "destination": "/api/send-email.js"
     },
     {
+      "source": "/api/keep-alive",
+      "destination": "/api/keep-alive.js"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "/api/$1"
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
     },
     {
       "source": "/(.*)",
