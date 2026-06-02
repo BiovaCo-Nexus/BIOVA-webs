@@ -1,7 +1,5 @@
 import { Eyebrow } from "@/components/ui-custom/Section";
 
-
-
 const products = [
   { name: "Mango-Chili Dust", line: "Flavour Dust", note: "Sweet heat, slow build." },
   { name: "Pepper-Lime Blast", line: "Flavour Dust", note: "Sharp citrus, black pepper warmth." },
@@ -13,7 +11,10 @@ export default function Cravora() {
   return (
     <>
       <section className="relative overflow-hidden border-b border-border bg-[color:var(--navy-deep)] pt-40 pb-24 text-white md:pt-48 md:pb-32">
-        <div aria-hidden className="absolute inset-0 opacity-[0.12] [background-image:radial-gradient(circle_at_20%_30%,var(--green),transparent_50%)]" />
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-[0.12] [background-image:radial-gradient(circle_at_20%_30%,var(--green),transparent_50%)]"
+        />
         <div className="container-x relative">
           <Eyebrow>A BiovaCo Venture · N° 01</Eyebrow>
           <div className="mt-8 mb-6">
@@ -23,7 +24,8 @@ export default function Cravora() {
             Dust The Crave.
           </p>
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/70">
-            A modern Indian food brand engineering bold, dust-based flavour systems for snacks people actually crave. Built and operated by BiovaCo Nexus.
+            A modern Indian food brand engineering bold, dust-based flavour systems for snacks
+            people actually crave. Built and operated by BiovaCo Nexus.
           </p>
         </div>
       </section>
@@ -39,10 +41,14 @@ export default function Cravora() {
             </div>
             <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
               <p>
-                Cravora exists for the moment between hunger and habit — when what you reach for has to feel right on the first bite. Every Cravora dust is built around a flavour curve: an opening note, a mid-palate hit, and a finish that lingers just long enough.
+                Cravora exists for the moment between hunger and habit — when what you reach for has
+                to feel right on the first bite. Every Cravora dust is built around a flavour curve:
+                an opening note, a mid-palate hit, and a finish that lingers just long enough.
               </p>
               <p>
-                Behind each product is the BiovaCo food science track: ingredient sourcing, flavour mapping, shelf-life engineering and manufacturing partnerships designed for scale from day one.
+                Behind each product is the BiovaCo food science track: ingredient sourcing, flavour
+                mapping, shelf-life engineering and manufacturing partnerships designed for scale
+                from day one.
               </p>
             </div>
           </div>
@@ -57,10 +63,17 @@ export default function Cravora() {
           </h2>
           <div className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-2">
             {products.map((p, i) => (
-              <div key={p.name} className="group relative flex aspect-[5/4] flex-col justify-between bg-background p-8 transition-colors hover:bg-[color:var(--section)]">
+              <div
+                key={p.name}
+                className="group relative flex aspect-[5/4] flex-col justify-between bg-background p-8 transition-colors hover:bg-[color:var(--section)]"
+              >
                 <div className="flex items-start justify-between">
-                  <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{p.line}</span>
-                  <span className="font-display text-xs tabular-nums text-muted-foreground">0{i + 1}</span>
+                  <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                    {p.line}
+                  </span>
+                  <span className="font-display text-xs tabular-nums text-muted-foreground">
+                    0{i + 1}
+                  </span>
                 </div>
                 <div>
                   <div className="font-display text-3xl text-foreground">{p.name}</div>
@@ -77,9 +90,18 @@ export default function Cravora() {
         <div className="container-x py-24 md:py-32">
           <div className="grid gap-12 md:grid-cols-3">
             {[
-              { t: "Retail opportunities", d: "Modern trade, premium general trade, e-commerce and quick-commerce listings." },
-              { t: "Distribution network", d: "Expanding super-stockist and distributor footprint across India." },
-              { t: "Contact Cravora", d: "For trade, retail, partnership and enterprise enquiries — reach the Cravora team via BiovaCo." },
+              {
+                t: "Retail opportunities",
+                d: "Modern trade, premium general trade, e-commerce and quick-commerce listings.",
+              },
+              {
+                t: "Distribution network",
+                d: "Expanding super-stockist and distributor footprint across India.",
+              },
+              {
+                t: "Contact Cravora",
+                d: "For trade, retail, partnership and enterprise enquiries — reach the Cravora team via BiovaCo.",
+              },
             ].map((b) => (
               <div key={b.t} className="border-t border-border pt-6">
                 <div className="font-display text-xl text-foreground">{b.t}</div>

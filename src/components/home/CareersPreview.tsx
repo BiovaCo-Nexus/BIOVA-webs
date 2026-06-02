@@ -15,7 +15,8 @@ export function CareersPreview() {
               Build the future with us.
             </h2>
             <p className="mt-6 max-w-md text-muted-foreground">
-              We're hiring across food science, engineering, AI and operations — for the brands we run today and the ones we'll launch tomorrow.
+              We're hiring across food science, engineering, AI and operations — for the brands we
+              run today and the ones we'll launch tomorrow.
             </p>
             <Link
               to="/careers"
@@ -35,11 +36,15 @@ export function CareersPreview() {
                     className="group flex items-center justify-between gap-6 p-6 transition-colors hover:bg-[color:var(--section)]"
                   >
                     <div>
-                      <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{r.dept}</div>
+                      <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                        {r.dept}
+                      </div>
                       <div className="mt-1 font-display text-xl text-foreground">{r.title}</div>
                     </div>
                     <div className="flex items-center gap-6">
-                      <span className="hidden text-sm text-muted-foreground md:inline">{r.loc}</span>
+                      <span className="hidden text-sm text-muted-foreground md:inline">
+                        {r.loc}
+                      </span>
                       <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[color:var(--green-deep)]" />
                     </div>
                   </Link>
@@ -48,7 +53,10 @@ export function CareersPreview() {
             ) : (
               <div className="flex h-full min-h-[16rem] flex-col items-center justify-center p-12 text-center">
                 <div className="font-display text-2xl text-foreground">No current openings</div>
-                <p className="mt-3 max-w-sm text-muted-foreground">We are not actively hiring right now, but you can always share your profile with us.</p>
+                <p className="mt-3 max-w-sm text-muted-foreground">
+                  We are not actively hiring right now, but you can always share your profile with
+                  us.
+                </p>
               </div>
             )}
           </div>

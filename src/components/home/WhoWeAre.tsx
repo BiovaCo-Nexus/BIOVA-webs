@@ -28,7 +28,11 @@ export function WhoWeAre() {
           <div>
             <Eyebrow>Who we are</Eyebrow>
             <h2 className="mt-5 font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
-              A parent company building <span className="italic font-light text-[color:var(--green-deep)] dark:text-[color:var(--green)]">future-focused</span> brands.
+              A parent company building{" "}
+              <span className="italic font-light text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
+                future-focused
+              </span>{" "}
+              brands.
             </h2>
           </div>
           <div className="grid gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-3">
@@ -41,7 +45,10 @@ export function WhoWeAre() {
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 className="group relative flex flex-col bg-background p-8 transition-colors hover:bg-[color:var(--section)]"
               >
-                <p.icon className="h-7 w-7 text-[color:var(--green-deep)] dark:text-[color:var(--green)]" strokeWidth={1.4} />
+                <p.icon
+                  className="h-7 w-7 text-[color:var(--green-deep)] dark:text-[color:var(--green)]"
+                  strokeWidth={1.4}
+                />
                 <h3 className="mt-12 font-display text-2xl text-foreground">{p.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
                 <div className="mt-8 h-px w-8 bg-[color:var(--green)] transition-all group-hover:w-16" />

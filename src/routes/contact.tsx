@@ -9,9 +9,9 @@ const inquiries = ["General", "Business", "Partnership", "Career", "Press / Othe
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  
+
   // Form State
-  const [type, setType] = useState(inquiries[0]);
+  const [type, setType] = useState<(typeof inquiries)[number]>(inquiries[0]);
   const [name, setName] = useState("");
   const [organisation, setOrganisation] = useState("");
   const [email, setEmail] = useState("");
@@ -24,19 +24,17 @@ export default function Contact() {
 
     try {
       const { error } = await supabase
-        .from('inquiries')
-        .insert([
-          { type, name, organisation, email, phone, message }
-        ]);
+        .from("inquiries")
+        .insert([{ type, name, organisation, email, phone, message }]);
 
       if (error) {
-        console.error('Error submitting form:', error);
-        alert('Failed to send message. Please try again or email us directly.');
+        console.error("Error submitting form:", error);
+        alert("Failed to send message. Please try again or email us directly.");
       } else {
         setSubmitted(true);
       }
     } catch (err) {
-      console.error('Unexpected error:', err);
+      console.error("Unexpected error:", err);
     } finally {
       setLoading(false);
     }
@@ -46,7 +44,15 @@ export default function Contact() {
     <>
       <PageHero
         eyebrow="Contact"
-        title={<>Let's <span className="italic font-light text-[color:var(--green-deep)] dark:text-[color:var(--green)]">talk</span>.</>}
+        title={
+          <>
+            Let's{" "}
+            <span className="italic font-light text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
+              talk
+            </span>
+            .
+          </>
+        }
         description="Reach the BiovaCo team for general, business, partnership or career enquiries. We read every message."
       />
 
@@ -60,8 +66,13 @@ export default function Contact() {
                   <div className="flex items-start gap-3">
                     <Mail className="mt-1 h-4 w-4 text-[color:var(--green-deep)] dark:text-[color:var(--green)]" />
                     <div>
-                      <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Email</div>
-                      <a href="mailto:hello@biovaco.in" className="font-display text-lg text-foreground hover:text-[color:var(--green-deep)]">
+                      <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                        Email
+                      </div>
+                      <a
+                        href="mailto:hello@biovaco.in"
+                        className="font-display text-lg text-foreground hover:text-[color:var(--green-deep)]"
+                      >
                         hello@biovaco.in
                       </a>
                     </div>
@@ -69,8 +80,13 @@ export default function Contact() {
                   <div className="flex items-start gap-3">
                     <Phone className="mt-1 h-4 w-4 text-[color:var(--green-deep)] dark:text-[color:var(--green)]" />
                     <div>
-                      <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Phone</div>
-                      <a href="tel:+919226595332" className="font-display text-lg text-foreground hover:text-[color:var(--green-deep)]">
+                      <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                        Phone
+                      </div>
+                      <a
+                        href="tel:+919226595332"
+                        className="font-display text-lg text-foreground hover:text-[color:var(--green-deep)]"
+                      >
                         +91 9226595332
                       </a>
                     </div>
@@ -78,18 +94,20 @@ export default function Contact() {
                   <div className="flex items-start gap-3">
                     <MapPin className="mt-1 h-4 w-4 text-[color:var(--green-deep)] dark:text-[color:var(--green)]" />
                     <div>
-                      <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Registered office</div>
+                      <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                        Registered office
+                      </div>
                       <div className="mt-1 text-sm leading-relaxed text-foreground">
-                        BiovaCo Nexus Pvt. Ltd.<br />
-                        H. No. 72, Bhagchand Nagar, Dhamangaon Railway,<br />
+                        BiovaCo Nexus Pvt. Ltd.
+                        <br />
+                        H. No. 72, Bhagchand Nagar, Dhamangaon Railway,
+                        <br />
                         Dhamangaon Rly, Maharashtra – 444701
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-
             </div>
 
             <div>
@@ -108,32 +126,59 @@ export default function Contact() {
                 >
                   <div className="grid gap-6">
                     <Field label="Inquiry type">
-                      <select 
-                        value={type} 
-                        onChange={(e) => setType(e.target.value as typeof inquiries[number])} 
+                      <select
+                        value={type}
+                        onChange={(e) => setType(e.target.value as (typeof inquiries)[number])}
                         className="w-full bg-transparent py-2 text-foreground outline-none"
                       >
-                        {inquiries.map((i) => <option key={i}>{i}</option>)}
+                        {inquiries.map((i) => (
+                          <option key={i}>{i}</option>
+                        ))}
                       </select>
                     </Field>
                     <div className="grid gap-6 md:grid-cols-2">
                       <Field label="Full name">
-                        <input value={name} onChange={e => setName(e.target.value)} required className="w-full bg-transparent py-2 outline-none" />
+                        <input
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          required
+                          className="w-full bg-transparent py-2 outline-none"
+                        />
                       </Field>
                       <Field label="Organisation">
-                        <input value={organisation} onChange={e => setOrganisation(e.target.value)} className="w-full bg-transparent py-2 outline-none" />
+                        <input
+                          value={organisation}
+                          onChange={(e) => setOrganisation(e.target.value)}
+                          className="w-full bg-transparent py-2 outline-none"
+                        />
                       </Field>
                     </div>
                     <div className="grid gap-6 md:grid-cols-2">
                       <Field label="Email">
-                        <input value={email} onChange={e => setEmail(e.target.value)} required type="email" className="w-full bg-transparent py-2 outline-none" />
+                        <input
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                          type="email"
+                          className="w-full bg-transparent py-2 outline-none"
+                        />
                       </Field>
                       <Field label="Phone">
-                        <input value={phone} onChange={e => setPhone(e.target.value)} className="w-full bg-transparent py-2 outline-none" />
+                        <input
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          className="w-full bg-transparent py-2 outline-none"
+                        />
                       </Field>
                     </div>
                     <Field label="Message">
-                      <textarea value={message} onChange={e => setMessage(e.target.value)} required rows={5} className="w-full resize-none bg-transparent py-2 outline-none" />
+                      <textarea
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        required
+                        rows={5}
+                        className="w-full resize-none bg-transparent py-2 outline-none"
+                      />
                     </Field>
                   </div>
                   <button
@@ -142,9 +187,13 @@ export default function Contact() {
                     className="mt-8 inline-flex items-center gap-2 rounded-full bg-[color:var(--navy)] px-6 py-3.5 text-sm font-medium text-white transition-all hover:bg-[color:var(--navy-deep)] disabled:opacity-70"
                   >
                     {loading ? (
-                      <>Sending <Loader2 className="h-4 w-4 animate-spin" /></>
+                      <>
+                        Sending <Loader2 className="h-4 w-4 animate-spin" />
+                      </>
                     ) : (
-                      <>Send message <ArrowUpRight className="h-4 w-4" /></>
+                      <>
+                        Send message <ArrowUpRight className="h-4 w-4" />
+                      </>
                     )}
                   </button>
                 </form>
@@ -160,7 +209,9 @@ export default function Contact() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block border-b border-border pb-2 transition-colors focus-within:border-[color:var(--green)]">
-      <div className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">{label}</div>
+      <div className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+        {label}
+      </div>
       <div className="mt-1">{children}</div>
     </label>
   );

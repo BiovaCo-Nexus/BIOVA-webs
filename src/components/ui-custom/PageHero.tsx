@@ -15,9 +15,12 @@ export function PageHero({
 }) {
   return (
     <section className="relative overflow-hidden border-b border-border pt-40 pb-20 md:pt-48 md:pb-28">
-
       <div className="container-x relative">
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <Eyebrow>{eyebrow}</Eyebrow>
         </motion.div>
         <motion.h1

@@ -3,19 +3,51 @@ import { Eyebrow } from "@/components/ui-custom/Section";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui-custom/FadeIn";
 
 const areas = [
-  { code: "01", t: "Food Innovation", d: "Flavour systems, ingredient R&D, novel formats and modern consumer food brands." },
-  { code: "02", t: "Agricultural Technology", d: "Post-harvest tech, traceability, agronomic data and resilient supply systems." },
-  { code: "03", t: "Biomed Consumers Application", d: "Custom hardware, sensors and edge devices for monitoring and automation." },
-  { code: "04", t: "Artificial Intelligence", d: "Applied AI across consumer products, agricultural decision-making and retail." },
-  { code: "05", t: "Consumer Products", d: "Designing branded products that win shelves and earn repeat purchase." },
-  { code: "06", t: "Research & Development", d: "Shared R&D infrastructure that compounds across every BiovaCo venture." },
+  {
+    code: "01",
+    t: "Food Innovation",
+    d: "Flavour systems, ingredient R&D, novel formats and modern consumer food brands.",
+  },
+  {
+    code: "02",
+    t: "Agricultural Technology",
+    d: "Post-harvest tech, traceability, agronomic data and resilient supply systems.",
+  },
+  {
+    code: "03",
+    t: "Biomed Consumers Application",
+    d: "Custom hardware, sensors and edge devices for monitoring and automation.",
+  },
+  {
+    code: "04",
+    t: "Artificial Intelligence",
+    d: "Applied AI across consumer products, agricultural decision-making and retail.",
+  },
+  {
+    code: "05",
+    t: "Consumer Products",
+    d: "Designing branded products that win shelves and earn repeat purchase.",
+  },
+  {
+    code: "06",
+    t: "Research & Development",
+    d: "Shared R&D infrastructure that compounds across every BiovaCo venture.",
+  },
 ];
 
 const pipeline = [
   { stage: "Live", t: "Cravora", d: "Flagship food brand. In market." },
-  { stage: "Incubation", t: "Agritech Pilot", d: "Soil-to-shelf traceability platform — early development." },
+  {
+    stage: "Incubation",
+    t: "Agritech Pilot",
+    d: "Soil-to-shelf traceability platform — early development.",
+  },
   { stage: "Concept", t: "Biomed AI", d: "Edge devices for food and agricultural workflows." },
-  { stage: "Concept", t: "Next Consumer Brand", d: "A second consumer venture is in early formulation." },
+  {
+    stage: "Concept",
+    t: "Next Consumer Brand",
+    d: "A second consumer venture is in early formulation.",
+  },
 ];
 
 export default function Innovation() {
@@ -23,7 +55,15 @@ export default function Innovation() {
     <>
       <PageHero
         eyebrow="Innovation lab"
-        title={<>Where <span className="italic font-light text-[color:var(--green-deep)] dark:text-[color:var(--green)]">disciplines</span> meet.</>}
+        title={
+          <>
+            Where{" "}
+            <span className="italic font-light text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
+              disciplines
+            </span>{" "}
+            meet.
+          </>
+        }
         description="The BiovaCo innovation lab is the shared engine behind every venture — a portfolio of disciplines, infrastructure and research that compounds across brands."
       />
 
@@ -37,7 +77,9 @@ export default function Innovation() {
               <FadeInItem key={a.t}>
                 <div className="group bg-background h-full p-8 transition-colors hover:bg-[color:var(--section)]">
                   <div className="flex items-baseline justify-between">
-                    <span className="font-display text-xs tracking-[0.3em] text-muted-foreground">{a.code}</span>
+                    <span className="font-display text-xs tracking-[0.3em] text-muted-foreground">
+                      {a.code}
+                    </span>
                     <div className="h-1.5 w-1.5 rounded-full bg-[color:var(--green)]" />
                   </div>
                   <div className="mt-12 font-display text-2xl text-foreground">{a.t}</div>

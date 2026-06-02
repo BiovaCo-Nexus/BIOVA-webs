@@ -9,7 +9,7 @@ export function CravoraShowcase() {
       <div
         aria-hidden
         className="absolute inset-0 opacity-[0.08] animate-pulse [background-image:radial-gradient(circle_at_30%_20%,var(--green),transparent_50%),radial-gradient(circle_at_80%_70%,var(--navy),transparent_60%)]"
-        style={{ animationDuration: '5s' }}
+        style={{ animationDuration: "5s" }}
       />
       <div className="container-x relative py-24 md:py-32">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
@@ -30,7 +30,8 @@ export function CravoraShowcase() {
           </motion.div>
 
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/70">
-            Cravora is BiovaCo's flagship consumer food brand — bold flavoured dusts, makhana and popcorn engineered for the modern Indian palate. The first venture in a long pipeline.
+            Cravora is BiovaCo's flagship consumer food brand — bold flavoured dusts, makhana and
+            popcorn engineered for the modern Indian palate. The first venture in a long pipeline.
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-6 sm:flex-row">

@@ -31,9 +31,7 @@ export default async function handler(req, res) {
         client_email: process.env.GOOGLE_CLIENT_EMAIL,
         private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
       },
-      scopes: [
-        "https://www.googleapis.com/auth/indexing",
-      ],
+      scopes: ["https://www.googleapis.com/auth/indexing"],
     });
 
     const client = await auth.getClient();

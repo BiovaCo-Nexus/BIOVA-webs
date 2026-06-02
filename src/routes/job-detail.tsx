@@ -47,9 +47,6 @@ export default function JobDetail() {
   const [signature, setSignature] = useState<string>("");
   const [signatureError, setSignatureError] = useState<string>("");
 
-  const BREVO_API_KEY = import.meta.env.VITE_BREVO_API_KEY;
-  const SENDER_EMAIL = "info@biovaco.com";
-  const SENDER_NAME = "BiovaCo Recruiting";
   const ADMIN_EMAIL = "nakulmundhada23@gmail.com";
 
   useEffect(() => {
@@ -109,11 +106,7 @@ export default function JobDetail() {
     roleTitle: string,
     appId: string,
   ) => {
-    const emailData = {
-      sender: { name: SENDER_NAME, email: SENDER_EMAIL },
-      to: [{ email: email, name: name }],
-      subject: `Application Received - ${roleTitle}`,
-      htmlContent: `
+    const htmlContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <h2 style="color: #032E63;">Your Application Has Been Received</h2>
         <p>Dear ${name},</p>
@@ -126,18 +119,19 @@ export default function JobDetail() {
           <a href="https://biovaco.in" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #032E63; color: #fff; text-decoration: none; border-radius: 5px;">Visit BiovaCo</a>
         </div>
         <p style="margin-top: 30px;">Best regards,<br />The BiovaCo Team</p>
-      </div>`,
-    };
-    const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+      </div>`;
+
+    const response = await fetch("/api/send-email", {
       method: "POST",
-      headers: {
-        accept: "application/json",
-        "api-key": BREVO_API_KEY,
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(emailData),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        toEmail: email,
+        toName: name,
+        subject: `Application Received - ${roleTitle}`,
+        htmlContent: htmlContent,
+      }),
     });
-    if (!response.ok) throw new Error("Failed to send confirmation email");
+    if (!response.ok) throw new Error("Failed to send confirmation email via serverless function");
   };
 
   const sendAdminNotification = async (
@@ -145,28 +139,25 @@ export default function JobDetail() {
     applicantName: string,
     applicantEmail: string,
   ) => {
-    const emailData = {
-      sender: { name: SENDER_NAME, email: SENDER_EMAIL },
-      to: [{ email: ADMIN_EMAIL, name: "Admin" }],
-      subject: `New Application Received - ${applicantName}`,
-      htmlContent: `
+    const htmlContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           <h2 style="color: #032E63;">New Application Notification</h2>
           <p>A new application has been submitted by <strong>${applicantName}</strong> for <strong>${job?.title}</strong>.</p>
           <p>Application ID: <strong>${appId}</strong></p>
           <p>Email: <strong>${applicantEmail}</strong></p>
-        </div>`,
-    };
-    const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+        </div>`;
+
+    const response = await fetch("/api/send-email", {
       method: "POST",
-      headers: {
-        accept: "application/json",
-        "api-key": BREVO_API_KEY,
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(emailData),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        toEmail: ADMIN_EMAIL,
+        toName: "Admin",
+        subject: `New Application Received - ${applicantName}`,
+        htmlContent: htmlContent,
+      }),
     });
-    if (!response.ok) throw new Error("Failed to send admin notification email");
+    if (!response.ok) throw new Error("Failed to send admin notification email via serverless function");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {

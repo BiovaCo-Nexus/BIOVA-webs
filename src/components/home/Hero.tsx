@@ -7,8 +7,14 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden min-h-[100dvh] flex flex-col justify-center pt-28 pb-16">
       {/* subtle animated background orbs */}
-      <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-[color:var(--green)]/5 blur-[120px] animate-pulse" style={{ animationDuration: '4s' }} />
-      <div className="absolute top-1/2 -left-40 h-[30rem] w-[30rem] -translate-y-1/2 rounded-full bg-[color:var(--navy)]/5 blur-[120px] animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
+      <div
+        className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-[color:var(--green)]/5 blur-[120px] animate-pulse"
+        style={{ animationDuration: "4s" }}
+      />
+      <div
+        className="absolute top-1/2 -left-40 h-[30rem] w-[30rem] -translate-y-1/2 rounded-full bg-[color:var(--navy)]/5 blur-[120px] animate-pulse"
+        style={{ animationDuration: "6s", animationDelay: "2s" }}
+      />
       <div className="container-x relative">
         <div className="grid items-center gap-16 lg:grid-cols-[1.15fr_1fr]">
           <div>
@@ -32,7 +38,9 @@ export function Hero() {
             >
               Innovating <br />
               <span className="text-[color:var(--navy)] dark:text-foreground">Food</span>,{" "}
-              <span className="text-[color:var(--green-deep)] dark:text-[color:var(--green)] italic font-light">Agriculture</span>{" "}
+              <span className="text-[color:var(--green-deep)] dark:text-[color:var(--green)] italic font-light">
+                Agriculture
+              </span>{" "}
               <br />
               &amp; Technology.
             </motion.h1>
@@ -43,7 +51,8 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.25 }}
               className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
             >
-              BiovaCo Nexus builds, launches and scales the next generation of consumer brands, agricultural innovation and technology ventures — designed for the long term.
+              BiovaCo Nexus builds, launches and scales the next generation of consumer brands,
+              agricultural innovation and technology ventures — designed for the long term.
             </motion.p>
 
             <motion.div
@@ -83,7 +92,9 @@ export function Hero() {
               ].map((s) => (
                 <div key={s.v}>
                   <div className="font-display text-3xl text-foreground">{s.k}</div>
-                  <div className="mt-1 text-xs uppercase tracking-[0.15em] text-muted-foreground">{s.v}</div>
+                  <div className="mt-1 text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                    {s.v}
+                  </div>
                 </div>
               ))}
             </motion.div>

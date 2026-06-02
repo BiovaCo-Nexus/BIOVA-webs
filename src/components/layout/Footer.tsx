@@ -38,12 +38,16 @@ export function Footer() {
           <div>
             <Logo />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              BiovaCo Nexus Pvt. Ltd. is an innovation holding company building the next generation of consumer brands, agricultural technology and intelligent systems.
+              BiovaCo Nexus Pvt. Ltd. is an innovation holding company building the next generation
+              of consumer brands, agricultural technology and intelligent systems.
             </p>
             <div className="mt-6">
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Registered Office</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                Registered Office
+              </p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                H. No. 72, Bhagchand Nagar, Dhamangaon Railway,<br />
+                H. No. 72, Bhagchand Nagar, Dhamangaon Railway,
+                <br />
                 Dhamangaon Rly, Maharashtra – 444701
               </p>
             </div>
@@ -72,9 +76,15 @@ export function Footer() {
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-border pt-8 text-xs text-muted-foreground md:flex-row md:items-center">
           <p>© {new Date().getFullYear()} BiovaCo Nexus Private Limited. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link to="/privacy" className="hover:text-foreground">Privacy</Link>
-            <Link to="/terms" className="hover:text-foreground">Terms</Link>
-            <a href="https://biovaco.in" className="hover:text-foreground">biovaco.in</a>
+            <Link to="/privacy" className="hover:text-foreground">
+              Privacy
+            </Link>
+            <Link to="/terms" className="hover:text-foreground">
+              Terms
+            </Link>
+            <a href="https://biovaco.in" className="hover:text-foreground">
+              biovaco.in
+            </a>
           </div>
         </div>
       </div>

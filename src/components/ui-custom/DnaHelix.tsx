@@ -57,7 +57,10 @@ export function DnaHelix({ className = "" }: { className?: string }) {
           return (
             <g key={i}>
               <line
-                x1={x1} y1={y} x2={x2} y2={y}
+                x1={x1}
+                y1={y}
+                x2={x2}
+                y2={y}
                 stroke="currentColor"
                 strokeOpacity="0.18"
                 strokeWidth="1.5"

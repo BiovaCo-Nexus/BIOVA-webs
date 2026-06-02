@@ -12,7 +12,7 @@ import { Helmet } from "react-helmet-async";
 
 export default function Careers() {
   const navigate = useNavigate();
-  
+
   const [jobRoles, setJobRoles] = useState<any[]>([]);
   const [openings, setOpenings] = useState<any[]>([]);
   const [departments, setDepartments] = useState<string[]>([]);
@@ -20,16 +20,16 @@ export default function Careers() {
   useEffect(() => {
     const fetchJobRoles = async () => {
       const { data, error } = await supabase
-        .from('job_positions')
-        .select('role_key, title, department, location, job_type, description')
-        .eq('is_active', true)
-        .order('display_order', { ascending: true });
+        .from("job_positions")
+        .select("role_key, title, department, location, job_type, description")
+        .eq("is_active", true)
+        .order("display_order", { ascending: true });
 
       if (error) {
-        console.error('Error fetching job roles:', error);
+        console.error("Error fetching job roles:", error);
       } else {
         setJobRoles(data || []);
-        
+
         // Populate openings for the UI
         const fetchedOpenings = (data || []).map((job) => ({
           title: job.title,
@@ -37,12 +37,14 @@ export default function Careers() {
           loc: job.location,
           type: job.job_type,
           desc: job.description,
-          key: job.role_key
+          key: job.role_key,
         }));
         setOpenings(fetchedOpenings);
 
         // Derive unique departments dynamically
-        const uniqueDepartments = Array.from(new Set(fetchedOpenings.map(o => o.dept))).filter(Boolean) as string[];
+        const uniqueDepartments = Array.from(new Set(fetchedOpenings.map((o) => o.dept))).filter(
+          Boolean,
+        ) as string[];
         setDepartments(uniqueDepartments);
       }
     };
@@ -55,47 +57,66 @@ export default function Careers() {
   };
 
   // Dynamic SEO Computation
-  const uniqueLocations = Array.from(new Set(openings.map(o => o.loc))).filter(Boolean);
-  const locationText = uniqueLocations.length > 0 ? ` in ${uniqueLocations.join(' & ')}` : '';
+  const uniqueLocations = Array.from(new Set(openings.map((o) => o.loc))).filter(Boolean);
+  const locationText = uniqueLocations.length > 0 ? ` in ${uniqueLocations.join(" & ")}` : "";
   const pageTitle = `Careers at BiovaCo | Open Positions${locationText}`;
-  const pageDescription = openings.length > 0 
-    ? `BiovaCo Nexus is hiring! Explore ${openings.length} open positions in ${uniqueLocations.join(', ')} across ${departments.slice(0,4).join(', ')}. Submit your spontaneous application today and build the future with us.`
-    : "Join BiovaCo Nexus. We are an innovation house that runs real brands and ships real products. Send us your spontaneous application today to be considered for future openings.";
+  const pageDescription =
+    openings.length > 0
+      ? `BiovaCo Nexus is hiring! Explore ${openings.length} open positions in ${uniqueLocations.join(", ")} across ${departments.slice(0, 4).join(", ")}. Submit your spontaneous application today and build the future with us.`
+      : "Join BiovaCo Nexus. We are an innovation house that runs real brands and ships real products. Send us your spontaneous application today to be considered for future openings.";
 
   // Generate highly optimized dynamic keywords
-  const baseKeywords = ["BiovaCo Nexus careers", "startup jobs India", "food innovation jobs", "agriculture tech jobs", "spontaneous application"];
-  const dynamicKeywords = openings.flatMap(o => [`${o.title} jobs`, `${o.title} in ${o.loc}`, `${o.dept} roles`]);
-  const keywordsText = Array.from(new Set([...baseKeywords, ...dynamicKeywords])).join(', ');
+  const baseKeywords = [
+    "BiovaCo Nexus careers",
+    "startup jobs India",
+    "food innovation jobs",
+    "agriculture tech jobs",
+    "spontaneous application",
+  ];
+  const dynamicKeywords = openings.flatMap((o) => [
+    `${o.title} jobs`,
+    `${o.title} in ${o.loc}`,
+    `${o.dept} roles`,
+  ]);
+  const keywordsText = Array.from(new Set([...baseKeywords, ...dynamicKeywords])).join(", ");
 
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://biovaco.in/careers';
+  const currentUrl =
+    typeof window !== "undefined" ? window.location.href : "https://biovaco.in/careers";
 
-  const jobSchemas = openings.map(o => ({
+  const jobSchemas = openings.map((o) => ({
     "@context": "https://schema.org/",
     "@type": "JobPosting",
-    "title": o.title,
-    "description": o.desc || `Join BiovaCo Nexus as a ${o.title} in the ${o.dept} department.`,
-    "identifier": {
+    title: o.title,
+    description: o.desc || `Join BiovaCo Nexus as a ${o.title} in the ${o.dept} department.`,
+    identifier: {
       "@type": "PropertyValue",
-      "name": "BiovaCo Nexus",
-      "value": o.key
+      name: "BiovaCo Nexus",
+      value: o.key,
     },
-    "datePosted": new Date().toISOString().split('T')[0],
-    "employmentType": o.type === "Full-time" ? "FULL_TIME" : o.type === "Part-time" ? "PART_TIME" : o.type === "Contract" ? "CONTRACTOR" : "OTHER",
-    "hiringOrganization": {
+    datePosted: new Date().toISOString().split("T")[0],
+    employmentType:
+      o.type === "Full-time"
+        ? "FULL_TIME"
+        : o.type === "Part-time"
+          ? "PART_TIME"
+          : o.type === "Contract"
+            ? "CONTRACTOR"
+            : "OTHER",
+    hiringOrganization: {
       "@type": "Organization",
-      "name": "BiovaCo Nexus Private Limited",
-      "sameAs": "https://biovaco.in",
-      "logo": "https://biovaco.in/Logo.png"
+      name: "BiovaCo Nexus Private Limited",
+      sameAs: "https://biovaco.in",
+      logo: "https://biovaco.in/Logo.png",
     },
-    "jobLocation": {
+    jobLocation: {
       "@type": "Place",
-      "address": {
+      address: {
         "@type": "PostalAddress",
-        "addressLocality": o.loc.split(',')[0],
-        "addressRegion": o.loc.split(',')[1] ? o.loc.split(',')[1].trim() : "India",
-        "addressCountry": "IN"
-      }
-    }
+        addressLocality: o.loc.split(",")[0],
+        addressRegion: o.loc.split(",")[1] ? o.loc.split(",")[1].trim() : "India",
+        addressCountry: "IN",
+      },
+    },
   }));
 
   return (
@@ -104,7 +125,7 @@ export default function Careers() {
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
         <meta name="keywords" content={keywordsText} />
-        
+
         {/* Open Graph / Facebook / LinkedIn */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content={currentUrl} />
@@ -131,7 +152,15 @@ export default function Careers() {
 
       <PageHero
         eyebrow="Careers"
-        title={<>Build the <span className="italic font-light text-[color:var(--green-deep)] dark:text-[color:var(--green)]">future</span> with us.</>}
+        title={
+          <>
+            Build the{" "}
+            <span className="italic font-light text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
+              future
+            </span>{" "}
+            with us.
+          </>
+        }
         description="Join an innovation house that runs real brands, ships real products, and is engineered to launch many more. Six disciplines. One mission."
       />
 
@@ -158,7 +187,6 @@ export default function Careers() {
 
       <section className="bg-[color:var(--section)] border-b border-border">
         <div className="container-x py-24 md:py-32">
-          
           <FadeIn>
             <Eyebrow>Open positions</Eyebrow>
           </FadeIn>
@@ -166,11 +194,23 @@ export default function Careers() {
             {openings.length > 0 ? (
               <div className="divide-y divide-border">
                 {openings.map((o) => (
-                  <div key={o.title} onClick={() => handleRoleSelect(o.key)} className="cursor-pointer group grid items-center gap-4 p-6 transition-colors hover:bg-[color:var(--section)] md:grid-cols-[2fr_1fr_1fr_auto]">
+                  <div
+                    key={o.title}
+                    onClick={() => handleRoleSelect(o.key)}
+                    className="cursor-pointer group grid items-center gap-4 p-6 transition-colors hover:bg-[color:var(--section)] md:grid-cols-[2fr_1fr_1fr_auto]"
+                  >
                     <div>
-                      <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{o.dept}</div>
-                      <div className="mt-1 font-display text-xl text-foreground group-hover:text-[color:var(--green-deep)] dark:group-hover:text-[color:var(--green)] transition-colors">{o.title}</div>
-                      {o.desc && <p className="mt-2 text-sm text-muted-foreground line-clamp-2 pr-4">{o.desc}</p>}
+                      <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                        {o.dept}
+                      </div>
+                      <div className="mt-1 font-display text-xl text-foreground group-hover:text-[color:var(--green-deep)] dark:group-hover:text-[color:var(--green)] transition-colors">
+                        {o.title}
+                      </div>
+                      {o.desc && (
+                        <p className="mt-2 text-sm text-muted-foreground line-clamp-2 pr-4">
+                          {o.desc}
+                        </p>
+                      )}
                     </div>
                     <div className="text-sm font-medium text-foreground">{o.loc}</div>
                     <div className="text-sm text-muted-foreground">{o.type}</div>
@@ -180,11 +220,13 @@ export default function Careers() {
             ) : (
               <div className="flex flex-col items-center justify-center p-16 text-center">
                 <div className="font-display text-2xl text-foreground">No open positions</div>
-                <p className="mt-3 max-w-md text-muted-foreground">We are currently not actively hiring, but we are always open to connecting with exceptional talent.</p>
+                <p className="mt-3 max-w-md text-muted-foreground">
+                  We are currently not actively hiring, but we are always open to connecting with
+                  exceptional talent.
+                </p>
               </div>
             )}
           </FadeIn>
-
         </div>
       </section>
     </>

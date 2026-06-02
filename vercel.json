@@ -5,6 +5,10 @@
       "destination": "/api/sitemap"
     },
     {
+      "source": "/api/send-email",
+      "destination": "/api/send-email.js"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     },

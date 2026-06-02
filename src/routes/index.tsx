@@ -6,8 +6,6 @@ import { Metrics } from "@/components/home/Metrics";
 import { CareersPreview } from "@/components/home/CareersPreview";
 import { Partners } from "@/components/home/Partners";
 
-
-
 export default function Home() {
   return (
     <>
