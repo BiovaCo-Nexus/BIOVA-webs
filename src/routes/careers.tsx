@@ -41,6 +41,15 @@ export default function Careers() {
   const ADMIN_EMAIL = "nakulmundhada23@gmail.com";
 
   useEffect(() => {
+    if (submitted) {
+      const formElement = document.getElementById("application-form");
+      if (formElement) {
+        formElement.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [submitted]);
+
+  useEffect(() => {
     const fetchJobRoles = async () => {
       const { data, error } = await supabase
         .from('job_positions')
@@ -389,7 +398,7 @@ export default function Careers() {
                     </h2>
                     
                     <p className="text-lg mb-8 text-muted-foreground">
-                      Thank you for applying to BiovaCo. Your application has been received and is being reviewed.
+                      Thank you for submitting your application! We will reach out soon.
                     </p>
                     
                     <div className="bg-[color:var(--section)] p-8 rounded-3xl border border-border mb-8 w-full">
