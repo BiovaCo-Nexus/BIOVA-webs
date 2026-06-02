@@ -31,6 +31,56 @@ export default function Contact() {
         console.error("Error submitting form:", error);
         alert("Failed to send message. Please try again or email us directly.");
       } else {
+        try {
+          // 1. Notify Admin
+          await fetch("/api/send-email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              toEmail: "nakulmundhada23@gmail.com",
+              toName: "Admin",
+              subject: `New Inquiry from ${name} - ${type}`,
+              htmlContent: `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+                  <h2 style="color: #032E63;">New Inquiry Received</h2>
+                  <p><strong>Type:</strong> ${type}</p>
+                  <p><strong>Name:</strong> ${name}</p>
+                  <p><strong>Email:</strong> ${email}</p>
+                  <p><strong>Phone:</strong> ${phone}</p>
+                  <p><strong>Organisation:</strong> ${organisation}</p>
+                  <p><strong>Message:</strong></p>
+                  <p style="background: #F8FAFC; padding: 15px; border-radius: 5px; white-space: pre-wrap;">${message}</p>
+                </div>
+              `
+            })
+          });
+
+          // 2. Notify User
+          await fetch("/api/send-email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              toEmail: email,
+              toName: name,
+              subject: "We've received your message - BiovaCo Nexus",
+              htmlContent: `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+                  <h2 style="color: #032E63;">Thank you for reaching out!</h2>
+                  <p>Dear ${name},</p>
+                  <p>We have successfully received your message regarding <strong>${type}</strong>.</p>
+                  <p>Our team will review your inquiry and get back to you shortly.</p>
+                  <div style="text-align: center; margin-top: 30px;">
+                    <a href="https://biovaco.in" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #032E63; color: #fff; text-decoration: none; border-radius: 5px;">Visit BiovaCo</a>
+                  </div>
+                  <p style="margin-top: 30px;">Best regards,<br />The BiovaCo Team</p>
+                </div>
+              `
+            })
+          });
+        } catch (emailErr) {
+          console.error("Email notification failed, but inquiry was saved:", emailErr);
+        }
+
         setSubmitted(true);
       }
     } catch (err) {
