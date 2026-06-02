@@ -1,16 +1,47 @@
 import { useState } from "react";
 import { PageHero } from "@/components/ui-custom/PageHero";
 import { Eyebrow } from "@/components/ui-custom/Section";
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
-
-
-
-
+import { ArrowUpRight, Mail, MapPin, Phone, Loader2 } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 const inquiries = ["General", "Business", "Partnership", "Career", "Press / Other"] as const;
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  
+  // Form State
+  const [type, setType] = useState(inquiries[0]);
+  const [name, setName] = useState("");
+  const [organisation, setOrganisation] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const { error } = await supabase
+        .from('inquiries')
+        .insert([
+          { type, name, organisation, email, phone, message }
+        ]);
+
+      if (error) {
+        console.error('Error submitting form:', error);
+        alert('Failed to send message. Please try again or email us directly.');
+      } else {
+        setSubmitted(true);
+      }
+    } catch (err) {
+      console.error('Unexpected error:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <PageHero
@@ -72,35 +103,49 @@ export default function Contact() {
                 </div>
               ) : (
                 <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setSubmitted(true);
-                  }}
+                  onSubmit={handleSubmit}
                   className="rounded-3xl border border-border bg-background p-8 md:p-10"
                 >
                   <div className="grid gap-6">
                     <Field label="Inquiry type">
-                      <select className="w-full bg-transparent py-2 text-foreground outline-none">
+                      <select 
+                        value={type} 
+                        onChange={(e) => setType(e.target.value as typeof inquiries[number])} 
+                        className="w-full bg-transparent py-2 text-foreground outline-none"
+                      >
                         {inquiries.map((i) => <option key={i}>{i}</option>)}
                       </select>
                     </Field>
                     <div className="grid gap-6 md:grid-cols-2">
-                      <Field label="Full name"><input required className="w-full bg-transparent py-2 outline-none" /></Field>
-                      <Field label="Organisation"><input className="w-full bg-transparent py-2 outline-none" /></Field>
+                      <Field label="Full name">
+                        <input value={name} onChange={e => setName(e.target.value)} required className="w-full bg-transparent py-2 outline-none" />
+                      </Field>
+                      <Field label="Organisation">
+                        <input value={organisation} onChange={e => setOrganisation(e.target.value)} className="w-full bg-transparent py-2 outline-none" />
+                      </Field>
                     </div>
                     <div className="grid gap-6 md:grid-cols-2">
-                      <Field label="Email"><input required type="email" className="w-full bg-transparent py-2 outline-none" /></Field>
-                      <Field label="Phone"><input className="w-full bg-transparent py-2 outline-none" /></Field>
+                      <Field label="Email">
+                        <input value={email} onChange={e => setEmail(e.target.value)} required type="email" className="w-full bg-transparent py-2 outline-none" />
+                      </Field>
+                      <Field label="Phone">
+                        <input value={phone} onChange={e => setPhone(e.target.value)} className="w-full bg-transparent py-2 outline-none" />
+                      </Field>
                     </div>
                     <Field label="Message">
-                      <textarea required rows={5} className="w-full resize-none bg-transparent py-2 outline-none" />
+                      <textarea value={message} onChange={e => setMessage(e.target.value)} required rows={5} className="w-full resize-none bg-transparent py-2 outline-none" />
                     </Field>
                   </div>
                   <button
                     type="submit"
-                    className="mt-8 inline-flex items-center gap-2 rounded-full bg-[color:var(--navy)] px-6 py-3.5 text-sm font-medium text-white transition-all hover:bg-[color:var(--navy-deep)]"
+                    disabled={loading}
+                    className="mt-8 inline-flex items-center gap-2 rounded-full bg-[color:var(--navy)] px-6 py-3.5 text-sm font-medium text-white transition-all hover:bg-[color:var(--navy-deep)] disabled:opacity-70"
                   >
-                    Send message <ArrowUpRight className="h-4 w-4" />
+                    {loading ? (
+                      <>Sending <Loader2 className="h-4 w-4 animate-spin" /></>
+                    ) : (
+                      <>Send message <ArrowUpRight className="h-4 w-4" /></>
+                    )}
                   </button>
                 </form>
               )}
