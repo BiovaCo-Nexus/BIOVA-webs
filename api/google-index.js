@@ -2,9 +2,20 @@ import { google } from "googleapis";
 
 export default async function handler(req, res) {
   try {
-    let url = req.body?.url || req.query?.url;
+    // 🔥 DEBUGGING LOGS (Vercel Dashboard me dikhega)
+    console.log("=== WEBHOOK RECEIVED ===");
+    console.log("req.body:", JSON.stringify(req.body, null, 2));
+    console.log("req.query:", req.query);
+    console.log("========================");
 
-    // Handle Supabase Webhook default payload
+    let url =
+      req.body?.url ||
+      req.query?.url ||
+      req.body?.payload?.url ||
+      req.body?.record?.url ||
+      req.body?.url?.toString();
+
+    // Handle Supabase Webhook default payload safely
     if (!url && req.body?.record?.role_key) {
       url = `https://biovaco.in/careers/${req.body.record.role_key}`;
     }
