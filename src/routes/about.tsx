@@ -47,8 +47,8 @@ const roadmap = [
 ];
 
 const leadership = [
-  { name: "Nakul Mundhada", role: "Founder", img: "/Nakul_Photo.jpeg" },
-  { name: "Richa Rajan", role: "Co-Founder", img: "/Richa_photo.jpg" },
+  { name: "Nakul Mundhada", role: "Co-Founder", img: "/Nakul_Photo.jpeg" },
+  { name: "Richa Rajan", role: "Founder", img: "/Richa_photo.jpg" },
 ];
 
 export default function About() {
