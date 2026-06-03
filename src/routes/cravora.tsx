@@ -1,12 +1,19 @@
 import { Eyebrow } from "@/components/ui-custom/Section";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui-custom/FadeIn";
 import { Helmet } from "react-helmet-async";
+import { Star } from "lucide-react";
 
 const products = [
   { name: "Mango-Chili Dust", line: "Flavour Dust", note: "Sweet heat, slow build." },
   { name: "Pepper-Lime Blast", line: "Flavour Dust", note: "Sharp citrus, black pepper warmth." },
   { name: "Flavoured Makhana", line: "Snack", note: "Roasted, dusted, lightly addictive." },
   { name: "Flavoured Popcorn", line: "Snack", note: "Air-popped, boldly seasoned." },
+];
+
+const reviews = [
+  { name: "Aditi S.", location: "Mumbai", text: "The Mango-Chili dust on my evening makhana has become a daily ritual. Absolutely addictive and perfectly balanced.", rating: 5 },
+  { name: "Rahul V.", location: "Bangalore", text: "Tried the Pepper-Lime blast. It's the exact punch my homemade popcorn needed. Real ingredients make a huge difference.", rating: 5 },
+  { name: "Priya M.", location: "Delhi", text: "Finally an Indian brand that understands the science of flavor. It doesn't taste artificial at all. Highly recommended.", rating: 5 },
 ];
 
 export default function Cravora() {
@@ -96,6 +103,39 @@ export default function Cravora() {
                     <div className="font-display text-3xl text-foreground">{p.name}</div>
                     <p className="mt-2 text-sm text-muted-foreground">{p.note}</p>
                     <div className="mt-6 h-px w-8 bg-[color:var(--green)] transition-all group-hover:w-20" />
+                  </div>
+                </div>
+              </FadeInItem>
+            ))}
+          </FadeInStagger>
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-background">
+        <div className="container-x py-24 md:py-32">
+          <FadeIn>
+            <Eyebrow>Testimonials</Eyebrow>
+            <h2 className="mt-5 font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
+              What the market says.
+            </h2>
+          </FadeIn>
+          <FadeInStagger className="mt-16 grid gap-6 md:grid-cols-3">
+            {reviews.map((r, i) => (
+              <FadeInItem key={i}>
+                <div className="flex h-full flex-col justify-between rounded-3xl border border-border bg-[color:var(--section)] p-8">
+                  <div>
+                    <div className="flex gap-1 text-[#FFBD2E]">
+                      {[...Array(r.rating)].map((_, j) => (
+                        <Star key={j} className="h-4 w-4 fill-current" />
+                      ))}
+                    </div>
+                    <p className="mt-6 text-lg leading-relaxed text-foreground">"{r.text}"</p>
+                  </div>
+                  <div className="mt-8">
+                    <div className="font-display text-lg text-foreground">{r.name}</div>
+                    <div className="text-sm text-muted-foreground uppercase tracking-widest mt-1">
+                      {r.location}
+                    </div>
                   </div>
                 </div>
               </FadeInItem>
