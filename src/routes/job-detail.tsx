@@ -261,13 +261,34 @@ export default function JobDetail() {
   const currentUrl =
     typeof window !== "undefined" ? window.location.href : `https://biovaco.in/careers/${roleKey}`;
 
+  const today = new Date();
+  const validThroughDate = job.application_deadline
+    ? new Date(job.application_deadline).toISOString().split("T")[0]
+    : new Date(today.setMonth(today.getMonth() + 3)).toISOString().split("T")[0];
+
+  let baseSalary;
+  if (job.salary_range) {
+    baseSalary = {
+      "@type": "MonetaryAmount",
+      currency: "INR",
+      value: {
+        "@type": "QuantitativeValue",
+        value: job.salary_range,
+        unitText: "YEAR",
+      },
+    };
+  }
+
   const schemaJSON = {
     "@context": "https://schema.org/",
     "@type": "JobPosting",
     title: job.title,
     description: job.description,
     identifier: { "@type": "PropertyValue", name: "BiovaCo Nexus", value: job.role_key },
-    datePosted: new Date().toISOString().split("T")[0],
+    datePosted: job.created_at
+      ? new Date(job.created_at).toISOString().split("T")[0]
+      : new Date().toISOString().split("T")[0],
+    validThrough: validThroughDate,
     employmentType: job.job_type === "Full-time" ? "FULL_TIME" : "CONTRACTOR",
     hiringOrganization: {
       "@type": "Organization",
@@ -279,11 +300,15 @@ export default function JobDetail() {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
-        addressLocality: job.location.split(",")[0],
-        addressRegion: job.location.split(",")[1] ? job.location.split(",")[1].trim() : "India",
+        streetAddress: "BiovaCo Nexus HQ",
+        addressLocality: job.location ? job.location.split(",")[0] : "Nagpur",
+        addressRegion:
+          job.location && job.location.split(",")[1] ? job.location.split(",")[1].trim() : "Maharashtra",
+        postalCode: "444701",
         addressCountry: "IN",
       },
     },
+    ...(baseSalary && { baseSalary }),
   };
 
   const scrollToForm = () => {
