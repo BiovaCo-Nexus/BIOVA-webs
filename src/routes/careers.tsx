@@ -83,6 +83,9 @@ export default function Careers() {
   const currentUrl =
     typeof window !== "undefined" ? window.location.href : "https://biovaco.in/careers";
 
+  const today = new Date();
+  const validThroughDate = new Date(today.setMonth(today.getMonth() + 3)).toISOString().split("T")[0];
+
   const jobSchemas = openings.map((o) => ({
     "@context": "https://schema.org/",
     "@type": "JobPosting",
@@ -94,6 +97,7 @@ export default function Careers() {
       value: o.key,
     },
     datePosted: new Date().toISOString().split("T")[0],
+    validThrough: validThroughDate,
     employmentType:
       o.type === "Full-time"
         ? "FULL_TIME"
@@ -112,8 +116,10 @@ export default function Careers() {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
+        streetAddress: "BiovaCo Nexus HQ",
         addressLocality: o.loc.split(",")[0],
         addressRegion: o.loc.split(",")[1] ? o.loc.split(",")[1].trim() : "India",
+        postalCode: "444701",
         addressCountry: "IN",
       },
     },
