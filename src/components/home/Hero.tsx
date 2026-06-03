@@ -16,7 +16,7 @@ export function Hero() {
         style={{ animationDuration: "6s", animationDelay: "2s" }}
       />
       <div className="container-x relative">
-        <div className="grid items-center gap-16 lg:grid-cols-[1.15fr_1fr]">
+        <div className="grid items-center gap-16 lg:gap-12 lg:grid-cols-[1.2fr_1fr]">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -34,7 +34,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="mt-8 font-display text-5xl font-medium leading-[0.95] tracking-[-0.04em] text-balance text-foreground md:text-7xl lg:text-[clamp(4rem,8vw,7.5rem)]"
+              className="mt-8 lg:mt-6 font-display text-5xl md:text-7xl lg:text-[clamp(3.5rem,5.5vw,5.5rem)] font-medium leading-[0.95] tracking-[-0.04em] text-balance text-foreground"
             >
               Innovating <br />
               <span className="text-[color:var(--navy)] dark:text-foreground">Food</span>,{" "}
@@ -49,7 +49,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.25 }}
-              className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
+              className="mt-8 lg:mt-6 max-w-xl text-lg md:text-xl lg:text-base xl:text-lg leading-relaxed text-muted-foreground"
             >
               BiovaCo Nexus builds, launches and scales the next generation of consumer brands,
               agricultural innovation and technology ventures — designed for the long term.
@@ -59,7 +59,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-10 flex flex-wrap items-center gap-3"
+              className="mt-10 lg:mt-8 flex flex-wrap items-center gap-3"
             >
               <a
                 href="https://dustthecrave.shop"
@@ -83,7 +83,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="mt-14 grid max-w-md grid-cols-3 gap-6"
+              className="mt-14 lg:mt-10 grid max-w-md grid-cols-3 gap-6 lg:gap-4 xl:gap-6"
             >
               {[
                 { k: "01", v: "Active venture" },
@@ -91,8 +91,8 @@ export function Hero() {
                 { k: "∞", v: "Future ventures" },
               ].map((s) => (
                 <div key={s.v}>
-                  <div className="font-display text-3xl text-foreground">{s.k}</div>
-                  <div className="mt-1 text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                  <div className="font-display text-3xl lg:text-2xl xl:text-3xl text-foreground">{s.k}</div>
+                  <div className="mt-1 text-xs lg:text-[10px] xl:text-xs uppercase tracking-[0.15em] text-muted-foreground leading-tight">
                     {s.v}
                   </div>
                 </div>
@@ -104,7 +104,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.2 }}
-            className="relative mx-auto w-full max-w-lg"
+            className="relative mx-auto w-full max-w-sm lg:max-w-md xl:max-w-lg"
           >
             <DnaHelix className="w-full text-[color:var(--navy)]" />
           </motion.div>
