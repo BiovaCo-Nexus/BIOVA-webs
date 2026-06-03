@@ -1,7 +1,9 @@
+import { useState, useEffect } from "react";
 import { Eyebrow } from "@/components/ui-custom/Section";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui-custom/FadeIn";
 import { Helmet } from "react-helmet-async";
 import { Star } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 const products = [
   { name: "Mango-Chili Dust", line: "Flavour Dust", note: "Sweet heat, slow build." },
@@ -10,13 +12,33 @@ const products = [
   { name: "Flavoured Popcorn", line: "Snack", note: "Air-popped, boldly seasoned." },
 ];
 
-const reviews = [
+const fallbackReviews = [
   { name: "Aditi S.", location: "Mumbai", text: "The Mango-Chili dust on my evening makhana has become a daily ritual. Absolutely addictive and perfectly balanced.", rating: 5 },
   { name: "Rahul V.", location: "Bangalore", text: "Tried the Pepper-Lime blast. It's the exact punch my homemade popcorn needed. Real ingredients make a huge difference.", rating: 5 },
   { name: "Priya M.", location: "Delhi", text: "Finally an Indian brand that understands the science of flavor. It doesn't taste artificial at all. Highly recommended.", rating: 5 },
 ];
 
 export default function Cravora() {
+  const [reviews, setReviews] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      // Trying to fetch from 'reviews' table. If it doesn't exist yet, it will quietly fail and use fallbacks.
+      const { data, error } = await supabase
+        .from("reviews")
+        .select("*")
+        .eq("is_active", true)
+        .order("created_at", { ascending: false });
+
+      if (data && data.length > 0 && !error) {
+        setReviews(data);
+      } else {
+        setReviews(fallbackReviews);
+      }
+    };
+    fetchReviews();
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -125,7 +147,7 @@ export default function Cravora() {
                 <div className="flex h-full flex-col justify-between rounded-3xl border border-border bg-[color:var(--section)] p-8">
                   <div>
                     <div className="flex gap-1 text-[#FFBD2E]">
-                      {[...Array(r.rating)].map((_, j) => (
+                      {[...Array(r.rating || 5)].map((_, j) => (
                         <Star key={j} className="h-4 w-4 fill-current" />
                       ))}
                     </div>
