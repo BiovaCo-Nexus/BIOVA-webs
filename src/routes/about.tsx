@@ -3,6 +3,7 @@ import { PageHero } from "@/components/ui-custom/PageHero";
 import { Eyebrow } from "@/components/ui-custom/Section";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui-custom/FadeIn";
 import { supabase } from "@/lib/supabase";
+import { X, Loader2 } from "lucide-react";
 
 const values = [
   {
@@ -53,6 +54,21 @@ const leadership = [
 
 export default function About() {
   const [interns, setInterns] = useState<any[]>([]);
+  const [activeUrl, setActiveUrl] = useState<string | null>(null);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+
+  useEffect(() => {
+    if (activeUrl) {
+      document.body.style.overflow = "hidden";
+      setIframeLoaded(false);
+    } else {
+      document.body.style.overflow = "unset";
+      setTimeout(() => setIframeLoaded(false), 300);
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [activeUrl]);
 
   useEffect(() => {
     const fetchInterns = async () => {
@@ -178,14 +194,12 @@ export default function About() {
               return (
                 <FadeInItem key={l.name}>
                   {l.url ? (
-                    <a
-                      href={l.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block outline-none"
+                    <div
+                      onClick={() => setActiveUrl(l.url)}
+                      className="block cursor-pointer outline-none"
                     >
                       {CardContent}
-                    </a>
+                    </div>
                   ) : (
                     CardContent
                   )}
@@ -264,6 +278,67 @@ export default function About() {
           </FadeInStagger>
         </div>
       </section>
+
+      {/* Modal Iframe Overlay */}
+      <div
+        className={`fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-12 bg-background/40 backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          activeUrl ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+        }`}
+        onClick={() => setActiveUrl(null)}
+      >
+        <div
+          className={`relative w-full max-w-6xl h-[85vh] sm:h-[90vh] overflow-hidden rounded-3xl border border-border/50 bg-background/30 backdrop-blur-2xl shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            activeUrl ? "translate-y-0 scale-100 opacity-100" : "translate-y-12 scale-95 opacity-0"
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Browser Window Header */}
+          <div className="absolute top-0 left-0 w-full h-14 bg-background/50 backdrop-blur-md border-b border-border/50 flex items-center justify-between px-6 z-20 shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className="flex gap-2">
+                <div className="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E]"></div>
+                <div className="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]"></div>
+                <div className="w-3.5 h-3.5 rounded-full bg-[#27C93F] border border-[#1AAB29]"></div>
+              </div>
+              <div className="ml-4 flex items-center gap-2 rounded-md bg-muted/30 px-3 py-1.5 text-xs font-mono text-foreground/80 truncate max-w-[200px] sm:max-w-md">
+                {activeUrl?.replace("https://", "")}
+              </div>
+            </div>
+            <button
+              onClick={() => setActiveUrl(null)}
+              className="group flex h-8 w-8 items-center justify-center rounded-full bg-muted/50 text-foreground hover:bg-destructive hover:text-white transition-colors"
+            >
+              <X className="h-4 w-4 transition-transform group-hover:rotate-90 duration-300" />
+            </button>
+          </div>
+
+          <div className="w-full h-full pt-14 relative bg-transparent">
+            {/* Loading State */}
+            <div
+              className={`absolute inset-0 pt-14 flex flex-col items-center justify-center bg-transparent transition-opacity duration-500 z-10 ${
+                iframeLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
+              }`}
+            >
+              <Loader2 className="h-8 w-8 animate-spin text-[color:var(--green)] mb-4" />
+              <div className="text-sm font-medium text-foreground animate-pulse">
+                Establishing secure connection...
+              </div>
+            </div>
+
+            {/* Actual Iframe */}
+            {activeUrl && (
+              <iframe
+                src={activeUrl}
+                className={`w-full h-full border-0 bg-transparent transition-opacity duration-700 ${
+                  iframeLoaded ? "opacity-100" : "opacity-0"
+                }`}
+                title="Founder Profile"
+                onLoad={() => setIframeLoaded(true)}
+              />
+            )}
+          </div>
+        </div>
+      </div>
     </>
   );
 }
