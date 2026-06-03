@@ -47,8 +47,8 @@ const roadmap = [
 ];
 
 const leadership = [
-  { name: "Nakul Mundhada", role: "Co-Founder", img: "/Nakul_Photo.jpeg" },
-  { name: "Richa Rajan", role: "Founder", img: "/Richa_photo.jpg" },
+  { name: "Nakul Mundhada", role: "Co-Founder", img: "/Nakul_Photo.jpeg", url: "https://nakulmundhada.live" },
+  { name: "Richa Rajan", role: "Founder", img: "/Richa_photo.jpg", url: "https://richarajan.info" },
 ];
 
 export default function About() {
@@ -158,8 +158,8 @@ export default function About() {
             <Eyebrow>Leadership</Eyebrow>
           </FadeIn>
           <FadeInStagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {leadership.map((l) => (
-              <FadeInItem key={l.name}>
+            {leadership.map((l) => {
+              const CardContent = (
                 <div className="group overflow-hidden rounded-3xl border border-border bg-background p-8 transition-colors hover:border-[color:var(--green)]">
                   <div className="relative h-20 w-20 overflow-hidden rounded-full border border-border bg-muted">
                     <img
@@ -173,8 +173,25 @@ export default function About() {
                     {l.role}
                   </div>
                 </div>
-              </FadeInItem>
-            ))}
+              );
+
+              return (
+                <FadeInItem key={l.name}>
+                  {l.url ? (
+                    <a
+                      href={l.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block outline-none"
+                    >
+                      {CardContent}
+                    </a>
+                  ) : (
+                    CardContent
+                  )}
+                </FadeInItem>
+              );
+            })}
           </FadeInStagger>
         </div>
       </section>
