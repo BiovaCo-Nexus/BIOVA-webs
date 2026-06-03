@@ -1,4 +1,6 @@
 import { Eyebrow } from "@/components/ui-custom/Section";
+import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui-custom/FadeIn";
+import { Helmet } from "react-helmet-async";
 
 const products = [
   { name: "Mango-Chili Dust", line: "Flavour Dust", note: "Sweet heat, slow build." },
@@ -10,12 +12,25 @@ const products = [
 export default function Cravora() {
   return (
     <>
+      <Helmet>
+        <title>Cravora | A BiovaCo Nexus Venture</title>
+        <meta
+          name="description"
+          content="A modern Indian food brand engineering bold, dust-based flavour systems for snacks people actually crave. Built and operated by BiovaCo Nexus."
+        />
+        <meta
+          name="keywords"
+          content="Cravora, BiovaCo Nexus, Flavoured Makhana, Popcorn, Flavour Dust, Indian food brand, FMCG"
+        />
+        <link rel="canonical" href="https://biovaco.in/cravora" />
+      </Helmet>
+
       <section className="relative overflow-hidden border-b border-border bg-[color:var(--navy-deep)] pt-40 pb-24 text-white md:pt-48 md:pb-32">
         <div
           aria-hidden
           className="absolute inset-0 opacity-[0.12] [background-image:radial-gradient(circle_at_20%_30%,var(--green),transparent_50%)]"
         />
-        <div className="container-x relative">
+        <FadeIn className="container-x relative">
           <Eyebrow>A BiovaCo Venture · N° 01</Eyebrow>
           <div className="mt-8 mb-6">
             <img src="/Cravora_logo.png" alt="Cravora" className="h-24 md:h-32 object-contain" />
@@ -27,11 +42,11 @@ export default function Cravora() {
             A modern Indian food brand engineering bold, dust-based flavour systems for snacks
             people actually crave. Built and operated by BiovaCo Nexus.
           </p>
-        </div>
+        </FadeIn>
       </section>
 
       <section className="border-b border-border">
-        <div className="container-x py-24 md:py-32">
+        <FadeIn className="container-x py-24 md:py-32">
           <div className="grid gap-16 lg:grid-cols-[1fr_2fr]">
             <div>
               <Eyebrow>The story</Eyebrow>
@@ -52,43 +67,46 @@ export default function Cravora() {
               </p>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       <section className="border-b border-border bg-[color:var(--section)]">
         <div className="container-x py-24 md:py-32">
-          <Eyebrow>Products</Eyebrow>
-          <h2 className="mt-5 font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
-            The current line.
-          </h2>
-          <div className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-2">
+          <FadeIn>
+            <Eyebrow>Products</Eyebrow>
+            <h2 className="mt-5 font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
+              The current line.
+            </h2>
+          </FadeIn>
+          <FadeInStagger className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-2">
             {products.map((p, i) => (
-              <div
-                key={p.name}
-                className="group relative flex aspect-[5/4] flex-col justify-between bg-background p-8 transition-colors hover:bg-[color:var(--section)]"
-              >
-                <div className="flex items-start justify-between">
-                  <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                    {p.line}
-                  </span>
-                  <span className="font-display text-xs tabular-nums text-muted-foreground">
-                    0{i + 1}
-                  </span>
+              <FadeInItem key={p.name}>
+                <div
+                  className="group relative flex aspect-[5/4] flex-col justify-between h-full bg-background p-8 transition-colors hover:bg-[color:var(--section)]"
+                >
+                  <div className="flex items-start justify-between">
+                    <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                      {p.line}
+                    </span>
+                    <span className="font-display text-xs tabular-nums text-muted-foreground">
+                      0{i + 1}
+                    </span>
+                  </div>
+                  <div>
+                    <div className="font-display text-3xl text-foreground">{p.name}</div>
+                    <p className="mt-2 text-sm text-muted-foreground">{p.note}</p>
+                    <div className="mt-6 h-px w-8 bg-[color:var(--green)] transition-all group-hover:w-20" />
+                  </div>
                 </div>
-                <div>
-                  <div className="font-display text-3xl text-foreground">{p.name}</div>
-                  <p className="mt-2 text-sm text-muted-foreground">{p.note}</p>
-                  <div className="mt-6 h-px w-8 bg-[color:var(--green)] transition-all group-hover:w-20" />
-                </div>
-              </div>
+              </FadeInItem>
             ))}
-          </div>
+          </FadeInStagger>
         </div>
       </section>
 
       <section>
         <div className="container-x py-24 md:py-32">
-          <div className="grid gap-12 md:grid-cols-3">
+          <FadeInStagger className="grid gap-12 md:grid-cols-3">
             {[
               {
                 t: "Retail opportunities",
@@ -103,12 +121,14 @@ export default function Cravora() {
                 d: "For trade, retail, partnership and enterprise enquiries — reach the Cravora team via BiovaCo.",
               },
             ].map((b) => (
-              <div key={b.t} className="border-t border-border pt-6">
-                <div className="font-display text-xl text-foreground">{b.t}</div>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{b.d}</p>
-              </div>
+              <FadeInItem key={b.t}>
+                <div className="border-t border-border pt-6 h-full">
+                  <div className="font-display text-xl text-foreground">{b.t}</div>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{b.d}</p>
+                </div>
+              </FadeInItem>
             ))}
-          </div>
+          </FadeInStagger>
         </div>
       </section>
     </>
