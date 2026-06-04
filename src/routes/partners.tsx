@@ -36,15 +36,6 @@ const tracks = [
   },
 ];
 
-const investors = [
-  {
-    name: "Om Agro",
-    location: "Dhamangaon Railway",
-    details: "Invested 7.5 Lakhs INR in May 2026",
-    logo: "/OMAGRO.png",
-  },
-];
-
 export default function Partners() {
   return (
     <>
@@ -87,33 +78,43 @@ export default function Partners() {
 
       <section className="border-b border-border bg-[color:var(--section)]">
         <div className="container-x py-24 md:py-32">
-          <Eyebrow>Current Investors</Eyebrow>
-          <h2 className="mt-5 max-w-3xl font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
-            Backed by partners aligned with our long-term roadmap.
-          </h2>
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <Eyebrow>Strategic Capital</Eyebrow>
+            <h2 className="mt-5 font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
+              Our Investors
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              We partner with operators, agricultural networks, and institutional players who share our long-term compounding horizons.
+            </p>
+          </div>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {investors.map((inv) => (
-              <div
-                key={inv.name}
-                className="group flex flex-col items-center text-center overflow-hidden rounded-3xl border border-border bg-background p-8 transition-colors hover:border-[color:var(--green)]"
-              >
-                <div className="relative h-20 w-20 overflow-hidden rounded-full border border-border bg-white p-2 flex items-center justify-center">
-                  <img
-                    src={inv.logo}
-                    alt={inv.name}
-                    className="h-full w-full object-contain"
-                  />
-                </div>
-                <h3 className="mt-8 font-display text-2xl text-foreground">{inv.name}</h3>
-                <div className="mt-2 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                  {inv.location}
-                </div>
-                <div className="mt-6 text-sm font-medium text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
-                  {inv.details}
+          <div className="flex justify-center">
+            <div className="w-full max-w-sm rounded-3xl border border-border bg-background p-8 transition-all duration-300 hover:border-[color:var(--green)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
+              <div className="relative w-full h-24 bg-white rounded-2xl flex items-center justify-center p-4 border border-border/50">
+                <img
+                  src="/OMAGRO.png"
+                  alt="Om Agro Logo"
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+              <div className="mt-6">
+                <h3 className="font-display text-2xl text-foreground font-semibold">Om Agro</h3>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
+                  Dhamangaon Railway
+                </p>
+                
+                <div className="mt-6 pt-6 border-t border-border/60">
+                  <div className="flex justify-between items-center py-2.5 border-b border-border/40">
+                    <span className="text-xs text-muted-foreground uppercase tracking-wider">Capital Infusion</span>
+                    <span className="text-sm font-semibold text-foreground">₹7.5 Lakhs INR</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2.5">
+                    <span className="text-xs text-muted-foreground uppercase tracking-wider">Timeline</span>
+                    <span className="text-sm font-semibold text-foreground">May 2026</span>
+                  </div>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
