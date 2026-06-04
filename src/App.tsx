@@ -1,6 +1,17 @@
-import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, Outlet, Link, useLocation } from "react-router-dom";
 import { Nav } from "./components/layout/Nav";
 import { Footer } from "./components/layout/Footer";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 import Home from "./routes/index";
 import About from "./routes/about";
@@ -60,6 +71,7 @@ function NotFound() {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
