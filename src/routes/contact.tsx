@@ -143,16 +143,26 @@ export default function Contact() {
                   </div>
                   <div className="flex items-start gap-3">
                     <MapPin className="mt-1 h-4 w-4 text-[color:var(--green-deep)] dark:text-[color:var(--green)]" />
-                    <div>
-                      <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                        Registered office
+                    <div className="space-y-6">
+                      <div>
+                        <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                          Registered office
+                        </div>
+                        <div className="mt-1.5 text-sm leading-relaxed text-foreground">
+                          H. No. 72, Bhagchand Nagar, Dhamangaon Railway,
+                          <br />
+                          Dhamangaon Rly, Maharashtra – 444701
+                        </div>
                       </div>
-                      <div className="mt-1 text-sm leading-relaxed text-foreground">
-                        BiovaCo Nexus Pvt. Ltd.
-                        <br />
-                        H. No. 72, Bhagchand Nagar, Dhamangaon Railway,
-                        <br />
-                        Dhamangaon Rly, Maharashtra – 444701
+                      <div>
+                        <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                          Business office
+                        </div>
+                        <div className="mt-1.5 text-sm leading-relaxed text-foreground">
+                          1st Floor, RBU, TBI, Katol Rd,
+                          <br />
+                          Bupeshnagar, Nagpur, Maharashtra 440013
+                        </div>
                       </div>
                     </div>
                   </div>
