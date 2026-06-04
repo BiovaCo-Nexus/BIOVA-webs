@@ -36,6 +36,15 @@ const tracks = [
   },
 ];
 
+const investors = [
+  {
+    name: "Om Agro",
+    location: "Dhamangaon Railway",
+    details: "Invested 7.5 Lakhs INR in May 2026",
+    logo: "/OMAGRO.png",
+  },
+];
+
 export default function Partners() {
   return (
     <>
@@ -71,6 +80,39 @@ export default function Partners() {
                 <div className="mt-12 font-display text-2xl text-foreground">{t.t}</div>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{t.d}</p>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-[color:var(--section)]">
+        <div className="container-x py-24 md:py-32">
+          <Eyebrow>Current Investors</Eyebrow>
+          <h2 className="mt-5 max-w-3xl font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
+            Backed by partners aligned with our long-term roadmap.
+          </h2>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {investors.map((inv) => (
+              <div
+                key={inv.name}
+                className="group flex flex-col items-center text-center overflow-hidden rounded-3xl border border-border bg-background p-8 transition-colors hover:border-[color:var(--green)]"
+              >
+                <div className="relative h-20 w-20 overflow-hidden rounded-full border border-border bg-white p-2 flex items-center justify-center">
+                  <img
+                    src={inv.logo}
+                    alt={inv.name}
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+                <h3 className="mt-8 font-display text-2xl text-foreground">{inv.name}</h3>
+                <div className="mt-2 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                  {inv.location}
+                </div>
+                <div className="mt-6 text-sm font-medium text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
+                  {inv.details}
+                </div>
+              </div>
             ))}
           </div>
         </div>
