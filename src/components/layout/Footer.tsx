@@ -41,21 +41,16 @@ export function Footer() {
               BiovaCo Nexus Pvt. Ltd. is an innovation holding company building the next generation
               of consumer brands, agricultural technology and intelligent systems.
             </p>
-            <div className="mt-8 space-y-5">
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground">
-                  Registered Office
+            <div className="mt-8">
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                Offices
+              </p>
+              <div className="mt-2 space-y-2 text-sm leading-relaxed text-muted-foreground">
+                <p>
+                  <span className="font-medium text-foreground/80">Registered:</span> H. No. 72, Bhagchand Nagar, Dhamangaon Rly, MH 444701
                 </p>
-                <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                  H. No. 72, Bhagchand Nagar, Dhamangaon Rly, MH 444701
-                </p>
-              </div>
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground">
-                  Business Office
-                </p>
-                <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                  1st Floor, RBU, TBI, Katol Rd, Bupeshnagar, Nagpur, MH 440013
+                <p>
+                  <span className="font-medium text-foreground/80">Business:</span> 1st Floor, RBU, TBI, Katol Rd, Bupeshnagar, Nagpur, MH 440013
                 </p>
               </div>
             </div>
