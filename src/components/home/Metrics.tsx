@@ -4,7 +4,7 @@ import { Eyebrow } from "@/components/ui-custom/Section";
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "0px" });
   const mv = useMotionValue(0);
   const rounded = useTransform(mv, (v) => Math.round(v).toString());
 

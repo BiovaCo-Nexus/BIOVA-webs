@@ -262,6 +262,74 @@ export default function Contact() {
           </div>
         </div>
       </section>
+
+      {/* Map Section */}
+      <section className="border-t border-border">
+        <div className="container-x py-16 md:py-32">
+          <Eyebrow>Find Us</Eyebrow>
+          <div className="mt-8 grid gap-8 lg:grid-cols-2">
+            {/* Business Office Map */}
+            <div className="flex flex-col gap-4">
+              <h3 className="text-lg font-medium text-foreground">Business Office</h3>
+              <a 
+                href="https://maps.google.com/?q=21.175680,79.060002" 
+                target="_blank" 
+                rel="noreferrer"
+                className="group relative overflow-hidden rounded-3xl border border-border bg-background block"
+              >
+                {/* Custom Red Pin Overlay */}
+                <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 group-hover:scale-110">
+                  <div className="relative -top-4">
+                    <MapPin className="h-12 w-12 text-red-600 fill-red-500 drop-shadow-xl" strokeWidth={1.5} />
+                    <div className="absolute -bottom-2 left-1/2 h-4 w-4 -translate-x-1/2 rounded-full bg-black/20 blur-[4px]"></div>
+                  </div>
+                </div>
+
+                <iframe
+                  src="https://maps.google.com/maps?q=21.175680,79.060002&t=&z=15&ie=UTF8&iwloc=near&output=embed"
+                  width="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="BiovaCo Business Office Location"
+                  className="pointer-events-none h-[250px] w-full grayscale sm:h-[300px] lg:h-[400px]"
+                />
+              </a>
+            </div>
+
+            {/* Registered Office Map */}
+            <div className="flex flex-col gap-4">
+              <h3 className="text-lg font-medium text-foreground">Registered Office</h3>
+              <a 
+                href="https://maps.google.com/?q=20.787596,78.138679" 
+                target="_blank" 
+                rel="noreferrer"
+                className="group relative overflow-hidden rounded-3xl border border-border bg-background block"
+              >
+                {/* Custom Red Pin Overlay */}
+                <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 group-hover:scale-110">
+                  <div className="relative -top-4">
+                    <MapPin className="h-12 w-12 text-red-600 fill-red-500 drop-shadow-xl" strokeWidth={1.5} />
+                    <div className="absolute -bottom-2 left-1/2 h-4 w-4 -translate-x-1/2 rounded-full bg-black/20 blur-[4px]"></div>
+                  </div>
+                </div>
+
+                <iframe
+                  src="https://maps.google.com/maps?q=20.787596,78.138679&t=&z=15&ie=UTF8&iwloc=near&output=embed"
+                  width="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="BiovaCo Registered Office Location"
+                  className="pointer-events-none h-[250px] w-full grayscale sm:h-[300px] lg:h-[400px]"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
