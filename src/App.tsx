@@ -24,6 +24,8 @@ import Partners from "./routes/partners";
 import Privacy from "./routes/privacy";
 import Terms from "./routes/terms";
 
+import { AIChatbot } from "./components/ui-custom/AIChatbot";
+
 function Layout() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -32,6 +34,7 @@ function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <AIChatbot />
     </div>
   );
 }
