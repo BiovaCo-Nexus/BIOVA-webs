@@ -77,7 +77,10 @@ export function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-border pt-8 text-xs text-muted-foreground md:flex-row md:items-center">
-          <p>© {new Date().getFullYear()} BiovaCo Nexus Private Limited. All rights reserved.</p>
+          <div className="flex flex-col gap-1">
+            <p>© {new Date().getFullYear()} BiovaCo Nexus Private Limited. All rights reserved.</p>
+            <p className="opacity-80">CIN: XXXXXXX | GSTIN: XXXXXXX</p>
+          </div>
           <div className="flex gap-6">
             <Link to="/privacy" className="hover:text-foreground">
               Privacy
