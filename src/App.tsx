@@ -88,9 +88,9 @@ export default function App() {
           <Route path="partners" element={<Partners />} />
           <Route path="privacy" element={<Privacy />} />
           <Route path="terms" element={<Terms />} />
-          <Route path="applicant-terms" element={<ApplicantTerms />} />
           <Route path="*" element={<NotFound />} />
         </Route>
+        <Route path="/applicant-terms" element={<ApplicantTerms />} />
       </Routes>
     </BrowserRouter>
   );

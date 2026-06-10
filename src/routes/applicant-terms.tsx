@@ -1,4 +1,4 @@
-import { PageHero } from "@/components/ui-custom/PageHero";
+
 import { FadeIn } from "@/components/ui-custom/FadeIn";
 import { Helmet } from "react-helmet-async";
 
@@ -9,12 +9,18 @@ export default function ApplicantTerms() {
         <title>Terms & Conditions for Applicants | BiovaCo Nexus</title>
       </Helmet>
 
-      <PageHero
-        title="Terms & Conditions for Applicants"
-        description="Internship, Compensation & Opportunity Policy"
-      />
+      <div className="border-b border-border bg-background pt-12 pb-8 md:pt-16 md:pb-10">
+        <div className="container-x max-w-4xl mx-auto">
+          <h1 className="font-display text-4xl font-medium tracking-[-0.04em] text-foreground md:text-5xl">
+            Terms & Conditions for Applicants
+          </h1>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Internship, Compensation & Opportunity Policy
+          </p>
+        </div>
+      </div>
 
-      <section className="py-24 bg-background">
+      <section className="py-12 bg-background">
         <div className="container-x max-w-4xl mx-auto">
           <FadeIn>
             <div className="prose prose-lg prose-invert max-w-none text-muted-foreground">

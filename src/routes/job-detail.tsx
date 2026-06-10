@@ -14,6 +14,7 @@ import {
   Briefcase,
   Clock,
   FileText,
+  X,
 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { FadeIn } from "@/components/ui-custom/FadeIn";
@@ -49,6 +50,22 @@ export default function JobDetail() {
 
   const [hasViewedTerms, setHasViewedTerms] = useState(false);
   const [termsAgreed, setTermsAgreed] = useState(false);
+  const [showTermsModal, setShowTermsModal] = useState(false);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [showWarningModal, setShowWarningModal] = useState(false);
+
+  useEffect(() => {
+    if (showTermsModal) {
+      document.body.style.overflow = "hidden";
+      setIframeLoaded(false);
+    } else {
+      document.body.style.overflow = "unset";
+      setTimeout(() => setIframeLoaded(false), 300);
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [showTermsModal]);
 
   const ADMIN_EMAIL = "nakulmundhada23@gmail.com";
 
@@ -166,7 +183,7 @@ export default function JobDetail() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!termsAgreed) {
-      alert("Please read and agree to the Terms & Conditions and Compensation Policy.");
+      setShowWarningModal(true);
       return;
     }
     if (!signature) {
@@ -690,31 +707,34 @@ export default function JobDetail() {
                       </div>
 
                       <div className="pt-4">
-                        <label className="flex items-start gap-3 cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={termsAgreed}
-                            onChange={(e) => {
-                              if (!hasViewedTerms) {
-                                alert("Please read the Terms & Conditions first by clicking the link.");
-                                e.preventDefault();
-                                return;
-                              }
-                              setTermsAgreed(e.target.checked);
-                            }}
-                            className="mt-1 w-4 h-4 rounded border-border bg-background text-[color:var(--green)] focus:ring-[color:var(--green-deep)] cursor-pointer"
-                          />
-                          <span className="text-sm text-muted-foreground leading-relaxed">
+                        <label className="flex items-start gap-3 cursor-pointer group">
+                          <div className="flex-shrink-0 mt-0.5">
+                            <input
+                              type="checkbox"
+                              checked={termsAgreed}
+                              onChange={(e) => {
+                                if (!hasViewedTerms) {
+                                  setShowWarningModal(true);
+                                  e.preventDefault();
+                                  return;
+                                }
+                                setTermsAgreed(e.target.checked);
+                              }}
+                              className="w-4 h-4 rounded border-border bg-background text-[color:var(--green)] focus:ring-[color:var(--green-deep)] cursor-pointer"
+                            />
+                          </div>
+                          <span className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                             I have read and agree to the{" "}
-                            <a
-                              href="/applicant-terms"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={() => setHasViewedTerms(true)}
-                              className="text-[color:var(--green-deep)] dark:text-[color:var(--green)] hover:underline font-medium"
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setHasViewedTerms(true);
+                                setShowTermsModal(true);
+                              }}
+                              className="inline text-left align-baseline text-[color:var(--green-deep)] dark:text-[color:var(--green)] hover:underline font-medium bg-transparent border-none p-0 cursor-pointer"
                             >
                               Terms & Conditions and Compensation Policy
-                            </a>{" "}
+                            </button>{" "}
                             of Biovaco.
                           </span>
                         </label>
@@ -743,6 +763,97 @@ export default function JobDetail() {
           </FadeIn>
         </div>
       </section>
+      {/* Terms & Conditions Modal */}
+      <div
+        className={`fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-12 bg-background/40 backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          showTermsModal ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+        }`}
+        onClick={() => setShowTermsModal(false)}
+      >
+        <div
+          className={`relative w-full max-w-6xl h-[85vh] sm:h-[90vh] overflow-hidden rounded-3xl border border-border/50 bg-background/30 backdrop-blur-2xl shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            showTermsModal ? "translate-y-0 scale-100 opacity-100" : "translate-y-12 scale-95 opacity-0"
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Browser Window Header */}
+          <div className="absolute top-0 left-0 w-full h-14 bg-background/50 backdrop-blur-md border-b border-border/50 flex items-center justify-between px-6 z-20 shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className="flex gap-2">
+                <div className="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E]"></div>
+                <div className="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]"></div>
+                <div className="w-3.5 h-3.5 rounded-full bg-[#27C93F] border border-[#1AAB29]"></div>
+              </div>
+              <div className="ml-4 flex items-center gap-2 rounded-md bg-muted/30 px-3 py-1.5 text-xs font-mono text-foreground/80 truncate max-w-[200px] sm:max-w-md">
+                applicant-terms
+              </div>
+            </div>
+            <button
+              onClick={() => setShowTermsModal(false)}
+              className="group flex h-8 w-8 items-center justify-center rounded-full bg-muted/50 text-foreground hover:bg-destructive hover:text-white transition-colors"
+            >
+              <X className="h-4 w-4 transition-transform group-hover:rotate-90 duration-300" />
+            </button>
+          </div>
+
+          <div className="w-full h-full pt-14 relative bg-transparent">
+            {/* Loading State */}
+            <div
+              className={`absolute inset-0 pt-14 flex flex-col items-center justify-center bg-transparent transition-opacity duration-500 z-10 ${
+                iframeLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
+              }`}
+            >
+              <Loader2 className="h-8 w-8 animate-spin text-[color:var(--green)] mb-4" />
+              <div className="text-sm font-medium text-foreground animate-pulse">
+                Loading Terms & Conditions...
+              </div>
+            </div>
+
+            {/* Actual Iframe */}
+            {showTermsModal && (
+              <iframe
+                src="/applicant-terms"
+                className={`w-full h-full border-0 bg-transparent transition-opacity duration-700 ${
+                  iframeLoaded ? "opacity-100" : "opacity-0"
+                }`}
+                title="Terms and Conditions"
+                onLoad={() => setIframeLoaded(true)}
+              />
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Warning Modal */}
+      <div
+        className={`fixed inset-0 z-[60] flex items-center justify-center p-4 bg-background/60 backdrop-blur-sm transition-all duration-300 ${
+          showWarningModal ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+        }`}
+        onClick={() => setShowWarningModal(false)}
+      >
+        <div
+          className={`relative w-full max-w-sm overflow-hidden rounded-2xl border border-border bg-background p-6 shadow-2xl transition-all duration-300 ${
+            showWarningModal ? "translate-y-0 scale-100 opacity-100" : "translate-y-8 scale-95 opacity-0"
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="flex items-center gap-4 mb-4">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[color:var(--navy)] text-white">
+              <FileText className="h-5 w-5" />
+            </div>
+            <h3 className="font-display text-xl text-foreground">Action Required</h3>
+          </div>
+          <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+            Please read the Terms & Conditions and Compensation Policy first by clicking the link before proceeding.
+          </p>
+          <button
+            onClick={() => setShowWarningModal(false)}
+            className="w-full inline-flex items-center justify-center rounded-full bg-[color:var(--navy)] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[color:var(--navy-deep)] dark:bg-[color:var(--green)] dark:text-[color:var(--navy-deep)] dark:hover:bg-white"
+          >
+            Got it
+          </button>
+        </div>
+      </div>
     </>
   );
 }
