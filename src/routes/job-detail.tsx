@@ -47,6 +47,9 @@ export default function JobDetail() {
   const [signature, setSignature] = useState<string>("");
   const [signatureError, setSignatureError] = useState<string>("");
 
+  const [hasViewedTerms, setHasViewedTerms] = useState(false);
+  const [termsAgreed, setTermsAgreed] = useState(false);
+
   const ADMIN_EMAIL = "nakulmundhada23@gmail.com";
 
   useEffect(() => {
@@ -162,6 +165,10 @@ export default function JobDetail() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!termsAgreed) {
+      alert("Please read and agree to the Terms & Conditions and Compensation Policy.");
+      return;
+    }
     if (!signature) {
       setSignatureError("Signature is required");
       return;
@@ -680,6 +687,37 @@ export default function JobDetail() {
                           required
                           error={signatureError}
                         />
+                      </div>
+
+                      <div className="pt-4">
+                        <label className="flex items-start gap-3 cursor-pointer">
+                          <input
+                            type="checkbox"
+                            checked={termsAgreed}
+                            onChange={(e) => {
+                              if (!hasViewedTerms) {
+                                alert("Please read the Terms & Conditions first by clicking the link.");
+                                e.preventDefault();
+                                return;
+                              }
+                              setTermsAgreed(e.target.checked);
+                            }}
+                            className="mt-1 w-4 h-4 rounded border-border bg-background text-[color:var(--green)] focus:ring-[color:var(--green-deep)] cursor-pointer"
+                          />
+                          <span className="text-sm text-muted-foreground leading-relaxed">
+                            I have read and agree to the{" "}
+                            <a
+                              href="/applicant-terms"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={() => setHasViewedTerms(true)}
+                              className="text-[color:var(--green-deep)] dark:text-[color:var(--green)] hover:underline font-medium"
+                            >
+                              Terms & Conditions and Compensation Policy
+                            </a>{" "}
+                            of Biovaco.
+                          </span>
+                        </label>
                       </div>
                     </div>
 
