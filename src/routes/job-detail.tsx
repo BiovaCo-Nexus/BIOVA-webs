@@ -21,6 +21,8 @@ import { FadeIn } from "@/components/ui-custom/FadeIn";
 import { SignaturePad } from "@/components/SignaturePad";
 import { generateApplicationPDF } from "@/utils/pdfGenerator";
 import { Helmet } from "react-helmet-async";
+import { WarningModal } from "@/components/ui-custom/WarningModal";
+import { JobDescription } from "@/components/careers/JobDescription";
 
 export default function JobDetail() {
   const { roleKey } = useParams<{ roleKey: string }>();
@@ -446,94 +448,7 @@ export default function JobDetail() {
         </div>
       </div>
 
-      <section className="py-24 bg-background">
-        <div className="container-x max-w-4xl mx-auto">
-          <div className="prose prose-lg prose-invert max-w-none text-muted-foreground">
-            
-            {/* Job Description */}
-            {job.description && (
-              <div className="mb-12">
-                {job.description.split("\n\n").map((paragraph: string, i: number) => (
-                  <p key={i} className="mb-6 leading-relaxed text-foreground/80 whitespace-pre-wrap">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            )}
-
-            {/* Detailed Description */}
-            {job.detailed_description && (
-              <div className="mb-12">
-                <h3 className="text-2xl font-display text-foreground mb-6">About the Role</h3>
-                {job.detailed_description.split("\n\n").map((paragraph: string, i: number) => (
-                  <p key={i} className="mb-6 leading-relaxed text-foreground/80 whitespace-pre-wrap">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            )}
-
-            {/* Key Responsibilities */}
-            {job.responsibilities && (
-              <div className="mb-12">
-                <h3 className="text-2xl font-display text-foreground mb-6">Key Responsibilities</h3>
-                <ul className="list-disc pl-6 space-y-3">
-                  {job.responsibilities.split("\n").filter((r: string) => r.trim()).map((resp: string, i: number) => (
-                    <li key={i} className="text-foreground/80">{resp}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Requirements */}
-            {job.requirements && (
-              <div className="mb-12">
-                <h3 className="text-2xl font-display text-foreground mb-6">Requirements</h3>
-                <ul className="list-disc pl-6 space-y-3">
-                  {job.requirements.split("\n").filter((r: string) => r.trim()).map((req: string, i: number) => (
-                    <li key={i} className="text-foreground/80">{req}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Preferred Qualifications */}
-            {job.qualifications && (
-              <div className="mb-12">
-                <h3 className="text-2xl font-display text-foreground mb-6">Preferred Qualifications</h3>
-                <ul className="list-disc pl-6 space-y-3">
-                  {job.qualifications.split("\n").filter((q: string) => q.trim()).map((qual: string, i: number) => (
-                    <li key={i} className="text-foreground/80">{qual}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Benefits & Perks */}
-            {job.benefits && (
-              <div className="mb-12">
-                <h3 className="text-2xl font-display text-foreground mb-6">Benefits & Perks</h3>
-                <ul className="list-disc pl-6 space-y-3">
-                  {job.benefits.split("\n").filter((b: string) => b.trim()).map((benefit: string, i: number) => (
-                    <li key={i} className="text-foreground/80">{benefit}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Contact Email Note */}
-            {job.contact_email && (
-              <div className="mt-12 rounded-2xl border border-border bg-[color:var(--section)] p-8">
-                <h3 className="text-xl font-display text-foreground mb-2">Have questions about this role?</h3>
-                <p className="text-muted-foreground m-0">
-                  You can reach out to the hiring team directly at <a href={`mailto:${job.contact_email}`} className="text-[color:var(--green-deep)] dark:text-[color:var(--green)] hover:underline">{job.contact_email}</a>
-                </p>
-              </div>
-            )}
-
-          </div>
-        </div>
-      </section>
+      <JobDescription job={job} />
 
       <section className="bg-[color:var(--section)] py-24" id="application-form">
         <div className="container-x">
@@ -824,36 +739,10 @@ export default function JobDetail() {
         </div>
       </div>
 
-      {/* Warning Modal */}
-      <div
-        className={`fixed inset-0 z-[60] flex items-center justify-center p-4 bg-background/60 backdrop-blur-sm transition-all duration-300 ${
-          showWarningModal ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
-        }`}
-        onClick={() => setShowWarningModal(false)}
-      >
-        <div
-          className={`relative w-full max-w-sm overflow-hidden rounded-2xl border border-border bg-background p-6 shadow-2xl transition-all duration-300 ${
-            showWarningModal ? "translate-y-0 scale-100 opacity-100" : "translate-y-8 scale-95 opacity-0"
-          }`}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="flex items-center gap-4 mb-4">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[color:var(--navy)] text-white">
-              <FileText className="h-5 w-5" />
-            </div>
-            <h3 className="font-display text-xl text-foreground">Action Required</h3>
-          </div>
-          <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-            Please read the Terms & Conditions and Compensation Policy first by clicking the link before proceeding.
-          </p>
-          <button
-            onClick={() => setShowWarningModal(false)}
-            className="w-full inline-flex items-center justify-center rounded-full bg-[color:var(--navy)] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[color:var(--navy-deep)] dark:bg-[color:var(--green)] dark:text-[color:var(--navy-deep)] dark:hover:bg-white"
-          >
-            Got it
-          </button>
-        </div>
-      </div>
+      <WarningModal
+        isOpen={showWarningModal}
+        onClose={() => setShowWarningModal(false)}
+      />
     </>
   );
 }
