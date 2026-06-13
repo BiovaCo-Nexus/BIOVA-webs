@@ -178,19 +178,19 @@ export default function About() {
           <FadeIn>
             <Eyebrow>Leadership</Eyebrow>
           </FadeIn>
-          <FadeInStagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <FadeInStagger className="mt-12 grid gap-8 sm:grid-cols-2 max-w-5xl mx-auto">
             {leadership.map((l) => {
               const CardContent = (
-                <div className="group flex flex-col items-center text-center overflow-hidden rounded-3xl border border-border bg-background p-8 transition-colors hover:border-[color:var(--green)]">
-                  <div className="relative h-20 w-20 overflow-hidden rounded-full border border-border bg-muted">
+                <div className="group flex h-full flex-col items-center text-center overflow-hidden rounded-3xl border border-border bg-background p-8 md:p-10 transition-colors hover:border-[color:var(--green)] shadow-sm hover:shadow-md">
+                  <div className="relative h-28 w-28 overflow-hidden rounded-full border border-border bg-muted">
                     <img
                       src={l.img}
                       alt={l.name}
                       className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-110 group-hover:grayscale-0"
                     />
                   </div>
-                  <h3 className="mt-8 font-display text-2xl text-foreground">{l.name}</h3>
-                  <div className="mt-2 text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
+                  <h3 className="mt-8 font-display text-2xl md:text-3xl text-foreground">{l.name}</h3>
+                  <div className="mt-4 text-[0.7rem] sm:text-xs font-semibold uppercase tracking-widest text-[color:var(--green-deep)] dark:text-[color:var(--green)] leading-relaxed max-w-[280px]">
                     {l.role}
                   </div>
                 </div>
