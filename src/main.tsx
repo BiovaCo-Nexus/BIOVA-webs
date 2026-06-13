@@ -4,6 +4,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
 import App from "./App.tsx";
 import "./styles.css";
+import { registerSW } from "virtual:pwa-register";
+
+// Register Service Worker for PWA
+if ("serviceWorker" in navigator) {
+  registerSW({ immediate: true });
+}
 
 const queryClient = new QueryClient();
 
