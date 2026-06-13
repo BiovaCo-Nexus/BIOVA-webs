@@ -38,7 +38,7 @@ export default function Contact() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              toEmail: "nakulmundhada23@gmail.com",
+              toEmail: ["nakulmundhada23@gmail.com", "rajanricha05@gmail.com", "biovaconexuspvtltd@gmail.com"],
               toName: "Admin",
               subject: `New Inquiry from ${name} - ${type}`,
               htmlContent: `

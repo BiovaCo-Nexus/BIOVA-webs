@@ -69,7 +69,7 @@ export default function JobDetail() {
     };
   }, [showTermsModal]);
 
-  const ADMIN_EMAIL = "nakulmundhada23@gmail.com";
+  const ADMIN_EMAIL = ["nakulmundhada23@gmail.com", "rajanricha05@gmail.com", "biovaconexuspvtltd@gmail.com"];
 
   useEffect(() => {
     if (submitted) {

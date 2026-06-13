@@ -11,9 +11,16 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "Missing BREVO_API_KEY" });
   }
 
+  let toArray = [];
+  if (Array.isArray(toEmail)) {
+    toArray = toEmail.map(email => ({ email, name: toName }));
+  } else {
+    toArray = [{ email: toEmail, name: toName }];
+  }
+
   const emailData = {
     sender: { name: "BiovaCo", email: "no-reply@biovaco.in" },
-    to: [{ email: toEmail, name: toName }],
+    to: toArray,
     subject: subject,
     htmlContent: htmlContent,
   };
