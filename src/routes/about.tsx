@@ -49,8 +49,8 @@ const roadmap = [
 ];
 
 const leadership = [
-  { name: "Nakul Mundhada", role: "Co-Founder", img: "/Nakul_Photo.jpeg", url: "https://nakulmundhada.live" },
-  { name: "Richa Rajan", role: "Founder", img: "/Richa_photo.jpg", url: "https://richarajan.info" },
+  { name: "Nakul Mundhada", role: "Founder, Chief Executive Officer (CEO) & Managing Director (MD)", img: "/Nakul_Photo.jpeg", url: "https://nakulmundhada.live" },
+  { name: "Richa Rajan", role: "Co-Founder & Executive Director – Brand, Growth & Product Strategy", img: "/Richa_photo.jpg", url: "https://richarajan.info" },
 ];
 
 export default function About() {
