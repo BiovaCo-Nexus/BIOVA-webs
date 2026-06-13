@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { PageHero } from "@/components/ui-custom/PageHero";
 import { Eyebrow } from "@/components/ui-custom/Section";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui-custom/FadeIn";
@@ -87,6 +88,10 @@ export default function About() {
 
   return (
     <>
+      <Helmet>
+        <title>About Us | BiovaCo Nexus</title>
+        <meta name="description" content="Discover the mission, vision, and leadership of BiovaCo Nexus. We are an innovation holding company building for the long horizon in food, agriculture, and technology." />
+      </Helmet>
       <PageHero
         eyebrow="About"
         title={

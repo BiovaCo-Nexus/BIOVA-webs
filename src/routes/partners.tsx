@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { PageHero } from "@/components/ui-custom/PageHero";
 import { Eyebrow } from "@/components/ui-custom/Section";
 import { ArrowUpRight } from "lucide-react";
@@ -39,6 +40,10 @@ const tracks = [
 export default function Partners() {
   return (
     <>
+      <Helmet>
+        <title>Partners | BiovaCo Nexus</title>
+        <meta name="description" content="BiovaCo Nexus partners across the value chain — distribution, manufacturing, retail, capital, research and incubation." />
+      </Helmet>
       <PageHero
         eyebrow="Partners"
         title={

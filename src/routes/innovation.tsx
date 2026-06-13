@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { PageHero } from "@/components/ui-custom/PageHero";
 import { Eyebrow } from "@/components/ui-custom/Section";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui-custom/FadeIn";
@@ -53,6 +54,10 @@ const pipeline = [
 export default function Innovation() {
   return (
     <>
+      <Helmet>
+        <title>Innovation Lab | BiovaCo Nexus</title>
+        <meta name="description" content="The BiovaCo innovation lab is the shared engine behind every venture — a portfolio of disciplines, infrastructure and research across food, agri-tech, and AI." />
+      </Helmet>
       <PageHero
         eyebrow="Innovation lab"
         title={

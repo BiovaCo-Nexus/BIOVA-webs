@@ -211,7 +211,7 @@ export function AIChatbot() {
         className={`fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-background border border-border shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl ${isOpen ? "scale-0 opacity-0" : "scale-100 opacity-100"}`}
         aria-label="Open AI Assistant"
       >
-        <img src="/AI_Icon.png" alt="Nira AI" className="h-full w-full object-cover scale-[1.25] translate-y-[2px]" />
+        <img src="/AI_Icon2.png" alt="Nira AI" className="h-full w-full object-cover scale-[1.25] translate-y-[2px]" />
       </button>
 
       {/* Chat Window */}
@@ -223,7 +223,7 @@ export function AIChatbot() {
         <div className="flex items-center justify-between border-b border-border bg-[color:var(--section)] px-5 py-4">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-border bg-background shadow-sm">
-              <img src="/AI_Icon.png" alt="BiovaCo AI" className="h-full w-full object-cover scale-[1.25] translate-y-[1px]" />
+              <img src="/AI_Icon2.png" alt="BiovaCo AI" className="h-full w-full object-cover scale-[1.25] translate-y-[1px]" />
             </div>
             <div>
               <h3 className="font-display text-sm font-medium text-foreground">Nira - BiovaCo Nexus</h3>
@@ -254,7 +254,7 @@ export function AIChatbot() {
               <div
                 className={`flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full shadow-sm ${m.role === "user" ? "bg-[color:var(--green-deep)] text-white dark:bg-[color:var(--green)] dark:text-[color:var(--navy-deep)]" : "bg-background border border-border"}`}
               >
-                {m.role === "user" ? <User className="h-4 w-4" /> : <img src="/AI_Icon.png" alt="AI" className="h-full w-full object-cover scale-[1.25] translate-y-[1px]" />}
+                {m.role === "user" ? <User className="h-4 w-4" /> : <img src="/AI_Icon2.png" alt="AI" className="h-full w-full object-cover scale-[1.25] translate-y-[1px]" />}
               </div>
               <div
                 className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
@@ -292,7 +292,7 @@ export function AIChatbot() {
           {isLoading && (
             <div className="flex gap-3">
               <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-background border border-border shadow-sm">
-                <img src="/AI_Icon.png" alt="AI" className="h-full w-full object-cover scale-[1.25] translate-y-[1px]" />
+                <img src="/AI_Icon2.png" alt="AI" className="h-full w-full object-cover scale-[1.25] translate-y-[1px]" />
               </div>
               <div className="max-w-[80%] rounded-2xl rounded-tl-sm border border-border bg-muted px-5 py-4 flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground/50 animate-bounce [animation-delay:-0.3s]"></span>

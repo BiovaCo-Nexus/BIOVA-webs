@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { PageHero } from "@/components/ui-custom/PageHero";
 import { Eyebrow } from "@/components/ui-custom/Section";
 import { ArrowUpRight, Mail, MapPin, Phone, Loader2 } from "lucide-react";
@@ -92,6 +93,10 @@ export default function Contact() {
 
   return (
     <>
+      <Helmet>
+        <title>Contact | BiovaCo Nexus</title>
+        <meta name="description" content="Reach the BiovaCo team for general, business, partnership or career enquiries. We read every message." />
+      </Helmet>
       <PageHero
         eyebrow="Contact"
         title={
