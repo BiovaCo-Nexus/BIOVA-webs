@@ -170,12 +170,7 @@ export default async function middleware(request) {
         </head>
         <body>
           <div class="nav">
-            <svg class="logo" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M28 20C28 15.5817 31.5817 12 36 12C40.4183 12 44 15.5817 44 20C44 24.4183 40.4183 28 36 28C31.5817 28 28 24.4183 28 20Z" fill="#08A04B" fill-opacity="0.8"/>
-              <path d="M22 36C22 28.268 28.268 22 36 22C43.732 22 50 28.268 50 36C50 43.732 43.732 50 36 50C28.268 50 22 43.732 22 36Z" stroke="#032E63" stroke-width="4"/>
-              <text x="65" y="34" font-family="Outfit" font-size="24" font-weight="600" fill="#032E63" letter-spacing="0.1em">BIOVACO</text>
-              <text x="65" y="48" font-family="Outfit" font-size="11" font-weight="500" fill="#08A04B" letter-spacing="0.2em">NEXUS</text>
-            </svg>
+            <img src="/Logo.png" alt="BiovaCo Nexus" class="logo" />
           </div>
           <div class="container">
             <div class="eyebrow"><div class="dot"></div> Security Protocol</div>
