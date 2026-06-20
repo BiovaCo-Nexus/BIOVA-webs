@@ -47,7 +47,7 @@ export function Footer() {
               </p>
               <div className="mt-2 space-y-2 text-sm leading-relaxed text-muted-foreground">
                 <p>
-                  <span className="font-medium text-foreground/80">Registered:</span> H. No. 72, Bhagchand Nagar, Dhamangaon Rly, MH 444701
+                  <span className="font-medium text-foreground/80">Registered:</span> H. No. 72, Bhagchand Nagar, Dhamangaon Rly, MH 444709
                 </p>
                 <p>
                   <span className="font-medium text-foreground/80">Business:</span> 1st Floor, RBU, TBI, Katol Rd, Bupeshnagar, Nagpur, MH 440013

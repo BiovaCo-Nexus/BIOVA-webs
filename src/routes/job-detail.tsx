@@ -330,7 +330,7 @@ export default function JobDetail() {
         addressLocality: job.location ? job.location.split(",")[0] : "Nagpur",
         addressRegion:
           job.location && job.location.split(",")[1] ? job.location.split(",")[1].trim() : "Maharashtra",
-        postalCode: "444701",
+        postalCode: "444709",
         addressCountry: "IN",
       },
     },

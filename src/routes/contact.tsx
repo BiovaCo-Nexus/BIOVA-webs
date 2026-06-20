@@ -156,7 +156,7 @@ export default function Contact() {
                         <div className="mt-1.5 text-sm leading-relaxed text-foreground">
                           H. No. 72, Bhagchand Nagar, Dhamangaon Railway,
                           <br />
-                          Dhamangaon Rly, Maharashtra – 444701
+                          Dhamangaon Rly, Maharashtra – 444709
                         </div>
                       </div>
                       <div>

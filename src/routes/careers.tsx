@@ -119,7 +119,7 @@ export default function Careers() {
         streetAddress: "BiovaCo Nexus HQ",
         addressLocality: o.loc.split(",")[0],
         addressRegion: o.loc.split(",")[1] ? o.loc.split(",")[1].trim() : "India",
-        postalCode: "444701",
+        postalCode: "444709",
         addressCountry: "IN",
       },
     },
