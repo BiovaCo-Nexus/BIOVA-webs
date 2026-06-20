@@ -68,6 +68,7 @@ The BiovaCo innovation lab is the shared engine behind every venture — a portf
 - Phone: +91 9226595332
 - Registered Office: H. No. 72, Bhagchand Nagar, Dhamangaon Rly, MH 444701
 - Business Office: 1st Floor, RBU, TBI, Katol Rd, Bupeshnagar, Nagpur, MH 440013
+- CIN: U46300ME2026PTC475352
 
 **Routing Instructions:**
 - For investment, partnerships, or trade inquiries, direct the user to the Contact page.

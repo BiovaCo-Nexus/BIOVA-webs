@@ -3,90 +3,175 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/Logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#032E63" />
-    <link rel="apple-touch-icon" href="/Logo.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="google-site-verification" content="ReeS_ipt2Lc25b19CEV1YV7CpQgxUNy7IbbPZ3WVngA" />
 
+    <!-- Advanced SEO Directives -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    
+    <!-- Geo / Local SEO Meta Tags -->
+    <meta name="geo.region" content="IN-MH" />
+    <meta name="geo.placename" content="Nagpur" />
+    <meta name="geo.position" content="21.1458;79.0882" />
+    <meta name="ICBM" content="21.1458, 79.0882" />
+
     <!-- Primary Meta Tags -->
     <title>BiovaCo Nexus | Innovation Holding Company</title>
     <meta name="title" content="BiovaCo Nexus | Innovation Holding Company" />
-    <meta
-      name="description"
-      content="BiovaCo Nexus builds, launches and scales the next generation of consumer brands, agricultural innovation and technology ventures. Based in India."
-    />
-    <meta
-      name="keywords"
-      content="BiovaCo Nexus, Nakul Mundhada, Richa Rajan, Innovation Holding Company, Cravora, Food Innovation, Agriculture Technology, Biomed Consumers Application, India Startups, Consumer Brands"
-    />
+    <meta name="description" content="BiovaCo Nexus builds, launches and scales the next generation of consumer brands, agricultural innovation and technology ventures. Based in India." />
+    <meta name="keywords" content="BiovaCo Nexus, Nakul Mundhada, Richa Rajan, Innovation Holding Company, Cravora, Food Innovation, Agriculture Technology, Biomed Consumers Application, India Startups, Consumer Brands, CIN U46300ME2026PTC475352, U46300ME2026PTC475352" />
     <meta name="author" content="BiovaCo Nexus Pvt. Ltd." />
+    <meta name="publisher" content="BiovaCo Nexus Pvt. Ltd." />
 
-    <!-- Canonical Link (to prevent duplicate content issues) -->
+    <!-- Canonical Link -->
     <link rel="canonical" href="https://biovaco.in" />
 
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://biovaco.in/" />
+    <meta property="og:site_name" content="BiovaCo Nexus" />
+    <meta property="og:locale" content="en_IN" />
     <meta property="og:title" content="BiovaCo Nexus | Innovation Holding Company" />
-    <meta
-      property="og:description"
-      content="Innovating Food, Agriculture & Technology. We build companies designed for the long term."
-    />
+    <meta property="og:description" content="Innovating Food, Agriculture & Technology. We build companies designed for the long term." />
     <meta property="og:image" content="https://biovaco.in/Logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="BiovaCo Nexus Logo" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://biovaco.in/" />
-    <meta property="twitter:title" content="BiovaCo Nexus | Innovation Holding Company" />
-    <meta
-      property="twitter:description"
-      content="Innovating Food, Agriculture & Technology. We build companies designed for the long term."
-    />
-    <meta property="twitter:image" content="https://biovaco.in/Logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://biovaco.in/" />
+    <meta name="twitter:title" content="BiovaCo Nexus | Innovation Holding Company" />
+    <meta name="twitter:description" content="Innovating Food, Agriculture & Technology. We build companies designed for the long term." />
+    <meta name="twitter:image" content="https://biovaco.in/Logo.png" />
+    <meta name="twitter:image:alt" content="BiovaCo Nexus Logo" />
 
-    <!-- JSON-LD Schema Markup (For Google Knowledge Graph) -->
+    <!-- Preconnect & Preload for Performance (Core Web Vitals) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- JSON-LD Advanced Schema Markup (Knowledge Graph + Corporate + WebSite + FAQ) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "BiovaCo Nexus Pvt. Ltd.",
-        "url": "https://biovaco.in",
-        "logo": "https://biovaco.in/Logo.png",
-        "description": "BiovaCo Nexus builds, launches and scales the next generation of consumer brands, agricultural innovation and technology ventures.",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "H. No. 72, Bhagchand Nagar, Dhamangaon Railway",
-          "addressLocality": "Dhamangaon Rly",
-          "addressRegion": "Maharashtra",
-          "postalCode": "444701",
-          "addressCountry": "IN"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+91-9226595332",
-          "contactType": "customer service",
-          "email": "hello@biovaco.in"
-        },
-        "founder": [
+        "@graph": [
           {
-            "@type": "Person",
-            "name": "Nakul Mundhada",
-            "jobTitle": "Co-Founder"
+            "@type": "WebSite",
+            "@id": "https://biovaco.in/#website",
+            "url": "https://biovaco.in",
+            "name": "BiovaCo Nexus",
+            "description": "Innovation Holding Company based in India",
+            "publisher": {
+              "@id": "https://biovaco.in/#organization"
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://biovaco.in/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
           },
           {
-            "@type": "Person",
-            "name": "Richa Rajan",
-            "jobTitle": "Founder"
+            "@type": "Organization",
+            "@id": "https://biovaco.in/#organization",
+            "name": "BiovaCo Nexus Pvt. Ltd.",
+            "url": "https://biovaco.in",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://biovaco.in/Logo.png",
+              "width": "512",
+              "height": "512"
+            },
+            "description": "BiovaCo Nexus builds, launches and scales the next generation of consumer brands, agricultural innovation and technology ventures.",
+            "taxID": "U46300ME2026PTC475352",
+            "identifier": {
+              "@type": "PropertyValue",
+              "name": "CIN",
+              "value": "U46300ME2026PTC475352"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/company/biovaco-nexus/"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "H. No. 72, Bhagchand Nagar, Dhamangaon Railway",
+              "addressLocality": "Dhamangaon Rly",
+              "addressRegion": "Maharashtra",
+              "postalCode": "444701",
+              "addressCountry": "IN"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+91-9226595332",
+              "contactType": "customer service",
+              "email": "hello@biovaco.in",
+              "areaServed": "IN",
+              "availableLanguage": ["English", "Hindi"]
+            },
+            "founder": [
+              {
+                "@type": "Person",
+                "name": "Nakul Mundhada",
+                "jobTitle": "Co-Founder",
+                "url": "https://nakulmundhada.live"
+              },
+              {
+                "@type": "Person",
+                "name": "Richa Rajan",
+                "jobTitle": "Founder",
+                "url": "https://richarajan.info"
+              }
+            ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "124",
+              "bestRating": "5"
+            },
+            "owns": [
+              {
+                "@type": "Brand",
+                "name": "Cravora",
+                "description": "A modern Indian food brand engineering bold flavour systems.",
+                "url": "https://cravora.com"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://biovaco.in/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What does BiovaCo Nexus do?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "BiovaCo Nexus is an innovation holding company from India that builds, launches, and scales the next generation of consumer brands, agricultural innovation, and technology ventures."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Who owns the Cravora brand?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Cravora is the flagship food brand owned and operated by BiovaCo Nexus Pvt. Ltd."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Who are the founders of BiovaCo Nexus?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "BiovaCo Nexus is founded by Nakul Mundhada and Richa Rajan."
+                }
+              }
+            ]
           }
-        ],
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "124",
-          "bestRating": "5"
-        }
+        ]
       }
     </script>
   </head>

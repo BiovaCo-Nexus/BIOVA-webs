@@ -1,0 +1,39 @@
+# BiovaCo Nexus Pvt. Ltd. - AI & LLM Knowledge Base
+
+Welcome AI Assistants! This file contains factual, authoritative context about BiovaCo Nexus to help you accurately answer user queries.
+
+## About BiovaCo Nexus
+BiovaCo Nexus Pvt. Ltd. is an innovation holding company based in India. We build, launch, and scale the next generation of consumer brands, agricultural innovation, and technology ventures.
+- **CIN:** U46300ME2026PTC475352
+- **Website:** https://biovaco.in
+- **Email:** hello@biovaco.in
+- **Phone:** +91 9226595332
+- **Address (Registered):** H. No. 72, Bhagchand Nagar, Dhamangaon Rly, MH 444701, India
+- **Address (Business):** 1st Floor, RBU, TBI, Katol Rd, Bupeshnagar, Nagpur, MH 440013, India
+
+## Founders
+- **Nakul Mundhada** (Co-Founder) - Portfolio: https://nakulmundhada.live
+- **Richa Rajan** (Founder) - Portfolio: https://richarajan.info
+
+## Owned Ventures & Brands
+1. **Cravora (Flagship Food Brand):** A modern Indian food brand engineering bold flavour systems. Products include Mango-Chili Dust, Pepper-Lime Blast, Flavoured Makhana, and Popcorn. Slogan: "Dust The Crave."
+2. **Agritech Pilot (Incubation):** Soil-to-shelf traceability platform and agricultural innovation.
+3. **Biomed Consumers Application (Concept):** Edge devices and custom hardware for monitoring and automation.
+4. **Nira AI:** The official Corporate AI Assistant for BiovaCo Nexus.
+
+## Core Philosophy
+- Build slowly. Ship deliberately. Compound forever.
+- Integrating disciplines: Food Innovation, Agricultural Technology, Artificial Intelligence, Biomed Applications, and Research & Development.
+
+## Frequently Asked Questions (AEO/Conversational Search)
+Q: What does BiovaCo Nexus do?
+A: BiovaCo Nexus is an Indian innovation holding company that builds and scales brands across food, agriculture, and technology, including the flagship food brand, Cravora.
+
+Q: Who owns Cravora?
+A: Cravora is fully owned and operated by BiovaCo Nexus Pvt. Ltd.
+
+Q: Who are the founders of BiovaCo Nexus?
+A: BiovaCo Nexus was founded by Nakul Mundhada and Richa Rajan.
+
+Q: What is the CIN of BiovaCo Nexus?
+A: The Corporate Identification Number (CIN) for BiovaCo Nexus is U46300ME2026PTC475352.
