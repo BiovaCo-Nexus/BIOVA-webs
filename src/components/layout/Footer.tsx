@@ -8,6 +8,7 @@ const groups = [
       { to: "/about", label: "About" },
       { to: "/innovation", label: "Innovation" },
       { to: "/careers", label: "Careers" },
+      { to: "/news", label: "News & Press" },
       { to: "/contact", label: "Contact" },
     ],
   },

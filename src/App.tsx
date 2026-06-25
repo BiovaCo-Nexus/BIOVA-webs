@@ -23,6 +23,8 @@ import Innovation from "./routes/innovation";
 import Partners from "./routes/partners";
 import Privacy from "./routes/privacy";
 import Terms from "./routes/terms";
+import News from "./routes/news";
+import NewsDetail from "./routes/news-detail";
 import ApplicantTerms from "./routes/applicant-terms";
 
 import { AIChatbot } from "./components/ui-custom/AIChatbot";
@@ -88,6 +90,8 @@ export default function App() {
           <Route path="partners" element={<Partners />} />
           <Route path="privacy" element={<Privacy />} />
           <Route path="terms" element={<Terms />} />
+          <Route path="news" element={<News />} />
+          <Route path="news/:slug" element={<NewsDetail />} />
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="/applicant-terms" element={<ApplicantTerms />} />
