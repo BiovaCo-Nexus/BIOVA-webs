@@ -40,30 +40,50 @@ export default function News() {
     },
   });
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "BiovaCo Nexus News & Press Releases",
-    description: "Latest news, press releases, and corporate updates from BiovaCo Nexus.",
-    url: "https://biovaco.in/news",
-    publisher: {
-      "@type": "Organization",
-      name: "BiovaCo Nexus",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://biovaco.in/logo.png"
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "BiovaCo Nexus News & Press Releases",
+      description: "Latest news, press releases, and corporate updates from BiovaCo Nexus.",
+      url: "https://biovaco.in/news",
+      publisher: {
+        "@type": "Organization",
+        name: "BiovaCo Nexus",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://biovaco.in/logo.png"
+        }
+      },
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: newsArticles.map((article, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: `https://biovaco.in/news/${article.slug}`,
+          name: article.seo_title || article.title
+        }))
       }
     },
-    mainEntity: {
-      "@type": "ItemList",
-      itemListElement: newsArticles.map((article, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        url: `https://biovaco.in/news/${article.slug}`,
-        name: article.seo_title || article.title
-      }))
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://biovaco.in/"
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "News & Press",
+          item: "https://biovaco.in/news"
+        }
+      ]
     }
-  };
+  ];
 
   return (
     <>

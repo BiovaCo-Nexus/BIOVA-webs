@@ -64,32 +64,64 @@ export default function NewsDetail() {
   const seoDescription = article.seo_description || article.summary;
   const seoKeywords = article.seo_keywords || "BiovaCo Nexus, News, Press Release, Updates";
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    headline: seoTitle,
-    image: [article.image || "https://biovaco.in/og-news.jpg"],
-    datePublished: new Date(article.date).toISOString(),
-    dateModified: new Date(article.date).toISOString(),
-    author: [{
-      "@type": "Person",
-      name: article.author,
-      url: "https://biovaco.in"
-    }],
-    publisher: {
-      "@type": "Organization",
-      name: "BiovaCo Nexus",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://biovaco.in/logo.png"
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      headline: seoTitle,
+      image: [article.image || "https://biovaco.in/og-news.jpg"],
+      datePublished: new Date(article.date).toISOString(),
+      dateModified: new Date(article.date).toISOString(),
+      author: [{
+        "@type": "Person",
+        name: article.author,
+        url: "https://biovaco.in"
+      }],
+      publisher: {
+        "@type": "Organization",
+        name: "BiovaCo Nexus",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://biovaco.in/logo.png"
+        }
+      },
+      description: seoDescription,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": currentUrl
       }
     },
-    description: seoDescription,
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": currentUrl
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://biovaco.in/"
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "News & Press",
+          item: "https://biovaco.in/news"
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: article.category,
+          item: `https://biovaco.in/topic/${article.category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          name: seoTitle,
+          item: currentUrl
+        }
+      ]
     }
-  };
+  ];
 
   return (
     <>

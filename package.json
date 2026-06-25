@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "npm run sitemap && vite build",
+    "build": "npm run seo && vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
+    "seo": "node scripts/generate-sitemap.js && node scripts/generate-rss.js",
     "sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {

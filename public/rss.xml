@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BiovaCo Nexus News &amp; Press</title>
+    <link>https://biovaco.in/news</link>
+    <description>Official announcements, strategic updates, and media releases from BiovaCo Nexus.</description>
+    <language>en-us</language>
+    <atom:link href="https://biovaco.in/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Jun 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>BiovaCo Nexus Private Limited Announces Commencement of Business from 15 July 2026</title>
+      <link>https://biovaco.in/news/biovaco-nexus-commencement-of-business-july-2026</link>
+      <guid isPermaLink="true">https://biovaco.in/news/biovaco-nexus-commencement-of-business-july-2026</guid>
+      <description>BiovaCo Nexus Private Limited officially announces the commencement of its business operations from 15 July 2026, marking the beginning of its mission to deliver innovative solutions in biotechnology, agriculture, and food technology.</description>
+      <pubDate>Thu, 25 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Company News</category>
+    </item>
+    <item>
+      <title>BiovaCo Nexus Private Limited Officially Incorporated to Drive Innovation Across Biotechnology, Agriculture, and Food Technology</title>
+      <link>https://biovaco.in/news/biovaco-nexus-private-limited-officially-incorporated-to-drive-innovation-across-biotechnology-agriculture-and-food-technology</link>
+      <guid isPermaLink="true">https://biovaco.in/news/biovaco-nexus-private-limited-officially-incorporated-to-drive-innovation-across-biotechnology-agriculture-and-food-technology</guid>
+      <description>BiovaCo Nexus Private Limited has been officially incorporated in India with a mission to develop innovative and sustainable solutions across biotechnology, agriculture, and food technology through research, technology, and interdisciplinary collaboration.</description>
+      <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Company News</category>
+    </item>
+  </channel>
+</rss>
