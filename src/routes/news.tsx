@@ -53,6 +53,15 @@ export default function News() {
         "@type": "ImageObject",
         url: "https://biovaco.in/logo.png"
       }
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: newsArticles.map((article, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `https://biovaco.in/news/${article.slug}`,
+        name: article.seo_title || article.title
+      }))
     }
   };
 
