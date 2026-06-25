@@ -22,7 +22,7 @@ async function generateSitemap() {
 
   let articles = [];
   try {
-    const response = await fetch(`${supabaseUrl}/rest/v1/news_articles?select=slug,date&is_published=eq.true&order=date.desc`, {
+    const response = await fetch(`${supabaseUrl}/rest/v1/news_articles?select=*&is_published=eq.true&order=date.desc`, {
       headers: {
         'apikey': supabaseAnonKey,
         'Authorization': `Bearer ${supabaseAnonKey}`,
@@ -41,6 +41,28 @@ async function generateSitemap() {
   }
 
   const baseUrl = 'https://biovaco.in';
+  
+  // Extract all unique tags/topics for programmatic SEO
+  const allTags = new Set();
+  
+  articles.forEach(article => {
+    // 1. Add category as a tag
+    if (article.category) {
+      allTags.add(article.category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''));
+    }
+    
+    // 2. Add explicit SEO keywords as tags
+    if (article.seo_keywords) {
+      const keywords = article.seo_keywords.split(',').map(k => k.trim().toLowerCase());
+      keywords.forEach(keyword => {
+        if (keyword) {
+          // convert "food innovation" to "food-innovation"
+          const slugified = keyword.replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+          allTags.add(slugified);
+        }
+      });
+    }
+  });
   
   // Static routes
   const staticRoutes = [
@@ -86,12 +108,24 @@ async function generateSitemap() {
     }
   }
 
+  // Add programmatic SEO topic routes
+  if (allTags.size > 0) {
+    for (const tag of allTags) {
+      sitemapContent += `  <url>\n`;
+      sitemapContent += `    <loc>${baseUrl}/topic/${tag}</loc>\n`;
+      sitemapContent += `    <lastmod>${today}</lastmod>\n`;
+      sitemapContent += `    <changefreq>weekly</changefreq>\n`;
+      sitemapContent += `    <priority>0.7</priority>\n`;
+      sitemapContent += `  </url>\n`;
+    }
+  }
+
   sitemapContent += `</urlset>`;
 
   const sitemapPath = path.resolve(__dirname, '../public/sitemap.xml');
   fs.writeFileSync(sitemapPath, sitemapContent);
   
-  console.log(`Successfully generated sitemap.xml with ${staticRoutes.length} static and ${articles?.length || 0} dynamic routes.`);
+  console.log(`Successfully generated sitemap.xml with ${staticRoutes.length} static, ${articles?.length || 0} article routes, and ${allTags.size} programmatic SEO topics.`);
 }
 
 generateSitemap();
