@@ -91,6 +91,46 @@ export default function About() {
       <Helmet>
         <title>About Us | BiovaCo Nexus</title>
         <meta name="description" content="Discover the mission, vision, and leadership of BiovaCo Nexus. We are an innovation holding company building for the long horizon in food, agriculture, and technology." />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What does BiovaCo Nexus do?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "BiovaCo Nexus is an Indian innovation holding company that builds and scales brands across food, agriculture, and technology, including the flagship food brand, Cravora."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Who owns Cravora?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Cravora is fully owned and operated by BiovaCo Nexus Pvt. Ltd."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Who are the founders of BiovaCo Nexus?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "BiovaCo Nexus was founded by Nakul Mundhada and Richa Rajan."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the CIN of BiovaCo Nexus?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The Corporate Identification Number (CIN) for BiovaCo Nexus is U46300ME2026PTC475352."
+                }
+              }
+            ]
+          })}
+        </script>
       </Helmet>
       <PageHero
         eyebrow="About"

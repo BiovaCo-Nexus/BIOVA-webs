@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "seo": "node scripts/generate-sitemap.js && node scripts/generate-rss.js",
+    "seo": "node scripts/generate-sitemap.js && node scripts/generate-rss.js && node scripts/generate-llms.js",
     "sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
