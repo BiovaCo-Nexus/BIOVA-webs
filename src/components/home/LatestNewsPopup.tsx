@@ -61,49 +61,45 @@ export function LatestNewsPopup() {
           : "translate-y-12 opacity-0 scale-95 pointer-events-none"
       }`}
     >
-        <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-background/60 backdrop-blur-2xl p-6 shadow-2xl ring-1 ring-white/10 dark:bg-[#020617]/60 dark:ring-white/5">
-        {/* Glow Effect */}
-        <div className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-[color:var(--navy)]/10 blur-3xl pointer-events-none dark:bg-[color:var(--green)]/10"></div>
-
+        <div className="relative overflow-hidden rounded-xl border border-border bg-background p-5 shadow-lg dark:shadow-none">
         <div className="relative z-10 flex items-start justify-between gap-4">
           <div className="flex items-center gap-2 mb-3">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[color:var(--green)] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[color:var(--green)]"></span>
             </span>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-              New from BiovaCo
+            <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+              New Update
             </span>
           </div>
           
           <button
             onClick={handleDismiss}
-            className="group rounded-full p-1.5 bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-all"
+            className="group rounded-md p-1 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
             aria-label="Close notification"
           >
-            <X className="h-3.5 w-3.5 transition-transform group-hover:rotate-90 duration-300" />
+            <X className="h-4 w-4" />
           </button>
         </div>
 
         <div className="relative z-10">
-          <h3 className="font-display text-lg font-medium tracking-tight text-foreground leading-snug mb-2 pr-4">
+          <h3 className="font-display text-base font-semibold text-foreground leading-snug mb-1 pr-4">
             {latestNews.title}
           </h3>
-          <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed mb-5">
+          <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed mb-4">
             {latestNews.summary}
           </p>
           
-          <div className="flex items-center justify-between border-t border-border/50 pt-4">
-            <span className="text-xs font-medium text-muted-foreground">
-              {new Date(latestNews.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+          <div className="flex items-center justify-between pt-1">
+            <span className="text-xs text-muted-foreground">
+              {new Date(latestNews.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
             </span>
             <Link
               to={`/news/${latestNews.slug}`}
               onClick={handleDismiss}
-              className="group inline-flex items-center gap-1.5 text-sm font-medium text-[color:var(--navy)] transition-colors hover:text-[color:var(--navy-deep)] dark:text-[color:var(--green)] dark:hover:text-[color:var(--green-deep)]"
+              className="group inline-flex items-center gap-1 text-sm font-medium text-[color:var(--navy)] transition-colors hover:text-[color:var(--navy-deep)] dark:text-[color:var(--green)] dark:hover:text-[color:var(--green-deep)]"
             >
-              Read full story
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              Read article
+              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
             </Link>
           </div>
         </div>

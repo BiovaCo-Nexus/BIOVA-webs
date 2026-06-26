@@ -6,15 +6,8 @@ import { DnaHelix } from "@/components/ui-custom/DnaHelix";
 export function Hero() {
   return (
     <section className="relative overflow-hidden min-h-[100dvh] flex flex-col justify-center pt-28 pb-16">
-      {/* subtle animated background orbs */}
-      <div
-        className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-[color:var(--green)]/5 blur-[120px] animate-pulse"
-        style={{ animationDuration: "4s" }}
-      />
-      <div
-        className="absolute top-1/2 -left-40 h-[30rem] w-[30rem] -translate-y-1/2 rounded-full bg-[color:var(--navy)]/5 blur-[120px] animate-pulse"
-        style={{ animationDuration: "6s", animationDelay: "2s" }}
-      />
+      {/* Subtle professional grid background instead of glowing orbs */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
       <div className="container-x relative">
         <div className="grid items-center gap-16 lg:gap-12 lg:grid-cols-[1.2fr_1fr]">
           <div>
@@ -24,7 +17,7 @@ export function Hero() {
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1.5 backdrop-blur"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--green)] shadow-[0_0_10px_var(--green)]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--green)]" />
               <span className="text-xs font-medium tracking-[0.18em] text-muted-foreground uppercase">
                 Innovation Holding Company
               </span>
