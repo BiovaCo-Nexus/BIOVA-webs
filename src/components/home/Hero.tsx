@@ -6,8 +6,7 @@ import { DnaHelix } from "@/components/ui-custom/DnaHelix";
 export function Hero() {
   return (
     <section className="relative overflow-hidden min-h-[100dvh] flex flex-col justify-center pt-28 pb-16">
-      {/* Subtle professional grid background instead of glowing orbs */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
+      {/* Clean, solid background */}
       <div className="container-x relative">
         <div className="grid items-center gap-16 lg:gap-12 lg:grid-cols-[1.2fr_1fr]">
           <div>

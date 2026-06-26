@@ -46,8 +46,7 @@ function Layout() {
 function NotFound() {
   return (
     <section className="relative flex min-h-[70vh] flex-col items-center justify-center overflow-hidden border-b border-border py-24 md:py-32">
-      {/* Subtle professional grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
+      {/* Clean, solid background */}
       <div className="container-x relative z-10 mx-auto max-w-xl text-center">
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-border bg-background/60 backdrop-blur shadow-[0_0_20px_rgba(2,29,66,0.1)]">
           <span className="font-display text-lg font-medium text-muted-foreground">404</span>
