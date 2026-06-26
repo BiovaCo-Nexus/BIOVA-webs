@@ -6,6 +6,7 @@ import { Ecosystem } from "@/components/home/Ecosystem";
 import { Metrics } from "@/components/home/Metrics";
 import { CareersPreview } from "@/components/home/CareersPreview";
 import { Partners } from "@/components/home/Partners";
+import { LatestNewsPopup } from "@/components/home/LatestNewsPopup";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <Metrics />
       <CareersPreview />
       <Partners />
+      <LatestNewsPopup />
     </>
   );
 }
