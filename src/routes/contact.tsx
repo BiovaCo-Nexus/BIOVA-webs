@@ -94,8 +94,19 @@ export default function Contact() {
   return (
     <>
       <Helmet>
-        <title>Contact | BiovaCo Nexus</title>
-        <meta name="description" content="Reach the BiovaCo team for general, business, partnership or career enquiries. We read every message." />
+        <title>Contact BiovaCo Nexus | Business, Partnership & Career Enquiries | Nagpur, India</title>
+        <meta name="description" content="Contact BiovaCo Nexus for business partnerships, distribution inquiries, career opportunities, or general questions. Office: Nagpur, Maharashtra. Email: hello@biovaco.in. Phone: +91 9226595332." />
+        <meta name="keywords" content="Contact BiovaCo, BiovaCo Contact, BiovaCo Email, BiovaCo Phone, hello@biovaco.in, BiovaCo Office, BiovaCo Address, Nagpur Office, Maharashtra Company, Business Enquiry BiovaCo, Partnership Enquiry, Career Enquiry BiovaCo, Investor Contact BiovaCo, Press Contact BiovaCo, Cravora Contact, BiovaCo Headquarters, Dhamangaon Railway Office, BiovaCo Location, Contact Innovation Company India, Startup Contact Nagpur, FMCG Contact India" />
+        <link rel="canonical" href="https://biovaco.in/contact" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://biovaco.in/contact" />
+        <meta property="og:title" content="Contact BiovaCo Nexus | Get in Touch" />
+        <meta property="og:description" content="Reach the BiovaCo team for business, partnership, career or general enquiries. We read every message." />
+        <meta property="og:image" content="https://biovaco.in/Logo.png" />
+        <meta property="og:site_name" content="BiovaCo Nexus" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Contact BiovaCo Nexus" />
+        <meta name="twitter:description" content="Business, partnership & career enquiries. Nagpur, India." />
       </Helmet>
       <PageHero
         eyebrow="Contact"

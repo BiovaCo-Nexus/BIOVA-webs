@@ -42,16 +42,52 @@ export default function Cravora() {
   return (
     <>
       <Helmet>
-        <title>Cravora | A BiovaCo Nexus Venture</title>
+        <title>Cravora | Dust The Crave | Bold Indian Snack & Flavour Brand by BiovaCo Nexus</title>
         <meta
           name="description"
-          content="A modern Indian food brand engineering bold, dust-based flavour systems for snacks people actually crave. Built and operated by BiovaCo Nexus."
+          content="Cravora is a modern Indian food brand by BiovaCo Nexus, engineering bold dust-based flavour systems for makhana, popcorn and snacks. Mango-Chili Dust, Pepper-Lime Blast & more. Shop India's most innovative snack brand."
         />
         <meta
           name="keywords"
-          content="Cravora, BiovaCo Nexus, Flavoured Makhana, Popcorn, Flavour Dust, Indian food brand, FMCG"
+          content="Cravora, Cravora Snacks, Cravora Brand, Dust The Crave, Cravora Makhana, Cravora Popcorn, Cravora Flavour Dust, Mango Chili Dust, Pepper Lime Blast, Flavoured Makhana India, Flavoured Popcorn India, Indian Snack Brand, Best Snack Brand India, FMCG Brand India, Food Innovation India, Cravora Buy Online, Cravora Products, Cravora Review, Cravora Price, BiovaCo Nexus Cravora, Healthy Snacks India, Premium Snacks India, Gourmet Snacks India, Natural Flavour Snacks, No Artificial Flavour, Clean Label Snacks, Indian Superfood, Fox Nut Brand, Makhana Brand India, Roasted Makhana, Spiced Makhana, Masala Popcorn India, Caramel Popcorn India, Flavour Engineering, Food Science Brand, Seasoning Brand India, Spice Mix India, Snack Seasoning, Bold Flavour India, New Snack Brand 2026, D2C Snack Brand, Quick Commerce Snack, Amazon Snacks India, Flipkart Snacks, Modern Trade FMCG, Cravora Distributor, Cravora Wholesale, Cravora Retail, Food Startup India, Nagpur Food Brand, Maharashtra FMCG, Indian Packaged Food, Shelf Stable Snacks, Trail Mix India, Evening Snack India, Tea Time Snack, Office Snack India, Party Snack India, Gift Snack Box India"
         />
         <link rel="canonical" href="https://biovaco.in/cravora" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://biovaco.in/cravora" />
+        <meta property="og:title" content="Cravora | Dust The Crave | India's Boldest Snack Brand" />
+        <meta property="og:description" content="Engineering bold, dust-based flavour systems for snacks people actually crave. By BiovaCo Nexus." />
+        <meta property="og:image" content="https://biovaco.in/Cravora_logo.png" />
+        <meta property="og:site_name" content="BiovaCo Nexus" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cravora | Bold Indian Snack & Flavour Brand" />
+        <meta name="twitter:description" content="Mango-Chili Dust, Pepper-Lime Blast, Flavoured Makhana & Popcorn. India's most innovative snack brand." />
+        <meta name="twitter:image" content="https://biovaco.in/Cravora_logo.png" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Brand",
+            "name": "Cravora",
+            "description": "A modern Indian food brand engineering bold, dust-based flavour systems for snacks people actually crave.",
+            "url": "https://biovaco.in/cravora",
+            "logo": "https://biovaco.in/Cravora_logo.png",
+            "slogan": "Dust The Crave",
+            "parentOrganization": {
+              "@type": "Organization",
+              "name": "BiovaCo Nexus Pvt. Ltd.",
+              "url": "https://biovaco.in"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Cravora Products",
+              "itemListElement": [
+                { "@type": "Product", "name": "Mango-Chili Dust", "category": "Flavour Dust" },
+                { "@type": "Product", "name": "Pepper-Lime Blast", "category": "Flavour Dust" },
+                { "@type": "Product", "name": "Flavoured Makhana", "category": "Snack" },
+                { "@type": "Product", "name": "Flavoured Popcorn", "category": "Snack" }
+              ]
+            }
+          })}
+        </script>
       </Helmet>
 
       <section className="relative overflow-hidden border-b border-border bg-[color:var(--navy-deep)] pt-40 pb-24 text-white md:pt-48 md:pb-32">

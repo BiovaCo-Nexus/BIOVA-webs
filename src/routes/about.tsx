@@ -89,8 +89,20 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About Us | BiovaCo Nexus</title>
-        <meta name="description" content="Discover the mission, vision, and leadership of BiovaCo Nexus. We are an innovation holding company building for the long horizon in food, agriculture, and technology." />
+        <title>About BiovaCo Nexus | Mission, Vision, Leadership & Story | Innovation Company India</title>
+        <meta name="description" content="Discover the mission, vision, and leadership of BiovaCo Nexus. Founded by Nakul Mundhada & Richa Rajan, we are India's premier innovation holding company building durable ventures in food, agriculture, and technology for the long horizon." />
+        <meta name="keywords" content="About BiovaCo Nexus, BiovaCo Mission, BiovaCo Vision, BiovaCo Leadership, Nakul Mundhada CEO, Richa Rajan Co-Founder, BiovaCo Founders, BiovaCo Story, Innovation Company India, Holding Company India, BiovaCo Values, Long Horizon Innovation, Scientific Rigor, Operator Mindset, BiovaCo Roadmap, BiovaCo Team, BiovaCo Interns, Young Entrepreneurs India, Startup Story India, Indian Business Leaders, BiovaCo History, Company Background, BiovaCo Culture, Innovation Philosophy, Brand Building India, Venture Building, Multi Brand Company, Dhamangaon Railway, Nagpur Company, Maharashtra Startup, Indian Pvt Ltd Company, CIN U46300ME2026PTC475352, BiovaCo Core Values, Company Vision 2028, Future Roadmap India, Food Agriculture Technology Company" />
+        <link rel="canonical" href="https://biovaco.in/about" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://biovaco.in/about" />
+        <meta property="og:title" content="About BiovaCo Nexus | Our Mission & Leadership" />
+        <meta property="og:description" content="Meet the founders and team behind India's innovation holding company. Building durable companies at the intersection of food, agriculture and technology." />
+        <meta property="og:image" content="https://biovaco.in/Logo.png" />
+        <meta property="og:site_name" content="BiovaCo Nexus" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About BiovaCo Nexus | Innovation Company India" />
+        <meta name="twitter:description" content="Our mission, leadership, and the story behind India's innovation holding company." />
+        <meta name="twitter:image" content="https://biovaco.in/Logo.png" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

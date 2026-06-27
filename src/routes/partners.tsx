@@ -41,8 +41,19 @@ export default function Partners() {
   return (
     <>
       <Helmet>
-        <title>Partners | BiovaCo Nexus</title>
-        <meta name="description" content="BiovaCo Nexus partners across the value chain — distribution, manufacturing, retail, capital, research and incubation." />
+        <title>Partners & Investors | BiovaCo Nexus | Distribution, Manufacturing & Retail India</title>
+        <meta name="description" content="Partner with BiovaCo Nexus across distribution, manufacturing, retail, investment, research and incubation. Current investor: Om Agro. We build with people who think in decades." />
+        <meta name="keywords" content="BiovaCo Partners, BiovaCo Investors, Om Agro Investment, BiovaCo Distribution, FMCG Distributor India, Cravora Distributor, Manufacturing Partner India, Contract Manufacturing FMCG, Co-packing India, Retail Partnership India, Modern Trade Partner, E-commerce Partnership, Quick Commerce Partner, Investor Inquiry BiovaCo, Strategic Investment India, Research Collaboration India, Incubation Partnership, Co-incubation India, BiovaCo Super Stockist, Distributor Nagpur, FMCG Distribution Maharashtra, Institutional Investor India, Angel Investment FMCG, Venture Capital Food India, Supply Chain Partner, Ingredient Supplier India, BiovaCo Nexus Partnership, Innovation Partnership India, Brand Partnership India, Academic Collaboration, Industry R&D India" />
+        <link rel="canonical" href="https://biovaco.in/partners" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://biovaco.in/partners" />
+        <meta property="og:title" content="Partners & Investors | BiovaCo Nexus" />
+        <meta property="og:description" content="Distribution, manufacturing, retail, investment, and research partnerships. We build with people who think in decades." />
+        <meta property="og:image" content="https://biovaco.in/Logo.png" />
+        <meta property="og:site_name" content="BiovaCo Nexus" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="BiovaCo Nexus Partners & Investors" />
+        <meta name="twitter:description" content="Explore partnership tracks: distribution, manufacturing, retail, capital, research and incubation." />
       </Helmet>
       <PageHero
         eyebrow="Partners"

@@ -55,8 +55,20 @@ export default function Innovation() {
   return (
     <>
       <Helmet>
-        <title>Innovation Lab | BiovaCo Nexus</title>
-        <meta name="description" content="The BiovaCo innovation lab is the shared engine behind every venture — a portfolio of disciplines, infrastructure and research across food, agri-tech, and AI." />
+        <title>Innovation Lab | BiovaCo Nexus | Food, AgriTech, AI & Biomedical Research India</title>
+        <meta name="description" content="The BiovaCo Innovation Lab powers every venture with shared R&D in food science, agricultural technology, artificial intelligence, biomedical devices and consumer product design. Explore our research areas and innovation pipeline." />
+        <meta name="keywords" content="BiovaCo Innovation Lab, Innovation Lab India, Food Innovation R&D, Agricultural Technology Research, Agri Tech India, AI Research India, Biomedical Devices, Consumer Product Innovation, Flavour R&D, Ingredient Research, Post Harvest Technology, Traceability Platform, Smart Agriculture, Precision Farming, Edge Devices, Sensor Technology, Machine Learning Food, Retail AI, Research Development Company India, Innovation Pipeline, Cravora Innovation, Agritech Pilot, Biomed AI, BiovaCo Research Areas, Food Science Lab, Flavour Mapping, Shelf Life Research, Product Development India, Technology Ventures India, Science Innovation India, R&D Infrastructure, Shared Research Platform, BiovaCo Nexus Lab, Innovation Company India, Deep Tech India, Future of Food India, Agriculture Future India, AI Consumer Products" />
+        <link rel="canonical" href="https://biovaco.in/innovation" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://biovaco.in/innovation" />
+        <meta property="og:title" content="Innovation Lab | BiovaCo Nexus" />
+        <meta property="og:description" content="Where food science, agri-tech, AI, and biomedical research meet. The shared engine behind every BiovaCo venture." />
+        <meta property="og:image" content="https://biovaco.in/Logo.png" />
+        <meta property="og:site_name" content="BiovaCo Nexus" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="BiovaCo Innovation Lab | R&D Across Food, Agri & AI" />
+        <meta name="twitter:description" content="Explore our research areas and innovation pipeline across food, agriculture, AI, and biomedical technology." />
+        <meta name="twitter:image" content="https://biovaco.in/Logo.png" />
       </Helmet>
       <PageHero
         eyebrow="Innovation lab"
