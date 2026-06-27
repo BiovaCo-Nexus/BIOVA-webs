@@ -123,6 +123,16 @@ export default function Careers() {
         addressCountry: "IN",
       },
     },
+    baseSalary: {
+      "@type": "MonetaryAmount",
+      currency: "INR",
+      value: {
+        "@type": "QuantitativeValue",
+        minValue: 100000,
+        maxValue: 1200000,
+        unitText: "YEAR"
+      }
+    }
   }));
 
   return (

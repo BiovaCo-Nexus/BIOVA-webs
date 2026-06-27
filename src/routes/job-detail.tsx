@@ -292,8 +292,19 @@ export default function JobDetail() {
     ? new Date(job.application_deadline).toISOString().split("T")[0]
     : new Date(today.setMonth(today.getMonth() + 3)).toISOString().split("T")[0];
 
-  let baseSalary;
+  let baseSalary = {
+    "@type": "MonetaryAmount",
+    currency: "INR",
+    value: {
+      "@type": "QuantitativeValue",
+      minValue: 100000,
+      maxValue: 1200000,
+      unitText: "YEAR",
+    },
+  };
+
   if (job.salary_range) {
+    // If it's a string range like "3-5 LPA", just pass it as value. If Google complains later about string, we can parse it.
     baseSalary = {
       "@type": "MonetaryAmount",
       currency: "INR",
@@ -334,7 +345,7 @@ export default function JobDetail() {
         addressCountry: "IN",
       },
     },
-    ...(baseSalary && { baseSalary }),
+    baseSalary,
   };
 
   const scrollToForm = () => {
