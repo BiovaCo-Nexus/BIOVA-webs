@@ -86,54 +86,74 @@ export default function Careers() {
   const today = new Date();
   const validThroughDate = new Date(today.setMonth(today.getMonth() + 3)).toISOString().split("T")[0];
 
-  const jobSchemas = openings.map((o) => ({
-    "@context": "https://schema.org/",
-    "@type": "JobPosting",
-    title: o.title,
-    description: o.desc || `Join BiovaCo Nexus as a ${o.title} in the ${o.dept} department.`,
-    identifier: {
-      "@type": "PropertyValue",
-      name: "BiovaCo Nexus",
-      value: o.key,
-    },
-    datePosted: new Date().toISOString().split("T")[0],
-    validThrough: validThroughDate,
-    employmentType:
-      o.type === "Full-time"
-        ? "FULL_TIME"
-        : o.type === "Part-time"
-          ? "PART_TIME"
-          : o.type === "Contract"
-            ? "CONTRACTOR"
-            : "OTHER",
-    hiringOrganization: {
-      "@type": "Organization",
-      name: "BiovaCo Nexus Private Limited",
-      sameAs: "https://biovaco.in",
-      logo: "https://biovaco.in/Logo.png",
-    },
-    jobLocation: {
-      "@type": "Place",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "BiovaCo Nexus HQ",
-        addressLocality: o.loc.split(",")[0],
-        addressRegion: o.loc.split(",")[1] ? o.loc.split(",")[1].trim() : "India",
-        postalCode: "444709",
-        addressCountry: "IN",
+  const jobSchemas = openings.map((o) => {
+    const rawDesc = o.desc || `Join BiovaCo Nexus as a ${o.title} in the ${o.dept} department.`;
+    // Google Jobs prefers HTML-formatted descriptions for rich display
+    const htmlDescription = `<p><strong>${o.title}</strong> at BiovaCo Nexus Pvt. Ltd.</p>
+      <p><strong>Department:</strong> ${o.dept}</p>
+      <p><strong>Location:</strong> ${o.loc}</p>
+      <p><strong>Type:</strong> ${o.type}</p>
+      <p>${rawDesc.replace(/\n/g, '<br/>')}</p>
+      <p><strong>About BiovaCo Nexus:</strong> We are an innovation holding company that builds, launches and scales the next generation of consumer brands, agricultural innovation and technology ventures.</p>
+      <p>Apply directly on our website — no third-party portals needed.</p>`;
+
+    return {
+      "@context": "https://schema.org/",
+      "@type": "JobPosting",
+      title: o.title,
+      description: htmlDescription,
+      identifier: {
+        "@type": "PropertyValue",
+        name: "BiovaCo Nexus",
+        value: o.key,
       },
-    },
-    baseSalary: {
-      "@type": "MonetaryAmount",
-      currency: "INR",
-      value: {
-        "@type": "QuantitativeValue",
-        minValue: 100000,
-        maxValue: 1200000,
-        unitText: "YEAR"
-      }
-    }
-  }));
+      datePosted: new Date().toISOString().split("T")[0],
+      validThrough: validThroughDate,
+      employmentType:
+        o.type === "Full-time"
+          ? "FULL_TIME"
+          : o.type === "Part-time"
+            ? "PART_TIME"
+            : o.type === "Contract"
+              ? "CONTRACTOR"
+              : o.type === "Internship"
+                ? "INTERN"
+                : "OTHER",
+      hiringOrganization: {
+        "@type": "Organization",
+        name: "BiovaCo Nexus Private Limited",
+        sameAs: "https://biovaco.in",
+        logo: "https://biovaco.in/Logo.png",
+      },
+      jobLocation: {
+        "@type": "Place",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "BiovaCo Nexus HQ",
+          addressLocality: o.loc.split(",")[0],
+          addressRegion: o.loc.split(",")[1] ? o.loc.split(",")[1].trim() : "India",
+          postalCode: "444709",
+          addressCountry: "IN",
+        },
+      },
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "INR",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 100000,
+          maxValue: 1200000,
+          unitText: "YEAR",
+        },
+      },
+      directApply: true,
+      industry: "Consumer Goods, Agriculture, Technology",
+      applicantLocationRequirements: {
+        "@type": "Country",
+        name: "India",
+      },
+    };
+  });
 
   return (
     <>

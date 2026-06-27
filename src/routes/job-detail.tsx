@@ -316,17 +316,34 @@ export default function JobDetail() {
     };
   }
 
+  // Google Jobs prefers HTML-formatted descriptions for rich display
+  const htmlDescription = `<p><strong>${job.title}</strong> at BiovaCo Nexus Pvt. Ltd.</p>
+    <p><strong>Department:</strong> ${job.department}</p>
+    <p><strong>Location:</strong> ${job.location}</p>
+    <p><strong>Type:</strong> ${job.job_type}</p>
+    ${job.experience_level ? `<p><strong>Experience:</strong> ${job.experience_level}</p>` : ''}
+    <p>${job.description.replace(/\n/g, '<br/>')}</p>
+    <p><strong>About BiovaCo Nexus:</strong> We are an innovation holding company that builds, launches and scales the next generation of consumer brands, agricultural innovation and technology ventures.</p>
+    <p>Apply directly on our website — no third-party portals needed.</p>`;
+
+  const employmentTypeMap = {
+    "Full-time": "FULL_TIME",
+    "Part-time": "PART_TIME",
+    "Contract": "CONTRACTOR",
+    "Internship": "INTERN",
+  };
+
   const schemaJSON = {
     "@context": "https://schema.org/",
     "@type": "JobPosting",
     title: job.title,
-    description: job.description,
+    description: htmlDescription,
     identifier: { "@type": "PropertyValue", name: "BiovaCo Nexus", value: job.role_key },
     datePosted: job.created_at
       ? new Date(job.created_at).toISOString().split("T")[0]
       : new Date().toISOString().split("T")[0],
     validThrough: validThroughDate,
-    employmentType: job.job_type === "Full-time" ? "FULL_TIME" : "CONTRACTOR",
+    employmentType: employmentTypeMap[job.job_type] || "OTHER",
     hiringOrganization: {
       "@type": "Organization",
       name: "BiovaCo Nexus Private Limited",
@@ -346,6 +363,18 @@ export default function JobDetail() {
       },
     },
     baseSalary,
+    directApply: true,
+    industry: "Consumer Goods, Agriculture, Technology",
+    applicantLocationRequirements: {
+      "@type": "Country",
+      name: "India",
+    },
+    ...(job.experience_level && {
+      experienceRequirements: {
+        "@type": "OccupationalExperienceRequirements",
+        monthsOfExperience: job.experience_level.toLowerCase().includes("fresher") ? 0 : 6,
+      },
+    }),
   };
 
   const scrollToForm = () => {
