@@ -110,35 +110,78 @@ export default function About() {
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "What does BiovaCo Nexus do?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "BiovaCo Nexus is an Indian innovation holding company that builds and scales brands across food, agriculture, and technology, including the flagship food brand, Cravora."
-                }
+                "name": "What is BiovaCo Nexus?",
+                "acceptedAnswer": { "@type": "Answer", "text": "BiovaCo Nexus Pvt. Ltd. is an innovation holding company from India that builds, launches, and scales next-generation consumer brands across food, agricultural technology, and AI. Its flagship brand is Cravora." }
+              },
+              {
+                "@type": "Question",
+                "name": "Who founded BiovaCo Nexus?",
+                "acceptedAnswer": { "@type": "Answer", "text": "BiovaCo Nexus was founded by Nakul Mundhada (CEO & Managing Director) and Richa Rajan (Co-Founder & Executive Director)." }
+              },
+              {
+                "@type": "Question",
+                "name": "What is Cravora?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Cravora is a modern Indian food brand owned by BiovaCo Nexus that engineers bold, dust-based flavour systems for snacks like makhana and popcorn. Its tagline is 'Dust The Crave.'" }
               },
               {
                 "@type": "Question",
                 "name": "Who owns Cravora?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Cravora is fully owned and operated by BiovaCo Nexus Pvt. Ltd."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Who are the founders of BiovaCo Nexus?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "BiovaCo Nexus was founded by Nakul Mundhada and Richa Rajan."
-                }
+                "acceptedAnswer": { "@type": "Answer", "text": "Cravora is fully owned and operated by BiovaCo Nexus Private Limited." }
               },
               {
                 "@type": "Question",
                 "name": "What is the CIN of BiovaCo Nexus?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The Corporate Identification Number (CIN) for BiovaCo Nexus is U46300ME2026PTC475352."
-                }
+                "acceptedAnswer": { "@type": "Answer", "text": "The Corporate Identification Number (CIN) for BiovaCo Nexus is U46300ME2026PTC475352." }
+              },
+              {
+                "@type": "Question",
+                "name": "Where is BiovaCo Nexus located?",
+                "acceptedAnswer": { "@type": "Answer", "text": "BiovaCo Nexus is headquartered in Nagpur, Maharashtra, India. Its registered office is at H. No. 72, Bhagchand Nagar, Dhamangaon Railway, Maharashtra – 444709." }
+              },
+              {
+                "@type": "Question",
+                "name": "What industries does BiovaCo Nexus operate in?",
+                "acceptedAnswer": { "@type": "Answer", "text": "BiovaCo Nexus operates across Food & Beverage (Cravora brand), Agricultural Technology, Artificial Intelligence, Biomedical Consumer Applications, and Consumer Products." }
+              },
+              {
+                "@type": "Question",
+                "name": "Is BiovaCo Nexus hiring?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. BiovaCo Nexus regularly posts internship and full-time positions across Food Technology, Marketing, AI, Design, Finance, and Business Development. Visit https://biovaco.in/careers for current openings." }
+              },
+              {
+                "@type": "Question",
+                "name": "What products does Cravora sell?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Cravora's product line includes Mango-Chili Dust, Pepper-Lime Blast, Flavoured Makhana (fox nuts), and Flavoured Popcorn — all engineered with food science-backed flavour curves." }
+              },
+              {
+                "@type": "Question",
+                "name": "Who invested in BiovaCo Nexus?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Om Agro from Dhamangaon Railway invested ₹7.5 Lakhs INR in BiovaCo Nexus in May 2026." }
+              },
+              {
+                "@type": "Question",
+                "name": "How to contact BiovaCo Nexus?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Email hello@biovaco.in, call +91 9226595332, or visit the contact page at https://biovaco.in/contact." }
+              },
+              {
+                "@type": "Question",
+                "name": "What is BiovaCo Nexus's mission?",
+                "acceptedAnswer": { "@type": "Answer", "text": "To build a portfolio of category-defining brands across food, agriculture and technology — engineered with scientific rigor and operated for the long term." }
+              },
+              {
+                "@type": "Question",
+                "name": "Who is Nakul Mundhada?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Nakul Mundhada is the Founder, CEO & Managing Director of BiovaCo Nexus Pvt. Ltd. He leads overall strategy, technology, product development, and corporate operations. Portfolio: https://nakulmundhada.live" }
+              },
+              {
+                "@type": "Question",
+                "name": "Who is Richa Rajan?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Richa Rajan is the Co-Founder & Executive Director of BiovaCo Nexus Pvt. Ltd. She leads brand architecture, growth strategy, marketing, and product innovation. Portfolio: https://richarajan.info" }
+              },
+              {
+                "@type": "Question",
+                "name": "How can I partner with BiovaCo Nexus?",
+                "acceptedAnswer": { "@type": "Answer", "text": "BiovaCo Nexus accepts partnership inquiries across distribution, manufacturing, retail, investment, research, and incubation. Visit https://biovaco.in/partners or email hello@biovaco.in." }
               }
             ]
           })}
