@@ -52,6 +52,16 @@ export default async function middleware(request) {
     isVPN = true;
   }
 
+  // 4. Whitelist Search Engine Bots (Googlebot, Bingbot, etc.)
+  const userAgent = request.headers.get('user-agent') || '';
+  const isSearchEngineBot = /Googlebot|Bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot/i.test(userAgent);
+
+  if (isSearchEngineBot) {
+    // Override blocks if it's a legitimate search engine crawler
+    isBlockedRegion = false;
+    isVPN = false;
+  }
+
   // 4. Block if VPN is detected OR region is outside Asia
   if (isBlockedRegion || isVPN) {
     return new Response(
