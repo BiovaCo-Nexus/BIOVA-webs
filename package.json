@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite dev",
     "build": "npm run seo && vite build",
-    "postbuild": "react-snap",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
