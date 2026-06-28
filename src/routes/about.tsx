@@ -182,6 +182,21 @@ export default function About() {
                 "@type": "Question",
                 "name": "How can I partner with BiovaCo Nexus?",
                 "acceptedAnswer": { "@type": "Answer", "text": "BiovaCo Nexus accepts partnership inquiries across distribution, manufacturing, retail, investment, research, and incubation. Visit https://biovaco.in/partners or email hello@biovaco.in." }
+              },
+              {
+                "@type": "Question",
+                "name": "BiovaCo Nexus Private Limited explained (Company Type & Registrations)?",
+                "acceptedAnswer": { "@type": "Answer", "text": "BiovaCo Nexus Private Limited is a registered private limited company in India (CIN: U46300ME2026PTC475352). It operates as a multi-sector startup spanning food processing, FMCG, agri-tech, and AI. The company is registered with MCA/ROC Nagpur, MSME (Udyam), and FSSAI." }
+              },
+              {
+                "@type": "Question",
+                "name": "Who are the directors of BiovaCo Nexus Pvt Ltd?",
+                "acceptedAnswer": { "@type": "Answer", "text": "As per official ROC and MCA master data, the directors of BiovaCo Nexus Pvt Ltd are Nakul Mundhada and Richa Pradeep Rajan." }
+              },
+              {
+                "@type": "Question",
+                "name": "Where is the registered office of BiovaCo Nexus Pvt Ltd?",
+                "acceptedAnswer": { "@type": "Answer", "text": "The registered office of BiovaCo Nexus Pvt Ltd is located in Dhamangaon Railway, Amravati District, Maharashtra, India. The company also operates from its business office in Nagpur, Vidarbha region." }
               }
             ]
           })}

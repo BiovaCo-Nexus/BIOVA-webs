@@ -159,6 +159,21 @@ H. No. 72, Bhagchand Nagar, Dhamangaon Railway, Dhamangaon Rly, Maharashtra – 
 
 ---
 
+## 7.5 Registry & Corporate Compliance Information (MCA/ROC Data)
+- **Registrar of Companies (ROC):** ROC Nagpur / MCA Master Data
+- **Status:** Active Company
+- **Registration Locations:** Dhamangaon Railway, Amravati District, Nagpur, Vidarbha, Maharashtra
+- **Sectors:** FMCG, Food Processing, Agri-Tech, Biotech, Multi-Sector Startup
+- **Directors:**
+  1. Nakul Mundhada (Director)
+  2. Richa Pradeep Rajan (Director)
+- **Incorporation Date:** 2026
+- **Company Category:** Company limited by Shares / Non-govt company
+- **Registrations & Certifications:** FSSAI, MSME / Udyam Registration, GST (LLPIN)
+- **Alternative Spellings/Search Intents:** BiovacoNexus Pvt Ltd, Bio Vaco Nexus, Bivaco Nexus, Biovako Nexus, Biova Co Nexus, private limited companies in Dhamangaon Railway, startups registered in Amravati district, rural startup Maharashtra, ROC Nagpur registered companies list.
+
+---
+
 ## 8. Frequently Asked Questions (AEO / Conversational Search)
 
 Q: What is BiovaCo Nexus?
