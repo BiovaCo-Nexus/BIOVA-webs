@@ -49,7 +49,7 @@ const roadmap = [
 ];
 
 const leadership = [
-  { name: "Nakul Mundhada", role: "Founder, Chief Executive Officer (CEO) & Managing Director (MD)", img: "/Nakul_Photo.jpeg", url: "https://nakulmundhada.site" },
+  { name: "Nakul Mundhada", role: "Founder, Chief Executive Officer (CEO) & Managing Director (MD)", img: "/Nakul_Photo.jpeg", url: "https://www.nakulmundhada.site" },
   { name: "Richa Rajan", role: "Co-Founder & Executive Director – Brand, Growth & Product Strategy", img: "/Richa_photo.jpg", url: "" },
 ];
 
@@ -381,14 +381,12 @@ export default function About() {
               return (
                 <FadeInItem key={l.name} className="h-full">
                   {l.url ? (
-                    <a
-                      href={l.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <div
+                      onClick={() => setActiveUrl(l.url)}
                       className="block cursor-pointer outline-none h-full"
                     >
                       {CardContent}
-                    </a>
+                    </div>
                   ) : (
                     CardContent
                   )}
