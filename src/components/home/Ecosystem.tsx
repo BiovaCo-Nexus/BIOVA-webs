@@ -4,28 +4,28 @@ import { Eyebrow } from "@/components/ui-custom/Section";
 const nodes = [
   {
     code: "01",
-    title: "Food Science",
-    desc: "Flavour systems, ingredients R&D, modern consumer formats.",
+    title: "Food Science & Product Development",
+    desc: "Proprietary flavour systems, ingredient R&D and modern consumer formats designed for market leadership.",
   },
   {
     code: "02",
-    title: "Agricultural Systems",
-    desc: "Resilient supply, post-harvest tech, soil-to-shelf integrity.",
+    title: "Agricultural Infrastructure",
+    desc: "End-to-end supply chain resilience — from soil health and precision farming to post-harvest processing and distribution.",
   },
   {
     code: "03",
-    title: "Biomed Consumers Application",
-    desc: "Hardware platforms for monitoring, automation and intelligence.",
+    title: "Biomedical & Consumer Applications",
+    desc: "Purpose-built hardware and software platforms for health monitoring, diagnostic automation and consumer wellness.",
   },
   {
     code: "04",
     title: "Artificial Intelligence",
-    desc: "Applied AI across food, agri, retail and product experiences.",
+    desc: "Production-grade AI deployed across food safety, agricultural yield optimisation, retail intelligence and predictive analytics.",
   },
   {
     code: "05",
-    title: "Future Venture Development",
-    desc: "An always-on pipeline of brands and businesses being incubated.",
+    title: "Venture Incubation",
+    desc: "A disciplined pipeline for identifying, validating and scaling high-conviction ventures from concept to commercialisation.",
   },
 ] as const;
 
@@ -34,9 +34,9 @@ export function Ecosystem() {
     <section className="bg-[color:var(--section)] border-y border-border">
       <div className="container-x py-24 md:py-32">
         <div className="max-w-3xl">
-          <Eyebrow>Innovation ecosystem</Eyebrow>
+          <Eyebrow>Innovation Verticals</Eyebrow>
           <h2 className="mt-5 font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
-            Five disciplines, one operating system for innovation.
+            Five core verticals. One integrated operating platform.
           </h2>
         </div>
 

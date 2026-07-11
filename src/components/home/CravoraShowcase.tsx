@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "@/components/ui-custom/Section";
@@ -13,7 +12,7 @@ export function CravoraShowcase() {
       />
       <div className="container-x relative py-24 md:py-32">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <Eyebrow>Current Venture</Eyebrow>
+          <Eyebrow>Flagship Venture</Eyebrow>
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -30,8 +29,10 @@ export function CravoraShowcase() {
           </motion.div>
 
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/70">
-            Cravora is BiovaCo's flagship consumer food brand — bold flavoured dusts, makhana and
-            popcorn engineered for the modern Indian palate. The first venture in a long pipeline.
+            Cravora is BiovaCo Nexus's flagship consumer food brand — a portfolio of
+            proprietary flavoured dusts, premium makhana and artisan popcorn
+            engineered for the discerning modern palate. The first operating
+            venture in our long-term brand-building strategy.
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-6 sm:flex-row">
@@ -41,11 +42,11 @@ export function CravoraShowcase() {
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-full bg-[color:var(--green)] px-8 py-4 text-sm font-medium text-[color:var(--navy-deep)] transition-all hover:bg-white"
             >
-              Visit Cravora
+              Explore Cravora
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
             <span className="text-xs uppercase tracking-[0.2em] text-white/40">
-              Est. — N° 01 Venture
+              Venture N° 01
             </span>
           </div>
         </div>

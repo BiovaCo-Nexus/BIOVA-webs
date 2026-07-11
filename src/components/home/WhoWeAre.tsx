@@ -5,18 +5,18 @@ import { Sprout, Cpu, FlaskConical } from "lucide-react";
 const pillars = [
   {
     icon: FlaskConical,
-    title: "Food Innovation",
-    desc: "Engineering bold flavour systems and modern consumer food brands — beginning with Cravora.",
+    title: "Consumer Food",
+    desc: "Developing proprietary flavour systems, modern food formats and direct-to-consumer brands that redefine category expectations.",
   },
   {
     icon: Sprout,
-    title: "Agricultural Technology",
-    desc: "Translating agronomic science into resilient, data-driven systems for the next generation of farms.",
+    title: "Agricultural Systems",
+    desc: "Applying precision agronomy, post-harvest technology and supply-chain intelligence to build resilient, data-driven agricultural infrastructure.",
   },
   {
     icon: Cpu,
-    title: "Technology Innovation",
-    desc: "Biomed Consumers Application, applied AI and consumer products built where hardware, software and life sciences converge.",
+    title: "Deep Technology",
+    desc: "Converging applied AI, biomedical engineering and consumer-grade hardware to deliver solutions at the intersection of science and scale.",
   },
 ] as const;
 
@@ -26,13 +26,13 @@ export function WhoWeAre() {
       <div className="container-x py-24 md:py-32">
         <div className="grid gap-10 lg:grid-cols-[1fr_2fr] lg:gap-20">
           <div>
-            <Eyebrow>Who we are</Eyebrow>
+            <Eyebrow>Our Thesis</Eyebrow>
             <h2 className="mt-5 font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
-              A parent company building{" "}
+              A holding company built for{" "}
               <span className="italic font-light text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
-                future-focused
+                enduring
               </span>{" "}
-              brands.
+              impact.
             </h2>
           </div>
           <div className="grid gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-3">

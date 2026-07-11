@@ -1,11 +1,11 @@
 import { Eyebrow } from "@/components/ui-custom/Section";
 
 const types = [
-  "Distributors",
-  "Manufacturing Partners",
+  "Distribution Partners",
+  "Manufacturing Alliances",
   "Research Institutions",
-  "Investors",
-  "Incubators",
+  "Strategic Investors",
+  "Accelerators & Incubators",
 ];
 
 export function Partners() {
@@ -13,9 +13,9 @@ export function Partners() {
     <section className="border-t border-border">
       <div className="container-x py-24 md:py-32">
         <div className="max-w-3xl">
-          <Eyebrow>Partners &amp; Collaborations</Eyebrow>
+          <Eyebrow>Strategic Partnerships</Eyebrow>
           <h2 className="mt-5 font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
-            We build with partners who share a long horizon.
+            We partner with institutions that share our commitment to the long term.
           </h2>
         </div>
 

@@ -24,10 +24,10 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 }
 
 const metrics = [
-  { value: 1, suffix: "", label: "Active venture", sub: "Cravora" },
-  { value: 4, suffix: "+", label: "Products in market", sub: "Flavoured formats" },
-  { value: 5, suffix: "", label: "Innovation areas", sub: "Food · Agri · AI · Biomed · Consumer" },
-  { value: 100, suffix: "%", label: "Future growth potential", sub: "Pipeline of ventures" },
+  { value: 1, suffix: "", label: "Operating venture", sub: "Cravora — Consumer Food" },
+  { value: 4, suffix: "+", label: "Products in market", sub: "Proprietary food formats" },
+  { value: 5, suffix: "", label: "Innovation verticals", sub: "Food · Agri · AI · Biomed · Ventures" },
+  { value: 100, suffix: "%", label: "Founder-led conviction", sub: "Long-term capital deployment" },
 ] as const;
 
 export function Metrics() {
@@ -36,13 +36,13 @@ export function Metrics() {
       <div className="container-x py-24 md:py-32">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-xl">
-            <Eyebrow>Impact</Eyebrow>
+            <Eyebrow>Performance</Eyebrow>
             <h2 className="mt-5 font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
-              A measured beginning. An unbounded horizon.
+              Disciplined execution. Compounding ambition.
             </h2>
           </div>
           <p className="max-w-sm text-sm text-muted-foreground">
-            Numbers we choose to share today — built to grow as the BiovaCo portfolio expands.
+            Key indicators reflecting our current stage — built to compound as the BiovaCo portfolio matures.
           </p>
         </div>
 

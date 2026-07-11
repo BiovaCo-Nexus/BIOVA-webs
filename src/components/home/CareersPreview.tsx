@@ -30,17 +30,17 @@ export function CareersPreview() {
           <div>
             <Eyebrow>Careers</Eyebrow>
             <h2 className="mt-5 font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
-              Build the future with us.
+              Join the team building what's next.
             </h2>
             <p className="mt-6 max-w-md text-muted-foreground">
-              We're hiring across food science, engineering, AI and operations — for the brands we
-              run today and the ones we'll launch tomorrow.
+              We are selectively hiring across food science, engineering, artificial intelligence
+              and operations — for the ventures we operate today and the ones we will launch next.
             </p>
             <Link
               to="/careers"
               className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-[color:var(--green-deep)] hover:text-[color:var(--navy)] dark:text-[color:var(--green)] transition-colors"
             >
-              See all openings <ArrowUpRight className="h-4 w-4" />
+              View all opportunities <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
 
@@ -70,10 +70,10 @@ export function CareersPreview() {
               </div>
             ) : (
               <div className="flex h-full min-h-[16rem] flex-col items-center justify-center p-12 text-center">
-                <div className="font-display text-2xl text-foreground">No current openings</div>
+                <div className="font-display text-2xl text-foreground">No open positions</div>
                 <p className="mt-3 max-w-sm text-muted-foreground">
-                  We are not actively hiring right now, but you can always share your profile with
-                  us.
+                  We are not actively recruiting at this time. You are welcome to submit your
+                  profile for future consideration.
                 </p>
               </div>
             )}
