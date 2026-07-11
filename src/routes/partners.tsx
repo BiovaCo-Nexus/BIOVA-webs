@@ -134,6 +134,66 @@ export default function Partners() {
           </div>
         </div>
       </section>
+
+      <section className="border-b border-border">
+        <div className="container-x py-24 md:py-32">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <Eyebrow>Incubation Partner</Eyebrow>
+            <h2 className="mt-5 font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
+              Currently Incubated At
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              BiovaCo Nexus is incubated at one of Central India's premier technology business incubators, 
+              providing access to world-class infrastructure, mentorship and institutional support.
+            </p>
+          </div>
+
+          <div className="flex justify-center">
+            <div className="w-full max-w-lg rounded-3xl border border-border bg-[color:var(--section)] p-10 transition-all duration-300 hover:border-[color:var(--green)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
+              <div className="relative w-full bg-white rounded-2xl flex items-center justify-center p-6 border border-border/50">
+                <img
+                  src="/Currnetincubation.png"
+                  alt="RCOEM Technology Business Incubators Foundation"
+                  className="max-h-28 max-w-full object-contain"
+                />
+              </div>
+              <div className="mt-8">
+                <h3 className="font-display text-2xl text-foreground font-semibold">
+                  RCOEM Technology Business Incubators Foundation
+                </h3>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
+                  Ramdeobaba University · Nagpur, Maharashtra
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  A Section 8 company established by Ramdeobaba University to foster innovation, 
+                  entrepreneurship and technology-driven startup growth. Operating through 
+                  RCOEM-TATA CIIIT — the Center for Invention, Innovation, Incubation & Training.
+                </p>
+
+                <div className="mt-6 pt-6 border-t border-border/60 grid grid-cols-2 gap-4">
+                  <div className="py-2">
+                    <span className="text-xs text-muted-foreground uppercase tracking-wider block">Mentors</span>
+                    <span className="text-sm font-semibold text-foreground mt-1 block">100+ Experts</span>
+                  </div>
+                  <div className="py-2">
+                    <span className="text-xs text-muted-foreground uppercase tracking-wider block">Infrastructure</span>
+                    <span className="text-sm font-semibold text-foreground mt-1 block">RCOEM-TATA CIIIT</span>
+                  </div>
+                </div>
+
+                <a
+                  href="https://rcoemtbi.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-[color:var(--green-deep)] hover:text-[color:var(--navy)] dark:text-[color:var(--green)] transition-colors"
+                >
+                  Visit RCOEM TBI Foundation <ArrowUpRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

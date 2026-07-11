@@ -4,7 +4,7 @@ import { PageHero } from "@/components/ui-custom/PageHero";
 import { Eyebrow } from "@/components/ui-custom/Section";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui-custom/FadeIn";
 import { supabase } from "@/lib/supabase";
-import { X, Loader2 } from "lucide-react";
+import { X, Loader2, ArrowUpRight } from "lucide-react";
 
 const values = [
   {
@@ -281,6 +281,78 @@ export default function About() {
             </div>
           </div>
         </FadeIn>
+      </section>
+
+      <section className="border-b border-border bg-[color:var(--section)]">
+        <div className="container-x py-24 md:py-32">
+          <FadeIn>
+            <Eyebrow>Current Incubation</Eyebrow>
+            <h2 className="mt-5 max-w-3xl font-display text-4xl tracking-[-0.03em] text-foreground md:text-5xl">
+              Incubated at{" "}
+              <span className="italic font-light text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
+                RCOEM TBI Foundation
+              </span>
+              , Nagpur.
+            </h2>
+          </FadeIn>
+
+          <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_1.5fr]">
+            <FadeIn>
+              <div className="flex flex-col items-center rounded-3xl border border-border bg-background p-10 shadow-sm">
+                <div className="relative w-full max-w-xs bg-white rounded-2xl flex items-center justify-center p-6 border border-border/50">
+                  <img
+                    src="/Currnetincubation.png"
+                    alt="RCOEM Technology Business Incubators Foundation"
+                    className="max-h-32 max-w-full object-contain"
+                  />
+                </div>
+                <div className="mt-6 text-center">
+                  <h3 className="font-display text-xl text-foreground font-semibold">
+                    RCOEM Technology Business Incubators Foundation
+                  </h3>
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--green-deep)] dark:text-[color:var(--green)]">
+                    Ramdeobaba University, Nagpur
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+
+            <FadeIn>
+              <div className="flex flex-col gap-6">
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  BiovaCo Nexus is currently incubated at the{" "}
+                  <span className="font-medium text-foreground">RCOEM TBI Foundation</span> — 
+                  a Section 8 company established by Ramdeobaba University (formerly Shri Ramdeobaba 
+                  College of Engineering and Management), Nagpur, to foster innovation, entrepreneurship 
+                  and technology-driven startup growth.
+                </p>
+                <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2">
+                  {[
+                    { label: "Infrastructure", value: "RCOEM-TATA CIIIT — state-of-the-art Center for Invention, Innovation, Incubation & Training" },
+                    { label: "Mentorship Network", value: "Access to 100+ expert mentors across technology, business and domain verticals" },
+                    { label: "Facility Access", value: "Advanced labs, prototyping, 3D printing, CNC machines and co-working infrastructure" },
+                    { label: "Support Services", value: "Legal, financial, IPR advisory, market analysis and business development guidance" },
+                  ].map((item) => (
+                    <div key={item.label} className="bg-background p-5">
+                      <div className="text-xs uppercase tracking-[0.2em] text-[color:var(--green-deep)] dark:text-[color:var(--green)] font-medium">
+                        {item.label}
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.value}</p>
+                    </div>
+                  ))}
+                </div>
+                <a
+                  href="https://rcoemtbi.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-[color:var(--green-deep)] hover:text-[color:var(--navy)] dark:text-[color:var(--green)] transition-colors"
+                >
+                  Visit RCOEM TBI Foundation <ArrowUpRight className="h-4 w-4" />
+                </a>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
       </section>
 
       <section className="border-b border-border bg-[color:var(--section)]">
