@@ -70,6 +70,10 @@
       "destination": "/api/sitemap"
     },
     {
+      "source": "/googlea30bc07b0be2dcc1.html",
+      "destination": "/googlea30bc07b0be2dcc1.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
