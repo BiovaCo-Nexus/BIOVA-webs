@@ -450,7 +450,7 @@ export default function About() {
           </FadeIn>
           <FadeInStagger className="mt-12 grid gap-6 md:grid-cols-4">
             {roadmap.map((r) => (
-              <FadeInItem key={r.y}>
+              <FadeInItem key={r.t}>
                 <div className="border-t border-border pt-6">
                   <div className="font-display text-3xl text-[color:var(--navy)] dark:text-foreground">
                     {r.y}
