@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
-import { DnaHelix } from "@/components/ui-custom/DnaHelix";
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden min-h-[100dvh] flex flex-col justify-center pt-28 pb-16">
       {/* Clean, solid background */}
       <div className="container-x relative">
-        <div className="grid items-center gap-16 lg:gap-12 lg:grid-cols-[1.2fr_1fr]">
+        <div className="max-w-3xl">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -91,15 +90,6 @@ export function Hero() {
               ))}
             </motion.div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.2 }}
-            className="relative mx-auto w-full max-w-sm lg:max-w-md xl:max-w-lg"
-          >
-            <DnaHelix className="w-full text-[color:var(--navy)]" />
-          </motion.div>
         </div>
       </div>
     </section>

@@ -6,7 +6,7 @@ import { Logo } from "@/components/ui-custom/Logo";
 const links = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
-  { to: "/cravora", label: "Cravora" },
+  { to: "/cravora", label: "Our Brand" },
   { to: "/innovation", label: "Innovation" },
   { to: "/careers", label: "Careers" },
   { to: "/news", label: "News" },
