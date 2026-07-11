@@ -49,8 +49,8 @@ const roadmap = [
 ];
 
 const leadership = [
-  { name: "Nakul Mundhada", role: "Founder, Chief Executive Officer (CEO) & Managing Director (MD)", img: "/Nakul_Photo.jpeg", url: "https://nakulmundhada.live" },
-  { name: "Richa Rajan", role: "Co-Founder & Executive Director – Brand, Growth & Product Strategy", img: "/Richa_photo.jpg", url: "https://richarajan.info" },
+  { name: "Nakul Mundhada", role: "Founder, Chief Executive Officer (CEO) & Managing Director (MD)", img: "/Nakul_Photo.jpeg", url: "https://nakulmundhada.site" },
+  { name: "Richa Rajan", role: "Co-Founder & Executive Director – Brand, Growth & Product Strategy", img: "/Richa_photo.jpg", url: "" },
 ];
 
 export default function About() {
@@ -161,7 +161,7 @@ export default function About() {
               {
                 "@type": "Question",
                 "name": "How to contact BiovaCo Nexus?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Email hello@biovaco.in, call +91 9226595332, or visit the contact page at https://biovaco.in/contact." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Email ceo@biovaco.in (CEO) or hello@biovaco.in (General), call +91 9226595332, or visit the contact page at https://biovaco.in/contact." }
               },
               {
                 "@type": "Question",
@@ -171,12 +171,12 @@ export default function About() {
               {
                 "@type": "Question",
                 "name": "Who is Nakul Mundhada?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Nakul Mundhada is the Founder, CEO & Managing Director of BiovaCo Nexus Pvt. Ltd. He leads overall strategy, technology, product development, and corporate operations. Portfolio: https://nakulmundhada.live" }
+                "acceptedAnswer": { "@type": "Answer", "text": "Nakul Mundhada is the Founder, CEO & Managing Director of BiovaCo Nexus Pvt. Ltd. He leads overall strategy, technology, product development, and corporate operations. Email: ceo@biovaco.in | Portfolio: https://nakulmundhada.site" }
               },
               {
                 "@type": "Question",
                 "name": "Who is Richa Rajan?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Richa Rajan is the Co-Founder & Executive Director of BiovaCo Nexus Pvt. Ltd. She leads brand architecture, growth strategy, marketing, and product innovation. Portfolio: https://richarajan.info" }
+                "acceptedAnswer": { "@type": "Answer", "text": "Richa Rajan is the Co-Founder & Executive Director of BiovaCo Nexus Pvt. Ltd. She leads brand architecture, growth strategy, marketing, and product innovation. Email: richarajan@biovaco.in" }
               },
               {
                 "@type": "Question",

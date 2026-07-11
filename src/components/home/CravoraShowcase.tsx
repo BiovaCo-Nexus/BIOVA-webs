@@ -37,7 +37,7 @@ export function CravoraShowcase() {
 
           <div className="mt-10 flex flex-col items-center gap-6 sm:flex-row">
             <a
-              href="https://dustthecrave.shop"
+              href="https://cravora.store"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-full bg-[color:var(--green)] px-8 py-4 text-sm font-medium text-[color:var(--navy-deep)] transition-all hover:bg-white"

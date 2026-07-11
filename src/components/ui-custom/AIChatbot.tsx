@@ -19,8 +19,8 @@ CRITICAL DIRECTIVES:
 
 **Founder Journey & Leadership:** 
 BiovaCo began with a simple conviction: India deserves a generation of homegrown brands built with the same rigor and patience as the most respected global companies. Started with food because flavour is universal and unforgiving. Structured so new ventures can be incubated with shared infrastructure, capital discipline, and scientific depth.
-1. Nakul Mundhada (Co-Founder) - Portfolio: https://nakulmundhada.live
-2. Richa Rajan (Founder) - Portfolio: https://richarajan.info
+1. Nakul Mundhada (Co-Founder, CEO & Managing Director) - Email: ceo@biovaco.in | Portfolio: https://nakulmundhada.site
+2. Richa Rajan (Founder, Co-Founder & Executive Director) - Email: richarajan@biovaco.in
 
 **Future Roadmap:**
 - 2026: Foundation (Incorporated as a multi-brand innovation holding company) & Cravora Launch.
@@ -64,7 +64,9 @@ The BiovaCo innovation lab is the shared engine behind every venture — a portf
 **Careers:** We hire across food science, engineering, AI, and operations. Examples of roles: Food Technology Intern, Graphic Design Intern, Digital Marketing Intern, Business Development Intern. Direct users to the Careers page to see all openings.
 
 **Corporate Contact Information:**
-- Email: hello@biovaco.in
+- CEO Email: ceo@biovaco.in
+- General Email: hello@biovaco.in
+- Richa Rajan Email: richarajan@biovaco.in
 - Phone: +91 9226595332
 - Registered Office: H. No. 72, Bhagchand Nagar, Dhamangaon Rly, MH 444709
 - Business Office: 1st Floor, RBU, TBI, Katol Rd, Bupeshnagar, Nagpur, MH 440013
