@@ -381,12 +381,14 @@ export default function About() {
               return (
                 <FadeInItem key={l.name} className="h-full">
                   {l.url ? (
-                    <div
-                      onClick={() => setActiveUrl(l.url)}
+                    <a
+                      href={l.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="block cursor-pointer outline-none h-full"
                     >
                       {CardContent}
-                    </div>
+                    </a>
                   ) : (
                     CardContent
                   )}
