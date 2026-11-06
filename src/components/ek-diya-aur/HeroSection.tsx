@@ -2,6 +2,7 @@ import { ArrowRight, ArrowUpRight, Heart, ShieldCheck } from "lucide-react";
 import { DiyaVisual } from "./DiyaVisual";
 import { DiwaliLightSeries } from "./DiwaliLightSeries";
 import { DiwaliFireworksCanvas } from "./DiwaliFireworksCanvas";
+import { CampaignCountdown } from "./CampaignCountdown";
 import { Language } from "@/lib/ek-diya-aur/types";
 import { translations } from "@/lib/ek-diya-aur/translations";
 
@@ -78,6 +79,11 @@ export function HeroSection({ currentLang, onContributeClick, onExploreClick }: 
               <span>{t.hero.secondaryCta}</span>
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 text-muted-foreground" />
             </button>
+          </div>
+
+          {/* Official Campaign Live Window & Real-time Countdown Timer */}
+          <div className="mt-12 w-full">
+            <CampaignCountdown currentLang={currentLang} variant="hero" />
           </div>
 
           {/* BiovaCo Signature Metrics Row */}

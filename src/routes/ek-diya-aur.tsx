@@ -54,7 +54,7 @@ export default function EkDiyaAurPage() {
     whatsapp: "",
     ageRange: "",
     city: "",
-    amount: 1000,
+    amount: 101,
     customAmount: "",
     reason: "",
     isAnonymous: false,
@@ -130,8 +130,8 @@ export default function EkDiyaAurPage() {
     description:
       "A Diwali Giving Initiative by BiovaCo Nexus Pvt. Ltd. supporting 20 economically vulnerable families with complete festive celebration kits.",
     url: "https://biovaco.in/ek-diya-aur",
-    startDate: "2026-10-15T00:00:00+05:30",
-    endDate: "2026-11-15T23:59:59+05:30",
+    startDate: "2026-11-07T00:00:00+05:30",
+    endDate: "2026-12-13T12:00:00+05:30",
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     location: {

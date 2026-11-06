@@ -1,6 +1,7 @@
 import { CheckCircle2, Calendar } from "lucide-react";
 import { CampaignStats, Language } from "@/lib/ek-diya-aur/types";
 import { translations } from "@/lib/ek-diya-aur/translations";
+import { CampaignCountdown } from "./CampaignCountdown";
 
 interface GoalProgressSectionProps {
   currentLang: Language;
@@ -153,14 +154,17 @@ export function GoalProgressSection({ currentLang, stats }: GoalProgressSectionP
           </div>
 
           {/* Real-time status line */}
-          <div className="mt-6 pt-5 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-muted-foreground">
+          <div className="mt-6 pt-5 border-t border-border flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs text-muted-foreground">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-[color:var(--green-deep)] dark:text-[color:var(--green)] shrink-0" />
               <span>{t.goal.verifiedNote}</span>
             </div>
-            <div className="flex items-center gap-1.5 text-xs">
-              <Calendar className="h-3.5 w-3.5" />
-              <span>{t.goal.daysNotice}</span>
+            <div className="flex items-center gap-2 flex-wrap">
+              <div className="flex items-center gap-1.5 text-xs text-foreground font-medium">
+                <Calendar className="h-3.5 w-3.5 text-amber-600 shrink-0" />
+                <span>{t.goal.daysNotice}</span>
+              </div>
+              <CampaignCountdown currentLang={currentLang} variant="compact" />
             </div>
           </div>
         </div>

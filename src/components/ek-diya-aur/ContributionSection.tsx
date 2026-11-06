@@ -6,7 +6,9 @@ import {
   Sparkles,
   AlertCircle,
   FileCheck,
+  Calendar,
 } from "lucide-react";
+import { CampaignCountdown } from "./CampaignCountdown";
 import { ContributionFormData, Language } from "@/lib/ek-diya-aur/types";
 import { translations } from "@/lib/ek-diya-aur/translations";
 import { getGatewayStatus, submitContribution } from "@/lib/ek-diya-aur/api";
@@ -72,10 +74,12 @@ export function ContributionSection({
   }, []);
 
   const presetAmounts = [
-    { value: 500, label: "₹500", hint: t.form.impactHint500 },
-    { value: 1000, label: "₹1,000", hint: t.form.impactHint1000 },
-    { value: 1500, label: "₹1,500", hint: t.form.impactHint1500 },
-    { value: 2000, label: "₹2,000", hint: t.form.impactHint2000 },
+    { value: 21, label: "₹21", tag: "Ek Diya", hint: t.form.impactHint21 },
+    { value: 51, label: "₹51", tag: "Shagun", hint: t.form.impactHint51 },
+    { value: 101, label: "₹101", tag: "Child Kit", hint: t.form.impactHint101 },
+    { value: 500, label: "₹500", tag: "Ration Pack", hint: t.form.impactHint500 },
+    { value: 1000, label: "₹1,000", tag: "Half Kit", hint: t.form.impactHint1000 },
+    { value: 2000, label: "₹2,000", tag: "Full Kit", hint: t.form.impactHint2000 },
   ];
 
   const handleAmountSelect = (val: number) => {
@@ -292,12 +296,13 @@ export function ContributionSection({
             </p>
           </div>
 
-          {/* Gateway Status Badge */}
-          <div className="mt-6 flex justify-center">
+          {/* Gateway Status Badge & Campaign Active Window */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-medium text-emerald-800 dark:text-emerald-300">
               <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
               <span>{t.form.gatewayLiveBadge} · UPI, Cards & NetBanking</span>
             </div>
+            <CampaignCountdown currentLang={currentLang} variant="compact" />
           </div>
 
           {/* Main Contribution Card */}
@@ -305,11 +310,19 @@ export function ContributionSection({
             <form onSubmit={handleFormSubmit} className="space-y-8">
               {/* Step 1: Contribution Amount */}
               <div>
+                {/* Welcoming Micro-Giving Encouragement Banner */}
+                <div className="mb-5 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-emerald-500/10 border border-amber-500/30 p-3.5 sm:p-4 flex items-center gap-3">
+                  <Sparkles className="h-4 w-4 text-amber-600 shrink-0" />
+                  <p className="text-xs sm:text-[13px] font-medium text-amber-950 dark:text-amber-200 leading-relaxed">
+                    {t.form.microGivingCallout}
+                  </p>
+                </div>
+
                 <label className="block text-xs uppercase tracking-[0.15em] font-medium text-foreground mb-3">
                   {t.form.selectAmount} *
                 </label>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3">
                   {presetAmounts.map((p) => {
                     const isSelected = formData.amount === p.value;
                     return (
@@ -317,14 +330,17 @@ export function ContributionSection({
                         key={p.value}
                         type="button"
                         onClick={() => handleAmountSelect(p.value)}
-                        className={`cursor-pointer rounded-2xl border p-4 text-center transition-all ${
+                        className={`cursor-pointer rounded-2xl border p-3 sm:p-3.5 text-center transition-all ${
                           isSelected
-                            ? "border-[color:var(--navy)] bg-[color:var(--section)] ring-1 ring-[color:var(--navy)] dark:border-[color:var(--green)] dark:ring-[color:var(--green)]"
+                            ? "border-[color:var(--navy)] bg-[color:var(--section)] ring-1 ring-[color:var(--navy)] dark:border-[color:var(--green)] dark:ring-[color:var(--green)] shadow-xs"
                             : "border-border bg-[color:var(--surface)] hover:border-foreground/30 hover:bg-[color:var(--section)]"
                         }`}
                       >
-                        <span className="block font-display text-xl sm:text-2xl font-normal text-foreground">
+                        <span className="block font-display text-lg sm:text-xl font-bold text-foreground">
                           {p.label}
+                        </span>
+                        <span className="block text-[10px] text-muted-foreground uppercase tracking-wider mt-0.5 font-medium">
+                          {p.tag}
                         </span>
                       </button>
                     );
@@ -364,6 +380,9 @@ export function ContributionSection({
                 <div className="mt-4 rounded-2xl bg-[color:var(--surface)] border border-border p-3.5 flex items-start gap-2.5 text-xs text-muted-foreground">
                   <Sparkles className="h-4 w-4 shrink-0 text-amber-600 mt-0.5" />
                   <span>
+                    {formData.amount === 21 && t.form.impactHint21}
+                    {formData.amount === 51 && t.form.impactHint51}
+                    {formData.amount === 101 && t.form.impactHint101}
                     {formData.amount === 500 && t.form.impactHint500}
                     {formData.amount === 1000 && t.form.impactHint1000}
                     {formData.amount === 1500 && t.form.impactHint1500}

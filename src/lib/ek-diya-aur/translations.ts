@@ -83,6 +83,10 @@ export interface Translations {
     selectAmount: string;
     customAmountPlaceholder: string;
     minAmountHint: string;
+    microGivingCallout: string;
+    impactHint21: string;
+    impactHint51: string;
+    impactHint101: string;
     impactHint500: string;
     impactHint1000: string;
     impactHint1500: string;
@@ -307,7 +311,7 @@ export const translations: Record<Language, Translations> = {
       familiesFunded: "Families Fully Covered",
       ofFamilies: "of 20 Families Target",
       supportersCount: "Verified Supporters",
-      daysNotice: "Distribution Scheduled: Diwali Week 2026",
+      daysNotice: "Active Window: 7 Nov 12:00 AM – 13 Dec 12:00 PM IST",
       verifiedNote: "Live ledger synced directly with verified payment records.",
     },
     budget: {
@@ -338,6 +342,10 @@ export const translations: Record<Language, Translations> = {
       selectAmount: "Choose Contribution Amount",
       customAmountPlaceholder: "Enter custom amount (e.g. 750)",
       minAmountHint: "Minimum contribution is ₹5. Every amount counts.",
+      microGivingCallout: "✨ No contribution is too small — Even ₹5 lights a diya in a home. 100% of your amount goes straight to the 20 families.",
+      impactHint21: "₹21 covers handcrafted clay diyas, pure sesame oil & cotton wicks for 1 home.",
+      impactHint51: "₹51 sponsors a full shagun set of festive diyas and bright rangoli colors.",
+      impactHint101: "₹101 sponsors fresh pure ghee sweets & a learning delight set for 1 child.",
       impactHint500: "₹500 covers handcrafted diyas, oil, rangoli & fresh sweets for 2 families.",
       impactHint1000: "₹1,000 covers half of a complete month-long family celebration kit.",
       impactHint1500: "₹1,500 covers full festive groceries & sweets for 1 entire household.",
@@ -583,7 +591,7 @@ export const translations: Record<Language, Translations> = {
       familiesFunded: "सुरक्षित हुए परिवार",
       ofFamilies: "कुल 20 परिवारों में से",
       supportersCount: "सत्यापित सहयोगी",
-      daysNotice: "वितरण तिथि: दिवाली सप्ताह 2026",
+      daysNotice: "सक्रिय अभियान: 7 नवंबर 12:00 AM – 13 दिसंबर 12:00 PM IST",
       verifiedNote: "प्रत्यक्ष बैंक और गेटवे लेन-देन से लाइव सिंक।",
     },
     budget: {
@@ -614,6 +622,10 @@ export const translations: Record<Language, Translations> = {
       selectAmount: "सहयोग राशि चुनें",
       customAmountPlaceholder: "अपनी इच्छा अनुसार राशि (उदा. 750)",
       minAmountHint: "न्यूनतम सहयोग ₹5 है। आपका हर सहयोग अनमोल है।",
+      microGivingCallout: "✨ कोई भी सहयोग छोटा नहीं होता — सिर्फ ₹5 भी किसी के घर में एक दिया जला सकता है। आपका 100% सहयोग सीधे 20 परिवारों तक जाता है।",
+      impactHint21: "₹21 से 1 घर के लिए मिट्टी के दीये, तेल और रुई की बाती सुनिश्चित होती है।",
+      impactHint51: "₹51 से शगुन के दीये और उत्सव की सुंदर रंगोली के रंग सुनिश्चित होते हैं।",
+      impactHint101: "₹101 से 1 बच्चे के लिए ताज़ी शुद्ध घी की मिठाई और उपहार किट सुनिश्चित होती है।",
       impactHint500: "₹500 से 2 परिवारों के लिए दीये, तेल, रंगोली और मिठाइयां सुनिश्चित होती हैं।",
       impactHint1000: "₹1,000 से एक पूरे परिवार के उत्सव किट का आधा खर्च पूरा होता है।",
       impactHint1500: "₹1,500 से 1 पूरे परिवार के महीने भर का राशन और मिठाई सुनिश्चित होती है।",
@@ -858,7 +870,7 @@ export const translations: Record<Language, Translations> = {
       familiesFunded: "मदत मिळालेली कुटुंबे",
       ofFamilies: "एकूण 20 कुटुंबांपैकी",
       supportersCount: "पडताळणीकृत सहकारी",
-      daysNotice: "वितरण कालावधी: दिवाळी आठवडा 2026",
+      daysNotice: "सक्रिय मोहीम: 7 नोव्हेंबर 12:00 AM – 13 डिसेंबर 12:00 PM IST",
       verifiedNote: "प्रत्यक्ष बँक व गेटवे व्यवहारांशी थेट जोडलेले.",
     },
     budget: {
@@ -888,6 +900,10 @@ export const translations: Record<Language, Translations> = {
       selectAmount: "सहकार्य रक्कम निवडा",
       customAmountPlaceholder: "इच्छित रक्कम भरा (उदा. 750)",
       minAmountHint: "किमान सहकार्य ₹5 आहे. तुमचा प्रत्येक सहभाग मोलाचा आहे.",
+      microGivingCallout: "✨ कोणतेही सहकार्य लहान नसते — अगदी ₹5 देखील कुणाच्या घरात दिवा लावू शकतो. तुमचे 100% सहकार्य थेट 20 कुटुंबांपर्यंत जाते.",
+      impactHint21: "₹21 मधून एका घरासाठी मातीचे दिवे, तेल आणि वातींची व्यवस्था होते.",
+      impactHint51: "₹51 मधून शकुनाचे दिवे आणि सणाची रंगीबेरंगी रांगोळी निश्चित होते.",
+      impactHint101: "₹101 मधून 1 मुलासाठी ताजी मिठाई आणि खेळणी/पुस्तकांचा संच मिळतो.",
       impactHint500: "₹500 मधून 2 कुटुंबांसाठी दिवे, तेल, रांगोळी व फराळाची व्यवस्था होते.",
       impactHint1000:
         "₹1,000 मधून एका संपूर्ण कुटुंबाच्या महिन्याच्या उत्सव संचाचा अर्धा खर्च होतो.",
