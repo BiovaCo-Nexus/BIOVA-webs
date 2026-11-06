@@ -16,7 +16,7 @@ export function HeroSection({ currentLang, onContributeClick, onExploreClick }: 
   const t = translations[currentLang];
 
   return (
-    <section className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24 border-b border-border bg-background">
+    <section className="relative overflow-hidden pt-36 pb-16 sm:pt-40 md:pt-44 md:pb-24 border-b border-border bg-background">
       {/* Festive Diwali Hanging Light Series (Corner Ladi Garland) */}
       <DiwaliLightSeries />
 
