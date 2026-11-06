@@ -10,6 +10,7 @@ const groups = [
       { to: "/careers", label: "Careers" },
       { to: "/news", label: "News & Press" },
       { to: "/contact", label: "Contact" },
+      { to: "/ek-diya-aur", label: "Ek Diya Aur (Diwali 2026)" },
     ],
   },
   {

@@ -312,7 +312,7 @@ export default function JobDetail() {
         "@type": "QuantitativeValue",
         value: job.salary_range,
         unitText: "YEAR",
-      },
+      } as any,
     };
   }
 
@@ -326,7 +326,7 @@ export default function JobDetail() {
     <p><strong>About BiovaCo Nexus:</strong> We are an innovation holding company that builds, launches and scales the next generation of consumer brands, agricultural innovation and technology ventures.</p>
     <p>Apply directly on our website — no third-party portals needed.</p>`;
 
-  const employmentTypeMap = {
+  const employmentTypeMap: Record<string, string> = {
     "Full-time": "FULL_TIME",
     "Part-time": "PART_TIME",
     "Contract": "CONTRACTOR",

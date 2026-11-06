@@ -76,6 +76,7 @@ async function generateSitemap() {
     { url: '/privacy', priority: 0.5, changefreq: 'yearly' },
     { url: '/terms', priority: 0.5, changefreq: 'yearly' },
     { url: '/news', priority: 0.9, changefreq: 'daily' },
+    { url: '/ek-diya-aur', priority: 0.9, changefreq: 'daily' },
   ];
 
   const today = new Date().toISOString().split('T')[0];

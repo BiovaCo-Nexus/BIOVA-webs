@@ -12,6 +12,7 @@ const links = [
   { to: "/news", label: "News" },
   { to: "/partners", label: "Partners" },
   { to: "/contact", label: "Contact" },
+  { to: "/ek-diya-aur", label: "Ek Diya Aur 🪔" },
 ] as const;
 
 export function Nav() {

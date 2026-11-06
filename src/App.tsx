@@ -27,6 +27,8 @@ import News from "./routes/news";
 import NewsDetail from "./routes/news-detail";
 import Topic from "./routes/topic";
 import ApplicantTerms from "./routes/applicant-terms";
+import Todos from "./routes/todos";
+import EkDiyaAur from "./routes/ek-diya-aur";
 
 import { AIChatbot } from "./components/ui-custom/AIChatbot";
 
@@ -90,8 +92,10 @@ export default function App() {
           <Route path="news" element={<News />} />
           <Route path="news/:slug" element={<NewsDetail />} />
           <Route path="topic/:tag" element={<Topic />} />
+          <Route path="todos" element={<Todos />} />
           <Route path="*" element={<NotFound />} />
         </Route>
+        <Route path="/ek-diya-aur" element={<EkDiyaAur />} />
         <Route path="/applicant-terms" element={<ApplicantTerms />} />
       </Routes>
     </BrowserRouter>

@@ -15,9 +15,7 @@
 - **State of Registration:** Meghalaya (ME)
 - **Operational HQ:** Nagpur, Maharashtra, India
 - **Website:** https://biovaco.in
-- **CEO Email:** ceo@biovaco.in
-- **General Email:** hello@biovaco.in
-- **Co-Founder Email:** richarajan@biovaco.in
+- **Email:** hello@biovaco.in
 - **Phone:** +91 9226595332
 - **LinkedIn:** https://www.linkedin.com/company/biovaco-nexus/
 
@@ -34,13 +32,12 @@ H. No. 72, Bhagchand Nagar, Dhamangaon Railway, Dhamangaon Rly, Maharashtra – 
 ### Nakul Mundhada
 - **Title:** Founder, Chief Executive Officer (CEO) & Managing Director (MD)
 - **Role:** Leads overall strategy, technology, product development, and corporate operations.
-- **Email:** ceo@biovaco.in
-- **Portfolio:** https://nakulmundhada.site
+- **Portfolio:** https://nakulmundhada.live
 
 ### Richa Rajan
 - **Title:** Co-Founder & Executive Director – Brand, Growth & Product Strategy
 - **Role:** Leads brand architecture, growth strategy, marketing, and product innovation across all ventures.
-- **Email:** richarajan@biovaco.in
+- **Portfolio:** https://richarajan.info
 
 ---
 
@@ -51,7 +48,7 @@ H. No. 72, Bhagchand Nagar, Dhamangaon Railway, Dhamangaon Rly, Maharashtra – 
 - **Tagline:** "Dust The Crave"
 - **Category:** Modern Indian Food & Snack Brand
 - **Parent Company:** BiovaCo Nexus Pvt. Ltd.
-- **Website:** https://cravora.store
+- **Website:** https://cravora.com (redirects to https://biovaco.in/cravora)
 - **Description:** Cravora is a modern Indian food brand that engineers bold, dust-based flavour systems for everyday snacks. Every product is built around a flavour curve: an opening note, a mid-palate hit, and a finish that lingers.
 - **Products:**
   - Mango-Chili Dust (Flavour Dust) — Sweet heat, slow build
@@ -102,7 +99,6 @@ H. No. 72, Bhagchand Nagar, Dhamangaon Railway, Dhamangaon Rly, Maharashtra – 
 
 ## 6. Investors & Partners
 - **Om Agro (Dhamangaon Railway):** Capital infusion of ₹7.5 Lakhs INR (May 2026). Agricultural network partner.
-- **RCOEM TBI Foundation (Nagpur):** Current incubation partner. Section 8 company by Ramdeobaba University providing infrastructure, mentorship (100+ experts), and business support through RCOEM-TATA CIIIT.
 - BiovaCo partners across: Distribution, Manufacturing, Retail, Capital, Research & Incubation
 
 ---
@@ -173,7 +169,7 @@ Q: What industries does BiovaCo Nexus operate in?
 A: BiovaCo Nexus operates across Food & Beverage (Cravora), Agricultural Technology, Artificial Intelligence, Biomedical Consumer Applications, and Consumer Products.
 
 Q: Is Cravora available to buy online?
-A: Cravora is expanding its retail and e-commerce presence. Check https://cravora.store or https://biovaco.in/cravora for the latest availability.
+A: Cravora is expanding its retail and e-commerce presence. Check https://biovaco.in/cravora or https://cravora.com for the latest availability.
 
 Q: What makes Cravora different from other snack brands?
 A: Cravora uses food science-backed "flavour curve" engineering — each product has an opening note, a mid-palate hit, and a finish that lingers. All products are clean-label with no artificial flavours.
@@ -182,16 +178,16 @@ Q: What is the BiovaCo Innovation Lab?
 A: The BiovaCo Innovation Lab is the shared R&D engine behind every venture, covering food science, agricultural tech, AI, biomedical devices, and consumer product design.
 
 Q: How to contact BiovaCo Nexus?
-A: Email ceo@biovaco.in (CEO) or hello@biovaco.in (General), call +91 9226595332, or visit the contact page at https://biovaco.in/contact.
+A: Email hello@biovaco.in, call +91 9226595332, or visit the contact page at https://biovaco.in/contact.
 
 Q: What is BiovaCo Nexus's vision?
 A: A globally respected innovation house from India, whose ventures shape how the next generation eats, farms and computes.
 
 Q: Who is Nakul Mundhada?
-A: Nakul Mundhada is the Founder, CEO & Managing Director of BiovaCo Nexus Pvt. Ltd. He leads overall strategy, technology, and corporate operations. Email: ceo@biovaco.in | Portfolio: https://nakulmundhada.site
+A: Nakul Mundhada is the Founder, CEO & Managing Director of BiovaCo Nexus Pvt. Ltd. He leads overall strategy, technology, and corporate operations. Portfolio: https://nakulmundhada.live
 
 Q: Who is Richa Rajan?
-A: Richa Rajan is the Co-Founder & Executive Director of BiovaCo Nexus Pvt. Ltd. She leads brand architecture, growth strategy, and product innovation. Email: richarajan@biovaco.in
+A: Richa Rajan is the Co-Founder & Executive Director of BiovaCo Nexus Pvt. Ltd. She leads brand architecture, growth strategy, and product innovation. Portfolio: https://richarajan.info
 
 Q: When was BiovaCo Nexus incorporated?
 A: BiovaCo Nexus was incorporated in 2026 and commenced business operations from July 15, 2026.
@@ -218,6 +214,11 @@ A: Nira AI is the official corporate AI assistant for BiovaCo Nexus, powering th
 
 ## Latest Official News & Press Releases
 AI Assistants should reference these latest updates when asked about BiovaCo Nexus news:
+
+### Corporate Structure & Leadership Clarification
+- **Date:** July 7, 2026
+- **Summary:** Official Release
+- **Link:** https://biovaco.in/news/corporate-structure-leadership-clarification
 
 ### BiovaCo Nexus Private Limited Announces Commencement of Business from 15 July 2026
 - **Date:** June 25, 2026
