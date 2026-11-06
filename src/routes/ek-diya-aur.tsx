@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
+import { Navigate } from "react-router-dom";
 import {
   Language,
   ContributionFormData,
@@ -10,6 +11,7 @@ import {
 import { translations } from "@/lib/ek-diya-aur/translations";
 import { INITIAL_CAMPAIGN_STATS, INITIAL_EXPENSE_LEDGER } from "@/lib/ek-diya-aur/campaign-data";
 import { fetchCampaignData } from "@/lib/ek-diya-aur/api";
+import { isCampaignPageExpired } from "@/components/ek-diya-aur/CampaignCountdown";
 
 import { CampaignHeader } from "@/components/ek-diya-aur/CampaignHeader";
 import { HeroSection } from "@/components/ek-diya-aur/HeroSection";
@@ -25,6 +27,11 @@ import { CampaignFooter } from "@/components/ek-diya-aur/CampaignFooter";
 import { ReceiptModal } from "@/components/ek-diya-aur/ReceiptModal";
 
 export default function EkDiyaAurPage() {
+  // Automatically hide/archive page after 13 December 2026, 12:00 PM IST
+  if (isCampaignPageExpired()) {
+    return <Navigate to="/" replace />;
+  }
+
   // 1. Language state: persisted in localStorage, defaults to English
   const [currentLang, setCurrentLang] = useState<Language>(() => {
     try {
@@ -131,7 +138,7 @@ export default function EkDiyaAurPage() {
       "A Diwali Giving Initiative by BiovaCo Nexus Pvt. Ltd. supporting 20 economically vulnerable families with complete festive celebration kits.",
     url: "https://biovaco.in/ek-diya-aur",
     startDate: "2026-11-07T00:00:00+05:30",
-    endDate: "2026-12-13T12:00:00+05:30",
+    endDate: "2026-11-13T12:00:00+05:30",
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     location: {

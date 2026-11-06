@@ -46,6 +46,14 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
+  // STRICT DEADLINE: Contribution window closes on 13 November 2026 at 12:00 PM IST
+  const PAYMENT_CUTOFF = new Date("2026-11-13T12:00:00+05:30").getTime();
+  if (Date.now() >= PAYMENT_CUTOFF) {
+    return res.status(403).json({
+      error: "Campaign contribution window officially concluded on 13 November 2026 at 12:00 PM IST. No further payments can be accepted.",
+    });
+  }
+
   const body = req.body || {};
 
   // STRICT REQUIREMENT: Razorpay Payment ID is mandatory

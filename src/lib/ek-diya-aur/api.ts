@@ -131,6 +131,16 @@ export async function submitContribution(
   formData: ContributionFormData,
   paymentDetails: { razorpayPaymentId: string; razorpayOrderId?: string },
 ): Promise<{ success: boolean; id: string; error?: string }> {
+  // 0. Strict Deadline Check: 13 November 2026, 12:00 PM IST
+  const PAYMENT_CUTOFF = new Date("2026-11-13T12:00:00+05:30").getTime();
+  if (Date.now() >= PAYMENT_CUTOFF) {
+    return {
+      success: false,
+      id: "",
+      error: "Campaign contribution window concluded on 13 November 2026 at 12:00 PM IST.",
+    };
+  }
+
   // 1. Mandatory Payment ID check (Razorpay payment ID starts with "pay_")
   if (
     !paymentDetails ||

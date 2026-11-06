@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/ui-custom/Logo";
 
-const links = [
+const isCampaignActive = new Date().getTime() < new Date("2026-12-13T12:00:00+05:30").getTime();
+
+const baseLinks = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/cravora", label: "Our Brand" },
@@ -12,8 +14,11 @@ const links = [
   { to: "/news", label: "News" },
   { to: "/partners", label: "Partners" },
   { to: "/contact", label: "Contact" },
-  { to: "/ek-diya-aur", label: "Ek Diya Aur 🪔" },
-] as const;
+];
+
+const links = isCampaignActive
+  ? [...baseLinks, { to: "/ek-diya-aur", label: "Ek Diya Aur 🪔" }]
+  : baseLinks;
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);

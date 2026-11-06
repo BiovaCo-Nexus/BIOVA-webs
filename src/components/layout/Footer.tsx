@@ -1,17 +1,21 @@
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/ui-custom/Logo";
 
+const isCampaignActive = new Date().getTime() < new Date("2026-12-13T12:00:00+05:30").getTime();
+
+const companyLinks = [
+  { to: "/about", label: "About" },
+  { to: "/innovation", label: "Innovation" },
+  { to: "/careers", label: "Careers" },
+  { to: "/news", label: "News & Press" },
+  { to: "/contact", label: "Contact" },
+  ...(isCampaignActive ? [{ to: "/ek-diya-aur", label: "Ek Diya Aur (Diwali 2026)" }] : []),
+];
+
 const groups = [
   {
     title: "Company",
-    links: [
-      { to: "/about", label: "About" },
-      { to: "/innovation", label: "Innovation" },
-      { to: "/careers", label: "Careers" },
-      { to: "/news", label: "News & Press" },
-      { to: "/contact", label: "Contact" },
-      { to: "/ek-diya-aur", label: "Ek Diya Aur (Diwali 2026)" },
-    ],
+    links: companyLinks,
   },
   {
     title: "Ventures",

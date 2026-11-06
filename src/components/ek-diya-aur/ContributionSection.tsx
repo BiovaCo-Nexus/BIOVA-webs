@@ -8,7 +8,7 @@ import {
   FileCheck,
   Calendar,
 } from "lucide-react";
-import { CampaignCountdown } from "./CampaignCountdown";
+import { CampaignCountdown, isPaymentPhaseClosed } from "./CampaignCountdown";
 import { ContributionFormData, Language } from "@/lib/ek-diya-aur/types";
 import { translations } from "@/lib/ek-diya-aur/translations";
 import { getGatewayStatus, submitContribution } from "@/lib/ek-diya-aur/api";
@@ -139,6 +139,18 @@ export function ContributionSection({
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (isPaymentPhaseClosed()) {
+      alert(
+        currentLang === "hi"
+          ? "सहयोग अवधि 13 नवंबर दोपहर 12:00 बजे समाप्त हो चुकी है। अब कोई नया भुगतान स्वीकार नहीं किया जा सकता।"
+          : currentLang === "mr"
+            ? "सहकार्य मुदत 13 नोव्हेंबर दुपारी 12:00 वाजता संपली आहे. आता कोणतेही देयक स्वीकारले जाऊ शकत नाही."
+            : "The contribution phase officially concluded on 13 November 2026 at 12:00 PM IST. No further payments can be accepted.",
+      );
+      return;
+    }
+
     if (!validate()) return;
 
     setSubmitting(true);
@@ -305,9 +317,44 @@ export function ContributionSection({
             <CampaignCountdown currentLang={currentLang} variant="compact" />
           </div>
 
-          {/* Main Contribution Card */}
-          <div className="mt-10 rounded-3xl border border-border bg-background p-6 sm:p-10 shadow-sm">
-            <form onSubmit={handleFormSubmit} className="space-y-8">
+          {/* Main Contribution Card or Concluded Notice */}
+          {isPaymentPhaseClosed() ? (
+            <div className="mt-10 rounded-3xl border border-amber-500/30 bg-gradient-to-b from-amber-500/5 to-background p-8 sm:p-12 text-center shadow-sm">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20 mb-4">
+                <Lock className="h-6 w-6" />
+              </div>
+              <h3 className="font-display text-2xl sm:text-3xl font-medium text-foreground">
+                {currentLang === "hi"
+                  ? "सहयोग अवधि 13 नवंबर दोपहर 12:00 बजे समाप्त हो चुकी है"
+                  : currentLang === "mr"
+                    ? "सहकार्य मुदत 13 नोव्हेंबर दुपारी 12:00 वाजता संपली आहे"
+                    : "Contribution Window Closed on 13 November 12:00 PM IST"}
+              </h3>
+              <p className="mt-3 max-w-xl mx-auto text-sm text-muted-foreground leading-relaxed">
+                {currentLang === "hi"
+                  ? "अभियान कार्यक्रम के अनुसार, 13 नवंबर दोपहर 12:00 बजे के बाद सभी भुगतान प्रक्रियाएं पूर्णतः बंद कर दी गई हैं। अब कोई भी नया भुगतान नहीं किया जा सकता। एकत्र की गई संपूर्ण राशि 20 जरूरतमंद परिवारों के उत्सव किट के लिए समर्पित कर दी गई है। सभी सहयोगियों का हृदय से धन्यवाद!"
+                  : currentLang === "mr"
+                    ? "मोहीम नियमानुसार, 13 नोव्हेंबर दुपारी 12:00 नंतर सर्व देयक प्रक्रिया पूर्णपणे बंद करण्यात आल्या आहेत. आता कोणतेही नवीन सहकार्य स्वीकारले जात नाही. जमा झालेला सर्व निधी 20 कुटुंबांच्या दिवाळी संचासाठी वापरण्यात येत आहे. सर्व सहकाऱ्यांचे मनःपूर्वक आभार!"
+                    : "As scheduled, the contribution window officially closed on 13 November at 12:00 PM IST. Payment processing is completely locked and no further transactions can be accepted. 100% of collected funds are being distributed to the 20 beneficiary homes. Thank you for your support!"}
+              </p>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <a
+                  href="#transparency"
+                  className="rounded-full bg-[color:var(--navy)] px-6 py-2.5 text-xs font-medium text-white transition-all hover:bg-[color:var(--navy-deep)] dark:bg-[color:var(--green)] dark:text-[color:var(--navy-deep)]"
+                >
+                  View Transparency Ledger
+                </a>
+                <a
+                  href="#supporters"
+                  className="rounded-full border border-border px-6 py-2.5 text-xs font-medium text-foreground hover:bg-[color:var(--section)]"
+                >
+                  View Supporter Wall
+                </a>
+              </div>
+            </div>
+          ) : (
+            <div className="mt-10 rounded-3xl border border-border bg-background p-6 sm:p-10 shadow-sm">
+              <form onSubmit={handleFormSubmit} className="space-y-8">
               {/* Step 1: Contribution Amount */}
               <div>
                 {/* Welcoming Micro-Giving Encouragement Banner */}
@@ -732,6 +779,7 @@ export function ContributionSection({
               </div>
             </form>
           </div>
+          )}
         </div>
       </div>
     </section>

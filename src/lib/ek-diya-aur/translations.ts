@@ -311,7 +311,7 @@ export const translations: Record<Language, Translations> = {
       familiesFunded: "Families Fully Covered",
       ofFamilies: "of 20 Families Target",
       supportersCount: "Verified Supporters",
-      daysNotice: "Active Window: 7 Nov 12:00 AM – 13 Dec 12:00 PM IST",
+      daysNotice: "Payment Window: 7 Nov 12:00 AM – 13 Nov 12:00 PM IST",
       verifiedNote: "Live ledger synced directly with verified payment records.",
     },
     budget: {
@@ -591,7 +591,7 @@ export const translations: Record<Language, Translations> = {
       familiesFunded: "सुरक्षित हुए परिवार",
       ofFamilies: "कुल 20 परिवारों में से",
       supportersCount: "सत्यापित सहयोगी",
-      daysNotice: "सक्रिय अभियान: 7 नवंबर 12:00 AM – 13 दिसंबर 12:00 PM IST",
+      daysNotice: "सहयोग अवधि: 7 नवंबर 12:00 AM – 13 नवंबर 12:00 PM IST",
       verifiedNote: "प्रत्यक्ष बैंक और गेटवे लेन-देन से लाइव सिंक।",
     },
     budget: {
@@ -870,7 +870,7 @@ export const translations: Record<Language, Translations> = {
       familiesFunded: "मदत मिळालेली कुटुंबे",
       ofFamilies: "एकूण 20 कुटुंबांपैकी",
       supportersCount: "पडताळणीकृत सहकारी",
-      daysNotice: "सक्रिय मोहीम: 7 नोव्हेंबर 12:00 AM – 13 डिसेंबर 12:00 PM IST",
+      daysNotice: "सहकार्य कालावधी: 7 नोव्हेंबर 12:00 AM – 13 नोव्हेंबर 12:00 PM IST",
       verifiedNote: "प्रत्यक्ष बँक व गेटवे व्यवहारांशी थेट जोडलेले.",
     },
     budget: {
