@@ -25,6 +25,7 @@ import { PromiseSection } from "@/components/ek-diya-aur/PromiseSection";
 import { FaqLegalSection } from "@/components/ek-diya-aur/FaqLegalSection";
 import { CampaignFooter } from "@/components/ek-diya-aur/CampaignFooter";
 import { ReceiptModal } from "@/components/ek-diya-aur/ReceiptModal";
+import { StickyMobileContributionBar } from "@/components/ek-diya-aur/StickyMobileContributionBar";
 
 export default function EkDiyaAurPage() {
   // Automatically hide/archive page after 13 December 2026, 12:00 PM IST
@@ -261,6 +262,12 @@ export default function EkDiyaAurPage() {
         onClose={() => setReceiptModalOpen(false)}
         receiptData={latestReceipt}
         currentLang={currentLang}
+      />
+
+      {/* Persistent Floating 1-Tap Mobile Contribution Bar */}
+      <StickyMobileContributionBar
+        currentLang={currentLang}
+        onContributeClick={() => scrollTo("contribute")}
       />
     </div>
   );

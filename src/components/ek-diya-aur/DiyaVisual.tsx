@@ -4,217 +4,180 @@ interface DiyaVisualProps {
 }
 
 export function DiyaVisual({ size = "md", className = "" }: DiyaVisualProps) {
+  // Responsive dimensions: compact on mobile, majestic on desktop
   const dimensions =
     size === "sm"
-      ? { width: 100, height: 80 }
+      ? { width: 90, height: 70 }
       : size === "lg"
-        ? { width: 240, height: 195 }
-        : { width: 160, height: 130 };
+        ? { width: 180, height: 140 }
+        : { width: 130, height: 102 };
 
   return (
     <div
       className={`relative inline-flex items-center justify-center select-none ${className}`}
-      aria-label="Festive illuminated clay Diya"
+      aria-label="Traditional illuminated terracotta Diya"
       role="img"
     >
       <style>{`
-        /* Rising flame phuljhadi embers */
-        @keyframes flameSpark1 {
-          0% { transform: translate(0, 0); opacity: 0.9; }
-          50% { transform: translate(-8px, -24px); opacity: 0.7; }
-          100% { transform: translate(-14px, -48px); opacity: 0; }
+        /* Natural sacred flame breathing motion */
+        @keyframes sacredFlameBreath {
+          0%, 100% {
+            transform: scale(1) translateY(0);
+            filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.65)) drop-shadow(0 0 28px rgba(234, 88, 12, 0.35));
+          }
+          50% {
+            transform: scale(1.04, 0.97) translateY(-1.5px);
+            filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.85)) drop-shadow(0 0 38px rgba(234, 88, 12, 0.45));
+          }
         }
-        @keyframes flameSpark2 {
-          0% { transform: translate(0, 0); opacity: 0.9; }
-          50% { transform: translate(8px, -28px); opacity: 0.6; }
-          100% { transform: translate(16px, -52px); opacity: 0; }
-        }
-        @keyframes flameSpark3 {
-          0% { transform: translate(0, 0); opacity: 0.8; }
-          50% { transform: translate(-4px, -20px); opacity: 0.5; }
-          100% { transform: translate(-6px, -42px); opacity: 0; }
-        }
-        @keyframes glintTwinkle {
-          0%, 100% { opacity: 0.3; transform: scale(0.85); }
-          50% { opacity: 0.95; transform: scale(1.2); }
+        .sacred-flame-group {
+          transform-origin: 100px 75px;
+          animation: sacredFlameBreath 2.6s ease-in-out infinite;
         }
       `}</style>
 
-      {/* Ambient background glow */}
+      {/* Soft warm ambient background illumination - seamless, natural golden halo */}
       <div
-        className="absolute rounded-full blur-2xl opacity-45 pointer-events-none transition-all duration-700"
+        className="absolute rounded-full pointer-events-none transition-all duration-700 blur-2xl opacity-40 dark:opacity-50"
         style={{
-          width: dimensions.width * 1.25,
+          width: dimensions.width * 1.3,
           height: dimensions.height * 1.1,
           background:
-            "radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, rgba(239, 68, 68, 0.15) 45%, rgba(180, 83, 9, 0) 80%)",
+            "radial-gradient(circle, rgba(245, 158, 11, 0.45) 0%, rgba(217, 119, 6, 0.18) 50%, transparent 75%)",
         }}
       />
 
       <svg
         width={dimensions.width}
         height={dimensions.height}
-        viewBox="-20 -25 240 195"
+        viewBox="0 0 200 155"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="relative z-10 max-w-full h-auto filter drop-shadow-[0_6px_20px_rgba(180,83,9,0.22)]"
+        className="relative z-10 max-w-full h-auto"
       >
         <defs>
-          {/* Flame Gradient */}
-          <radialGradient id="flameCore" cx="50%" cy="80%" r="80%" fx="50%" fy="80%">
-            <stop offset="0%" stopColor="#FFFFFF" />
-            <stop offset="25%" stopColor="#FEF08A" />
-            <stop offset="60%" stopColor="#F59E0B" />
-            <stop offset="100%" stopColor="#DC2626" stopOpacity="0.85" />
+          {/* Authentic Mitti (Clay) Shading */}
+          <linearGradient id="mittiBody" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#9A3412" />
+            <stop offset="35%" stopColor="#7C2D12" />
+            <stop offset="75%" stopColor="#5B2109" />
+            <stop offset="100%" stopColor="#3D1404" />
+          </linearGradient>
+
+          {/* Mitti Highlight for 3D curved bowl depth */}
+          <radialGradient id="mittiHighlight" cx="50%" cy="30%" r="60%">
+            <stop offset="0%" stopColor="#C2410C" stopOpacity="0.8" />
+            <stop offset="60%" stopColor="#7C2D12" stopOpacity="0" />
           </radialGradient>
 
-          {/* Diya Clay Gradient */}
-          <linearGradient id="clayGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#A16207" />
-            <stop offset="40%" stopColor="#78350F" />
-            <stop offset="85%" stopColor="#451A03" />
-            <stop offset="100%" stopColor="#291102" />
+          {/* Earthen Rim & Gold Filigree */}
+          <linearGradient id="rimEngraving" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#7C2D12" />
+            <stop offset="25%" stopColor="#D97706" />
+            <stop offset="50%" stopColor="#FBBF24" />
+            <stop offset="75%" stopColor="#D97706" />
+            <stop offset="100%" stopColor="#7C2D12" />
           </linearGradient>
 
-          {/* Diya Rim Gold Accent */}
-          <linearGradient id="rimGold" x1="0%" y1="50%" x2="100%" y2="50%">
-            <stop offset="0%" stopColor="#F59E0B" />
-            <stop offset="50%" stopColor="#FDE68A" />
-            <stop offset="100%" stopColor="#D97706" />
-          </linearGradient>
-
-          {/* Oil Surface Gradient */}
-          <linearGradient id="oilSurface" x1="0%" y1="0%" x2="0%" y2="100%">
+          {/* Ghee / Mustard Oil Reservoir */}
+          <linearGradient id="oilWell" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="#B45309" />
-            <stop offset="100%" stopColor="#78350F" />
+            <stop offset="50%" stopColor="#92400E" />
+            <stop offset="100%" stopColor="#713F12" />
           </linearGradient>
+
+          {/* Flame Radiant Gradient */}
+          <radialGradient id="flameOuterGrad" cx="50%" cy="85%" r="85%">
+            <stop offset="0%" stopColor="#FFFFFF" />
+            <stop offset="20%" stopColor="#FEF08A" />
+            <stop offset="55%" stopColor="#F59E0B" />
+            <stop offset="85%" stopColor="#EA580C" />
+            <stop offset="100%" stopColor="#BE123C" stopOpacity="0" />
+          </radialGradient>
+
+          {/* Flame Core Glow */}
+          <linearGradient id="flameCoreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stopColor="#F59E0B" />
+            <stop offset="40%" stopColor="#FEF08A" />
+            <stop offset="100%" stopColor="#FFFFFF" />
+          </linearGradient>
+
+          {/* Soft Diffuse Base Contact Shadow */}
+          <radialGradient id="softGroundShadow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#451A03" stopOpacity="0.32" />
+            <stop offset="65%" stopColor="#451A03" stopOpacity="0.12" />
+            <stop offset="100%" stopColor="#451A03" stopOpacity="0" />
+          </radialGradient>
         </defs>
 
-        {/* Outer Aura / Flame Halo */}
-        <circle
-          cx="100"
-          cy="50"
-          r="44"
-          fill="url(#flameCore)"
-          opacity="0.25"
-          className="animate-pulse"
-        />
+        {/* 1. Soft Natural Contact Ground Shadow (Subtle and realistic, no harsh black) */}
+        <ellipse cx="100" cy="144" rx="64" ry="8" fill="url(#softGroundShadow)" />
 
-        {/* Diya Base Shadow */}
-        <ellipse cx="100" cy="148" rx="68" ry="10" fill="#000000" opacity="0.35" />
-
-        {/* Diya Body (Traditional curved earthen mitti vessel) */}
+        {/* 2. Diya Terracotta Clay Body (Authentic Indian Handcrafted Shape) */}
         <path
-          d="M 22 105 C 32 145, 168 145, 178 105 C 182 98, 172 95, 160 97 C 120 102, 80 102, 40 97 C 28 95, 18 98, 22 105 Z"
-          fill="url(#clayGradient)"
-          stroke="#502409"
-          strokeWidth="1.5"
+          d="M 28 106 C 36 138, 164 138, 172 106 C 176 100, 165 96, 150 98 C 118 102, 82 102, 50 98 C 35 96, 24 100, 28 106 Z"
+          fill="url(#mittiBody)"
+          stroke="#451A03"
+          strokeWidth="1.2"
+        />
+        <path
+          d="M 28 106 C 36 138, 164 138, 172 106 C 176 100, 165 96, 150 98 C 118 102, 82 102, 50 98 C 35 96, 24 100, 28 106 Z"
+          fill="url(#mittiHighlight)"
         />
 
-        {/* Diya Rim (Festive engraved earthen rim) */}
+        {/* 3. Traditional Clay Rim with Brass/Gold Accent Line */}
         <ellipse
           cx="100"
-          cy="99"
-          rx="72"
-          ry="11"
-          fill="url(#oilSurface)"
-          stroke="url(#rimGold)"
-          strokeWidth="2"
+          cy="100"
+          rx="68"
+          ry="10.5"
+          fill="url(#oilWell)"
+          stroke="url(#rimEngraving)"
+          strokeWidth="1.8"
         />
 
-        {/* Diya Spout Highlight */}
-        <path d="M 94 92 C 97 90, 103 90, 106 92 L 102 96 L 98 96 Z" fill="#451A03" />
-
-        {/* Cotton Wick */}
+        {/* 4. Fine traditional decorative notches on rim */}
         <path
-          d="M 100 93 Q 100 78, 100 68"
+          d="M 40 101 L 43 103 M 60 104 L 62 106 M 80 105 L 81 107 M 120 105 L 119 107 M 140 104 L 138 106 M 160 101 L 157 103"
+          stroke="#FDE68A"
+          strokeWidth="1"
+          strokeLinecap="round"
+          opacity="0.6"
+        />
+
+        {/* 5. Natural Cotton Wick (Ruhi Batti) */}
+        <path
+          d="M 100 95 Q 100 82, 100 74"
           stroke="#FEF3C7"
-          strokeWidth="3.5"
+          strokeWidth="3.2"
           strokeLinecap="round"
         />
         <path
-          d="M 100 68 Q 100 72, 100 75"
-          stroke="#451A03"
-          strokeWidth="3.5"
+          d="M 100 74 Q 100 77, 100 80"
+          stroke="#5B2109"
+          strokeWidth="3.2"
           strokeLinecap="round"
         />
 
-        {/* Flickering Flame Layer 1 (Outer Aura) */}
-        <path d="M 100 24 C 114 42, 118 64, 100 75 C 82 64, 86 42, 100 24 Z" fill="url(#flameCore)">
-          <animate
-            attributeName="d"
-            dur="1.8s"
-            repeatCount="indefinite"
-            values="
-              M 100 24 C 114 42, 118 64, 100 75 C 82 64, 86 42, 100 24 Z;
-              M 100 22 C 116 41, 115 65, 100 75 C 84 63, 85 41, 100 22 Z;
-              M 99 26 C 112 43, 119 63, 100 75 C 83 65, 87 43, 99 26 Z;
-              M 100 24 C 114 42, 118 64, 100 75 C 82 64, 86 42, 100 24 Z
-            "
+        {/* 6. Sacred Living Flame (Animated breathing with warm incandescent gradients) */}
+        <g className="sacred-flame-group">
+          {/* Flame Outer Soft Luminous Aura */}
+          <path
+            d="M 100 24 C 116 44, 118 66, 100 76 C 82 66, 84 44, 100 24 Z"
+            fill="url(#flameOuterGrad)"
+            opacity="0.95"
           />
-        </path>
 
-        {/* Flame Inner Golden Core */}
-        <path
-          d="M 100 38 C 107 48, 109 62, 100 69 C 91 62, 93 48, 100 38 Z"
-          fill="#FEF08A"
-          opacity="0.95"
-        >
-          <animate
-            attributeName="d"
-            dur="1.4s"
-            repeatCount="indefinite"
-            values="
-              M 100 38 C 107 48, 109 62, 100 69 C 91 62, 93 48, 100 38 Z;
-              M 100 36 C 108 47, 107 63, 100 69 C 92 61, 94 47, 100 36 Z;
-              M 100 38 C 107 48, 109 62, 100 69 C 91 62, 93 48, 100 38 Z
-            "
+          {/* Flame Golden Core */}
+          <path
+            d="M 100 36 C 110 49, 111 63, 100 72 C 89 63, 90 49, 100 36 Z"
+            fill="url(#flameCoreGrad)"
+            opacity="0.98"
           />
-        </path>
 
-        {/* White Center Hotspot */}
-        <ellipse cx="100" cy="56" rx="3.5" ry="7" fill="#FFFFFF" opacity="0.9" />
-
-        {/* Gentle Multi-Color Rising Sparkles / Embers from Diya Flame */}
-        <circle
-          cx="100"
-          cy="20"
-          r="1.6"
-          fill="#FDE047"
-          style={{ animation: "flameSpark1 2.4s ease-out infinite" }}
-        />
-        <circle
-          cx="102"
-          cy="22"
-          r="1.4"
-          fill="#F43F5E"
-          style={{ animation: "flameSpark2 2.8s ease-out infinite 0.7s" }}
-        />
-        <circle
-          cx="98"
-          cy="24"
-          r="1.3"
-          fill="#10B981"
-          style={{ animation: "flameSpark3 3.1s ease-out infinite 1.4s" }}
-        />
-
-        {/* Diamond Glints around the flame */}
-        <path
-          d="M 130 30 Q 131 33 134 34 Q 131 35 130 38 Q 129 35 126 34 Q 129 33 130 30 Z"
-          fill="#FDE047"
-          style={{
-            transformOrigin: "130px 34px",
-            animation: "glintTwinkle 2.5s ease-in-out infinite",
-          }}
-        />
-        <path
-          d="M 70 34 Q 71 37 74 38 Q 71 39 70 42 Q 69 39 66 38 Q 69 37 70 34 Z"
-          fill="#F43F5E"
-          style={{
-            transformOrigin: "70px 38px",
-            animation: "glintTwinkle 2.8s ease-in-out infinite 1s",
-          }}
-        />
+          {/* Incandescent Pure White Center Hotspot */}
+          <ellipse cx="100" cy="56" rx="3.2" ry="7.5" fill="#FFFFFF" opacity="0.95" />
+        </g>
       </svg>
     </div>
   );

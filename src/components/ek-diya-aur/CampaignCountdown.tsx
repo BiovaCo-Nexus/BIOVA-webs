@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Clock, Calendar, Sparkles } from "lucide-react";
+import { Clock, Calendar, Heart } from "lucide-react";
 import { Language } from "@/lib/ek-diya-aur/types";
 
 // Official Campaign Timing
@@ -273,7 +273,7 @@ export function CampaignCountdown({
       {/* Encouraging Micro-Giving Callout */}
       <div className="mt-3 pt-3 border-t border-border/50 text-center">
         <p className="text-xs text-amber-800 dark:text-amber-300/90 font-medium flex items-center justify-center gap-1.5">
-          <Sparkles className="h-3.5 w-3.5 text-amber-500 shrink-0" />
+          <Heart className="h-3.5 w-3.5 text-amber-600 fill-amber-500/20 shrink-0" />
           <span>{labels.everyContributionCounts}</span>
         </p>
       </div>

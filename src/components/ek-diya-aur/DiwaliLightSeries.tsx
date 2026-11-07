@@ -3,163 +3,127 @@ interface DiwaliLightSeriesProps {
 }
 
 export function DiwaliLightSeries({ className = "" }: DiwaliLightSeriesProps) {
-  // Vibrant, authentic Indian Diwali incandescent fairy light colors
-  const bulbPalettes = [
-    { name: "ruby", fill: "#FF1744", glow: "rgba(255, 23, 68, 0.75)" },
-    { name: "gold", fill: "#FFB300", glow: "rgba(255, 179, 0, 0.8)" },
-    { name: "emerald", fill: "#00E676", glow: "rgba(0, 230, 118, 0.75)" },
-    { name: "saffron", fill: "#FF6D00", glow: "rgba(255, 109, 0, 0.8)" },
-    { name: "cyan", fill: "#00E5FF", glow: "rgba(0, 229, 255, 0.75)" },
-    { name: "magenta", fill: "#FF1776", glow: "rgba(255, 23, 118, 0.75)" },
-    { name: "violet", fill: "#D500F9", glow: "rgba(213, 0, 249, 0.75)" },
-    { name: "yellow", fill: "#FFEE58", glow: "rgba(255, 238, 88, 0.85)" },
+  // Authentic, dignified Indian Diwali warm incandescent tones (No jarring neon disco colors)
+  const warmPalettes = [
+    { name: "gold", fill: "#FBBF24", glow: "rgba(251, 191, 36, 0.75)" },
+    { name: "amber", fill: "#F59E0B", glow: "rgba(245, 158, 11, 0.8)" },
+    { name: "saffron", fill: "#EA580C", glow: "rgba(234, 88, 12, 0.8)" },
+    { name: "ruby", fill: "#E11D48", glow: "rgba(225, 29, 72, 0.75)" },
+    { name: "incandescent", fill: "#FEF08A", glow: "rgba(254, 240, 138, 0.85)" },
   ];
 
-  // Coordinates placed directly along the catenary wire curves
-  // Left corner garland (340px canvas)
+  // Mobile Single-Row Bulbs (Spread gracefully across a 360-unit viewBox, subtle 55px drape)
+  const mobileBulbs = [
+    { x: 30, y: 16, colorIdx: 0, delay: "0s" },
+    { x: 75, y: 26, colorIdx: 1, delay: "0.4s" },
+    { x: 125, y: 32, colorIdx: 2, delay: "0.8s" },
+    { x: 180, y: 34, colorIdx: 3, delay: "1.2s" },
+    { x: 235, y: 32, colorIdx: 0, delay: "0.3s" },
+    { x: 285, y: 26, colorIdx: 4, delay: "0.7s" },
+    { x: 330, y: 16, colorIdx: 1, delay: "1.1s" },
+  ];
+
+  // Desktop Left corner garland (340px canvas)
   const leftBulbs = [
-    // Swag 1 (Upper primary swoop)
-    { x: 22, y: 16, colorIdx: 0, delay: "0s" },
-    { x: 58, y: 34, colorIdx: 1, delay: "0.3s" },
-    { x: 100, y: 48, colorIdx: 2, delay: "0.6s" },
-    { x: 144, y: 54, colorIdx: 3, delay: "0.9s" },
-    { x: 190, y: 52, colorIdx: 4, delay: "1.2s" },
-    { x: 236, y: 44, colorIdx: 5, delay: "0.4s" },
-    { x: 282, y: 32, colorIdx: 6, delay: "0.7s" },
-    { x: 324, y: 18, colorIdx: 7, delay: "1.0s" },
-
-    // Swag 2 (Lower second droop)
-    { x: 38, y: 62, colorIdx: 3, delay: "0.2s" },
-    { x: 80, y: 88, colorIdx: 0, delay: "0.5s" },
-    { x: 124, y: 100, colorIdx: 1, delay: "0.8s" },
-    { x: 170, y: 94, colorIdx: 2, delay: "1.1s" },
-    { x: 212, y: 78, colorIdx: 5, delay: "1.4s" },
-
-    // Swag 3 (Corner accent drops)
-    { x: 16, y: 86, colorIdx: 4, delay: "0.1s" },
-    { x: 52, y: 122, colorIdx: 6, delay: "0.6s" },
-    { x: 92, y: 138, colorIdx: 7, delay: "1.3s" },
+    { x: 25, y: 16, colorIdx: 0, delay: "0s" },
+    { x: 65, y: 34, colorIdx: 1, delay: "0.3s" },
+    { x: 110, y: 46, colorIdx: 2, delay: "0.6s" },
+    { x: 160, y: 52, colorIdx: 3, delay: "0.9s" },
+    { x: 210, y: 48, colorIdx: 4, delay: "1.2s" },
+    { x: 260, y: 38, colorIdx: 0, delay: "0.4s" },
+    { x: 305, y: 22, colorIdx: 1, delay: "0.7s" },
+    // Swag 2
+    { x: 45, y: 64, colorIdx: 2, delay: "0.2s" },
+    { x: 95, y: 88, colorIdx: 0, delay: "0.5s" },
+    { x: 145, y: 96, colorIdx: 3, delay: "0.8s" },
+    { x: 195, y: 88, colorIdx: 1, delay: "1.1s" },
+    // Swag 3
+    { x: 30, y: 92, colorIdx: 4, delay: "0.1s" },
+    { x: 70, y: 124, colorIdx: 1, delay: "0.6s" },
   ];
 
-  // Right corner garland (340px canvas)
+  // Desktop Right corner garland (340px canvas)
   const rightBulbs = [
-    // Swag 1 (Upper primary swoop)
-    { x: 22, y: 16, colorIdx: 2, delay: "0.2s" },
-    { x: 58, y: 34, colorIdx: 3, delay: "0.5s" },
-    { x: 100, y: 48, colorIdx: 0, delay: "0.8s" },
-    { x: 144, y: 54, colorIdx: 5, delay: "1.1s" },
-    { x: 190, y: 52, colorIdx: 1, delay: "0.3s" },
-    { x: 236, y: 44, colorIdx: 4, delay: "0.7s" },
-    { x: 282, y: 32, colorIdx: 7, delay: "1.0s" },
-    { x: 324, y: 18, colorIdx: 6, delay: "1.3s" },
-
-    // Swag 2 (Lower second droop)
-    { x: 38, y: 62, colorIdx: 1, delay: "0.4s" },
-    { x: 80, y: 88, colorIdx: 4, delay: "0.7s" },
-    { x: 124, y: 100, colorIdx: 6, delay: "1.0s" },
-    { x: 170, y: 94, colorIdx: 0, delay: "0.2s" },
-    { x: 212, y: 78, colorIdx: 2, delay: "0.6s" },
-
-    // Swag 3 (Corner accent drops)
-    { x: 16, y: 86, colorIdx: 5, delay: "0.9s" },
-    { x: 52, y: 122, colorIdx: 3, delay: "1.2s" },
-    { x: 92, y: 138, colorIdx: 1, delay: "0.1s" },
+    { x: 25, y: 16, colorIdx: 2, delay: "0.2s" },
+    { x: 65, y: 34, colorIdx: 0, delay: "0.5s" },
+    { x: 110, y: 46, colorIdx: 3, delay: "0.8s" },
+    { x: 160, y: 52, colorIdx: 1, delay: "1.1s" },
+    { x: 210, y: 48, colorIdx: 4, delay: "0.3s" },
+    { x: 260, y: 38, colorIdx: 2, delay: "0.7s" },
+    { x: 305, y: 22, colorIdx: 0, delay: "1.0s" },
+    // Swag 2
+    { x: 45, y: 64, colorIdx: 1, delay: "0.4s" },
+    { x: 95, y: 88, colorIdx: 4, delay: "0.7s" },
+    { x: 145, y: 96, colorIdx: 0, delay: "1.0s" },
+    { x: 195, y: 88, colorIdx: 3, delay: "0.2s" },
+    // Swag 3
+    { x: 30, y: 92, colorIdx: 0, delay: "0.9s" },
+    { x: 70, y: 124, colorIdx: 2, delay: "1.2s" },
   ];
 
   return (
     <div
-      className={`absolute inset-x-0 top-0 pointer-events-none select-none overflow-hidden z-20 ${className}`}
-      style={{ height: "185px" }}
+      className={`absolute inset-x-0 top-0 pointer-events-none select-none overflow-hidden z-10 ${className}`}
       aria-hidden="true"
     >
       <style>{`
-        /* Authentic Indian Diwali Fairy Light Breathing Animation */
-        @keyframes diwaliBulbBreathe {
+        @keyframes diwaliWarmGlow {
           0%, 100% {
-            opacity: 0.78;
-            filter: brightness(0.95);
+            opacity: 0.85;
+            filter: brightness(0.96);
           }
           50% {
             opacity: 1;
-            filter: brightness(1.35) drop-shadow(0 0 8px currentColor);
+            filter: brightness(1.25) drop-shadow(0 0 8px currentColor);
           }
         }
-        .diwali-bulb-node {
-          animation: diwaliBulbBreathe 2.2s ease-in-out infinite;
+        .diwali-bulb-warm {
+          animation: diwaliWarmGlow 2.4s ease-in-out infinite;
         }
       `}</style>
 
       {/* ============================================================ */}
-      {/* LEFT CORNER FESTIVE LIGHT SERIES (Hanging Diwali Ladi)      */}
+      {/* 1. MOBILE FESTIVE DRAPE (< 640px)                             */}
+      {/* A single, graceful top wire swag that never tangles or clutters*/}
       {/* ============================================================ */}
-      <div className="absolute top-0 left-0 w-[320px] sm:w-[380px] h-[180px]">
+      <div className="block sm:hidden w-full h-[65px]">
         <svg
-          viewBox="0 0 340 160"
+          viewBox="0 0 360 55"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="w-full h-full overflow-visible"
+          preserveAspectRatio="none"
         >
-          {/* Main Dark Catenary Wiring (Festive Black/Brown Wire) */}
-          {/* Swag 1 */}
+          {/* Elegant single wire drape */}
           <path
-            d="M -10 -5 Q 60 55, 160 54 T 340 10"
+            d="M 0 5 Q 180 48, 360 5"
             stroke="#1E293B"
-            strokeWidth="1.8"
+            strokeWidth="1.2"
             strokeLinecap="round"
-            className="opacity-80 dark:opacity-90"
-          />
-          {/* Swag 2 */}
-          <path
-            d="M -10 35 Q 50 105, 140 98 T 240 65"
-            stroke="#1E293B"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            className="opacity-75 dark:opacity-85"
-          />
-          {/* Swag 3 (Corner accent) */}
-          <path
-            d="M -10 65 Q 30 138, 100 138"
-            stroke="#1E293B"
-            strokeWidth="1.4"
-            strokeLinecap="round"
-            className="opacity-70 dark:opacity-80"
+            className="opacity-70 dark:opacity-85"
           />
 
-          {/* Hanging Multi-Color Fairy Light Bulbs */}
-          {leftBulbs.map((b, idx) => {
-            const color = bulbPalettes[b.colorIdx];
+          {mobileBulbs.map((b, idx) => {
+            const color = warmPalettes[b.colorIdx];
             return (
               <g
-                key={`left-bulb-${idx}`}
+                key={`mob-bulb-${idx}`}
                 transform={`translate(${b.x}, ${b.y})`}
-                className="diwali-bulb-node"
+                className="diwali-bulb-warm"
                 style={{
                   color: color.fill,
                   animationDelay: b.delay,
                 }}
               >
-                {/* 1. Wire Hook/Drop Stem */}
-                <line x1="0" y1="-6" x2="0" y2="0" stroke="#1E293B" strokeWidth="1.5" />
-
-                {/* 2. Dark Socket Base */}
-                <rect x="-3" y="-1" width="6" height="4" rx="1" fill="#0F172A" />
-
-                {/* 3. Outer Luminous Halo Glow (Large visible glow) */}
-                <circle cx="0" cy="8" r="14" fill={color.fill} opacity="0.32" />
-                <circle cx="0" cy="8" r="9" fill={color.fill} opacity="0.45" />
-
-                {/* 4. Glass Bulb Body (Teardrop shape) */}
+                <line x1="0" y1="-5" x2="0" y2="0" stroke="#1E293B" strokeWidth="1.2" />
+                <rect x="-2" y="-1" width="4" height="3" rx="0.8" fill="#0F172A" />
+                <circle cx="0" cy="6" r="8" fill={color.fill} opacity="0.35" />
                 <path
-                  d="M -4.5 2 C -6.5 6.5, -6.5 10.5, 0 15 C 6.5 10.5, 6.5 6.5, 4.5 2 Z"
+                  d="M -3 1 C -4.5 4.5, -4.5 7.5, 0 11 C 4.5 7.5, 4.5 4.5, 3 1 Z"
                   fill={color.fill}
                   opacity="0.95"
                 />
-
-                {/* 5. Incandescent White Hotspot / Filament */}
-                <circle cx="0" cy="7" r="2" fill="#FFFFFF" opacity="0.95" />
-
-                {/* 6. Gloss Specular Reflection Highlight */}
-                <ellipse cx="-1.5" cy="5" rx="1" ry="2" fill="#FFFFFF" opacity="0.6" />
+                <circle cx="0" cy="5" r="1.4" fill="#FFFFFF" opacity="0.95" />
               </g>
             );
           })}
@@ -167,79 +131,123 @@ export function DiwaliLightSeries({ className = "" }: DiwaliLightSeriesProps) {
       </div>
 
       {/* ============================================================ */}
-      {/* RIGHT CORNER FESTIVE LIGHT SERIES (Hanging Diwali Ladi)     */}
+      {/* 2. TABLET/DESKTOP CORNER FESTOONS (>= 640px)                 */}
+      {/* Left and Right corner framing without crowding center text    */}
       {/* ============================================================ */}
-      <div className="absolute top-0 right-0 w-[320px] sm:w-[380px] h-[180px] scale-x-[-1]">
-        <svg
-          viewBox="0 0 340 160"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full overflow-visible"
-        >
-          {/* Swag 1 */}
-          <path
-            d="M -10 -5 Q 60 55, 160 54 T 340 10"
-            stroke="#1E293B"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            className="opacity-80 dark:opacity-90"
-          />
-          {/* Swag 2 */}
-          <path
-            d="M -10 35 Q 50 105, 140 98 T 240 65"
-            stroke="#1E293B"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            className="opacity-75 dark:opacity-85"
-          />
-          {/* Swag 3 */}
-          <path
-            d="M -10 65 Q 30 138, 100 138"
-            stroke="#1E293B"
-            strokeWidth="1.4"
-            strokeLinecap="round"
-            className="opacity-70 dark:opacity-80"
-          />
+      <div className="hidden sm:block h-[160px] relative">
+        {/* Left Corner */}
+        <div className="absolute top-0 left-0 w-[300px] md:w-[340px] h-[150px]">
+          <svg
+            viewBox="0 0 340 150"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-full overflow-visible"
+          >
+            <path
+              d="M -10 -5 Q 60 55, 160 52 T 340 8"
+              stroke="#1E293B"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              className="opacity-75 dark:opacity-85"
+            />
+            <path
+              d="M -10 35 Q 50 100, 140 94 T 240 60"
+              stroke="#1E293B"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              className="opacity-70 dark:opacity-80"
+            />
+            <path
+              d="M -10 65 Q 25 125, 90 125"
+              stroke="#1E293B"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+              className="opacity-65 dark:opacity-75"
+            />
 
-          {/* Hanging Multi-Color Fairy Light Bulbs */}
-          {rightBulbs.map((b, idx) => {
-            const color = bulbPalettes[b.colorIdx];
-            return (
-              <g
-                key={`right-bulb-${idx}`}
-                transform={`translate(${b.x}, ${b.y})`}
-                className="diwali-bulb-node"
-                style={{
-                  color: color.fill,
-                  animationDelay: b.delay,
-                }}
-              >
-                {/* 1. Wire Hook/Drop Stem */}
-                <line x1="0" y1="-6" x2="0" y2="0" stroke="#1E293B" strokeWidth="1.5" />
+            {leftBulbs.map((b, idx) => {
+              const color = warmPalettes[b.colorIdx];
+              return (
+                <g
+                  key={`left-bulb-${idx}`}
+                  transform={`translate(${b.x}, ${b.y})`}
+                  className="diwali-bulb-warm"
+                  style={{
+                    color: color.fill,
+                    animationDelay: b.delay,
+                  }}
+                >
+                  <line x1="0" y1="-6" x2="0" y2="0" stroke="#1E293B" strokeWidth="1.4" />
+                  <rect x="-2.5" y="-1" width="5" height="3.5" rx="1" fill="#0F172A" />
+                  <circle cx="0" cy="7" r="11" fill={color.fill} opacity="0.32" />
+                  <path
+                    d="M -4 2 C -5.5 5.5, -5.5 9, 0 13 C 5.5 9, 5.5 5.5, 4 2 Z"
+                    fill={color.fill}
+                    opacity="0.95"
+                  />
+                  <circle cx="0" cy="6" r="1.8" fill="#FFFFFF" opacity="0.95" />
+                </g>
+              );
+            })}
+          </svg>
+        </div>
 
-                {/* 2. Dark Socket Base */}
-                <rect x="-3" y="-1" width="6" height="4" rx="1" fill="#0F172A" />
+        {/* Right Corner */}
+        <div className="absolute top-0 right-0 w-[300px] md:w-[340px] h-[150px] scale-x-[-1]">
+          <svg
+            viewBox="0 0 340 150"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-full overflow-visible"
+          >
+            <path
+              d="M -10 -5 Q 60 55, 160 52 T 340 8"
+              stroke="#1E293B"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              className="opacity-75 dark:opacity-85"
+            />
+            <path
+              d="M -10 35 Q 50 100, 140 94 T 240 60"
+              stroke="#1E293B"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              className="opacity-70 dark:opacity-80"
+            />
+            <path
+              d="M -10 65 Q 25 125, 90 125"
+              stroke="#1E293B"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+              className="opacity-65 dark:opacity-75"
+            />
 
-                {/* 3. Outer Luminous Halo Glow */}
-                <circle cx="0" cy="8" r="14" fill={color.fill} opacity="0.32" />
-                <circle cx="0" cy="8" r="9" fill={color.fill} opacity="0.45" />
-
-                {/* 4. Glass Bulb Body (Teardrop shape) */}
-                <path
-                  d="M -4.5 2 C -6.5 6.5, -6.5 10.5, 0 15 C 6.5 10.5, 6.5 6.5, 4.5 2 Z"
-                  fill={color.fill}
-                  opacity="0.95"
-                />
-
-                {/* 5. Incandescent White Hotspot / Filament */}
-                <circle cx="0" cy="7" r="2" fill="#FFFFFF" opacity="0.95" />
-
-                {/* 6. Gloss Specular Reflection Highlight */}
-                <ellipse cx="-1.5" cy="5" rx="1" ry="2" fill="#FFFFFF" opacity="0.6" />
-              </g>
-            );
-          })}
-        </svg>
+            {rightBulbs.map((b, idx) => {
+              const color = warmPalettes[b.colorIdx];
+              return (
+                <g
+                  key={`right-bulb-${idx}`}
+                  transform={`translate(${b.x}, ${b.y})`}
+                  className="diwali-bulb-warm"
+                  style={{
+                    color: color.fill,
+                    animationDelay: b.delay,
+                  }}
+                >
+                  <line x1="0" y1="-6" x2="0" y2="0" stroke="#1E293B" strokeWidth="1.4" />
+                  <rect x="-2.5" y="-1" width="5" height="3.5" rx="1" fill="#0F172A" />
+                  <circle cx="0" cy="7" r="11" fill={color.fill} opacity="0.32" />
+                  <path
+                    d="M -4 2 C -5.5 5.5, -5.5 9, 0 13 C 5.5 9, 5.5 5.5, 4 2 Z"
+                    fill={color.fill}
+                    opacity="0.95"
+                  />
+                  <circle cx="0" cy="6" r="1.8" fill="#FFFFFF" opacity="0.95" />
+                </g>
+              );
+            })}
+          </svg>
+        </div>
       </div>
     </div>
   );

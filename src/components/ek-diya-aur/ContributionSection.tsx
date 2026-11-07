@@ -3,7 +3,7 @@ import {
   Heart,
   CheckCircle2,
   Lock,
-  Sparkles,
+  Flame,
   AlertCircle,
   FileCheck,
   Calendar,
@@ -358,9 +358,9 @@ export function ContributionSection({
               {/* Step 1: Contribution Amount */}
               <div>
                 {/* Welcoming Micro-Giving Encouragement Banner */}
-                <div className="mb-5 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-emerald-500/10 border border-amber-500/30 p-3.5 sm:p-4 flex items-center gap-3">
-                  <Sparkles className="h-4 w-4 text-amber-600 shrink-0" />
-                  <p className="text-xs sm:text-[13px] font-medium text-amber-950 dark:text-amber-200 leading-relaxed">
+                <div className="mb-5 rounded-2xl bg-amber-500/5 border border-amber-500/20 p-3.5 sm:p-4 flex items-center gap-3">
+                  <Heart className="h-4 w-4 text-amber-600 shrink-0 fill-amber-500/20" />
+                  <p className="text-xs sm:text-[13px] font-medium text-foreground leading-relaxed">
                     {t.form.microGivingCallout}
                   </p>
                 </div>
@@ -425,7 +425,7 @@ export function ContributionSection({
 
                 {/* Impact Indicator */}
                 <div className="mt-4 rounded-2xl bg-[color:var(--surface)] border border-border p-3.5 flex items-start gap-2.5 text-xs text-muted-foreground">
-                  <Sparkles className="h-4 w-4 shrink-0 text-amber-600 mt-0.5" />
+                  <Flame className="h-4 w-4 shrink-0 text-amber-600 mt-0.5" />
                   <span>
                     {formData.amount === 21 && t.form.impactHint21}
                     {formData.amount === 51 && t.form.impactHint51}
