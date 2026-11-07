@@ -4,11 +4,11 @@ export default async function handler(req, res) {
   }
 
   const { toEmail, toName, subject, htmlContent } = req.body;
-  const BREVO_API_KEY = process.env.BREVO_API_KEY;
+  const BREVO_API_KEY = (process.env.BREVO_API_KEY || process.env.VITE_BREVO_API_KEY || "").trim();
 
   if (!BREVO_API_KEY) {
-    console.error("Missing BREVO_API_KEY in environment variables");
-    return res.status(500).json({ error: "Missing BREVO_API_KEY" });
+    console.error("Missing BREVO_API_KEY or VITE_BREVO_API_KEY in environment variables");
+    return res.status(500).json({ error: "Missing BREVO_API_KEY or VITE_BREVO_API_KEY" });
   }
 
   let toArray = [];
@@ -19,7 +19,8 @@ export default async function handler(req, res) {
   }
 
   const emailData = {
-    sender: { name: "BiovaCo", email: "no-reply@biovaco.in" },
+    sender: { name: "BiovaCo Nexus", email: "no-reply@biovaco.in" },
+    replyTo: { name: "BiovaCo Nexus Support", email: "hello@biovaco.in" },
     to: toArray,
     subject: subject,
     htmlContent: htmlContent,

@@ -161,14 +161,19 @@ export default async function handler(req, res) {
   const randomQuote = HELPING_QUOTES[Math.floor(Math.random() * HELPING_QUOTES.length)];
 
   // Send festive acknowledgement email via Brevo
-  const brevoKey =
+  const brevoKey = (
     process.env.BREVO_API_KEY ||
-    "xsmtpsib-5670cde0d1a9f4ae5c0a06dcceb5b2bb364341873e47fea70df78352ec552cce-sDpjsMM4fBvsxEky";
+    process.env.VITE_BREVO_API_KEY ||
+    ""
+  ).trim();
+
+  let emailSent = false;
 
   if (brevoKey && email) {
     try {
       const emailPayload = {
         sender: { name: "BiovaCo Nexus", email: "no-reply@biovaco.in" },
+        replyTo: { name: "BiovaCo Nexus Support", email: "hello@biovaco.in" },
         to: [{ email: email, name: fullName }],
         subject: "🪔 Happy Diwali! Contribution Confirmation – Ek Diya Aur 2026",
         htmlContent: `
@@ -271,7 +276,7 @@ export default async function handler(req, res) {
         `,
       };
 
-      await fetch("https://api.brevo.com/v3/smtp/email", {
+      const mailRes = await fetch("https://api.brevo.com/v3/smtp/email", {
         method: "POST",
         headers: {
           accept: "application/json",
@@ -280,9 +285,19 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify(emailPayload),
       });
+
+      if (!mailRes.ok) {
+        const mailErr = await mailRes.text();
+        console.error("Brevo mail dispatch failed (status " + mailRes.status + "):", mailErr);
+      } else {
+        emailSent = true;
+        console.log("Confirmation email successfully sent via Brevo from no-reply@biovaco.in to:", email);
+      }
     } catch (mailErr) {
-      console.warn("Brevo mail dispatch notice:", mailErr);
+      console.warn("Brevo mail dispatch network exception:", mailErr);
     }
+  } else {
+    console.warn("Skipping Brevo email: missing brevoKey or email address", { hasKey: Boolean(brevoKey), hasEmail: Boolean(email) });
   }
 
   return res.status(200).json({
@@ -292,5 +307,6 @@ export default async function handler(req, res) {
     grossAmount: grossAmount,
     gatewayFee: gatewayFee,
     paymentId: razorpayPaymentId,
+    emailSent: emailSent,
   });
 }

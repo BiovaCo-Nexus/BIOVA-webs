@@ -201,12 +201,16 @@ export async function submitContribution(
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
+    const data = await res.json().catch(() => ({}));
     if (res.ok) {
-      const data = await res.json();
       return { success: true, id: data.id || recordId };
     }
-  } catch {
-    // Backend endpoint offline, fallback to direct verified Supabase write below
+    // If backend rejected with 400 (unverified) or 403 (deadline), do not fallback
+    if (res.status === 400 || res.status === 403) {
+      return { success: false, id: "", error: data.error || "Contribution could not be verified." };
+    }
+  } catch (netErr) {
+    console.warn("Backend endpoint fetch error, attempting verified database sync:", netErr);
   }
 
   // 2. Direct insert to Supabase diya_contributions table
