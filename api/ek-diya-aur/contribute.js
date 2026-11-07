@@ -160,18 +160,25 @@ export default async function handler(req, res) {
   // Select a heartfelt random quote about helping
   const randomQuote = HELPING_QUOTES[Math.floor(Math.random() * HELPING_QUOTES.length)];
 
-  // Send festive acknowledgement email via Brevo
+  // Send festive acknowledgement email to Donor AND notification to Admin via Brevo
   const brevoKey = (
     process.env.BREVO_API_KEY ||
     process.env.VITE_BREVO_API_KEY ||
     ""
   ).trim();
 
+  const ADMIN_EMAIL = (
+    process.env.ADMIN_NOTIFICATION_EMAIL ||
+    "nakulmundhada23@gmail.com"
+  ).trim();
+
   let emailSent = false;
+  let adminAlertSent = false;
 
   if (brevoKey && email) {
     try {
-      const emailPayload = {
+      // 1. Donor Official Receipt Email Payload
+      const donorEmailPayload = {
         sender: { name: "BiovaCo Nexus", email: "no-reply@biovaco.in" },
         replyTo: { name: "BiovaCo Nexus Support", email: "hello@biovaco.in" },
         to: [{ email: email, name: fullName }],
@@ -276,23 +283,181 @@ export default async function handler(req, res) {
         `,
       };
 
-      const mailRes = await fetch("https://api.brevo.com/v3/smtp/email", {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          "api-key": brevoKey,
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(emailPayload),
-      });
+      // 2. Admin Alert Email Payload (Sent to nakulmundhada23@gmail.com)
+      const adminEmailPayload = {
+        sender: { name: "BiovaCo Nexus", email: "no-reply@biovaco.in" },
+        replyTo: { name: fullName, email: email },
+        to: [{ email: ADMIN_EMAIL, name: "Nakul Mundhada" }],
+        subject: `🎉 New Ek Diya Aur Contribution: ₹${amount.toLocaleString("en-IN")} from ${fullName}`,
+        htmlContent: `
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>New Contribution Alert</title>
+          </head>
+          <body style="margin: 0; padding: 0; background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b;">
+            <div style="max-width: 620px; margin: 24px auto; background-color: #ffffff; border-radius: 18px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.06);">
+              
+              <!-- Admin Banner -->
+              <div style="background-color: #032E63; padding: 28px 24px; color: #ffffff;">
+                <div style="display: inline-block; background-color: #08A04B; color: #ffffff; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px; border-radius: 9999px; margin-bottom: 12px;">
+                  CONFIRMED PAYMENT RECEIVED
+                </div>
+                <h1 style="margin: 0; font-size: 24px; font-weight: 600; color: #ffffff;">
+                  New Contribution: ₹${amount.toLocaleString("en-IN")}
+                </h1>
+                <p style="margin: 6px 0 0 0; font-size: 13px; color: #cbd5e1;">
+                  Ek Diya Aur 2026 · BiovaCo Nexus Diwali Initiative
+                </p>
+              </div>
 
-      if (!mailRes.ok) {
-        const mailErr = await mailRes.text();
-        console.error("Brevo mail dispatch failed (status " + mailRes.status + "):", mailErr);
-      } else {
+              <!-- Main Admin Info -->
+              <div style="padding: 28px 24px;">
+                
+                <!-- Amount Highlight Box -->
+                <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px; margin-bottom: 24px; text-align: center;">
+                  <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b; font-weight: 600;">Net Family Kit Fund</div>
+                  <div style="font-size: 32px; font-weight: 700; color: #032E63; margin: 4px 0;">₹${amount.toLocaleString("en-IN")}</div>
+                  <div style="font-size: 12px; color: #059669; font-weight: 600;">+ ₹${gatewayFee} (2% Gateway) = Total ₹${grossAmount.toLocaleString("en-IN")} Paid</div>
+                </div>
+
+                <!-- Contributor Details Table -->
+                <h3 style="margin: 0 0 12px 0; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #032E63; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px;">
+                  👤 Contributor Details
+                </h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 24px;">
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b; width: 38%;">Full Name:</td>
+                    <td style="padding: 8px 0; font-weight: 600; color: #0f172a;">${fullName} ${isAnonymous ? '<span style="color: #f59e0b; font-size: 11px;">(Wants Anonymous on Wall)</span>' : ''}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b;">Email Address:</td>
+                    <td style="padding: 8px 0; font-weight: 600; color: #0f172a;"><a href="mailto:${email}" style="color: #032E63; text-decoration: underline;">${email}</a></td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b;">WhatsApp / Phone:</td>
+                    <td style="padding: 8px 0; font-weight: 600; color: #0f172a;">
+                      ${whatsapp ? `<a href="https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}" style="color: #059669; text-decoration: none; font-weight: 600;">${whatsapp} 💬</a>` : '<span style="color: #94a3b8;">Not provided</span>'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b;">City / Location:</td>
+                    <td style="padding: 8px 0; font-weight: 600; color: #0f172a;">${city || '<span style="color: #94a3b8;">Not provided</span>'}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b;">Age Group:</td>
+                    <td style="padding: 8px 0; font-weight: 600; color: #0f172a;">${ageRange || '<span style="color: #94a3b8;">Not provided</span>'}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b;">Personal Message / Reason:</td>
+                    <td style="padding: 8px 0; font-style: italic; color: #334155;">"${reason || 'No message provided'}"</td>
+                  </tr>
+                </table>
+
+                <!-- Payment & Verification Table -->
+                <h3 style="margin: 0 0 12px 0; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #032E63; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px;">
+                  💳 Payment & Verification Details
+                </h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 24px;">
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b; width: 38%;">Receipt Reference ID:</td>
+                    <td style="padding: 8px 0; font-family: monospace; font-weight: 600; color: #0f172a;">${recordId}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b;">Razorpay Payment ID:</td>
+                    <td style="padding: 8px 0; font-family: monospace; font-weight: 600; color: #059669;">${razorpayPaymentId}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b;">Razorpay Order ID:</td>
+                    <td style="padding: 8px 0; font-family: monospace; color: #64748b;">${razorpayOrderId || "Direct Checkout"}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b;">Display on Wall:</td>
+                    <td style="padding: 8px 0; font-weight: 600; color: #0f172a;">${showOnWall ? "Yes (Public Supporter Wall)" : "No (Private)"}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b;">Display Amount on Wall:</td>
+                    <td style="padding: 8px 0; font-weight: 600; color: #0f172a;">${showAmount ? "Yes" : "Hidden / Amount Private"}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b;">Email Updates Consent:</td>
+                    <td style="padding: 8px 0; font-weight: 600; color: #0f172a;">${consentEmail ? "Yes" : "No"}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b;">WhatsApp Updates Consent:</td>
+                    <td style="padding: 8px 0; font-weight: 600; color: #0f172a;">${consentWhatsapp ? "Yes" : "No"}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b;">Time (IST):</td>
+                    <td style="padding: 8px 0; color: #64748b;">${new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })} IST</td>
+                  </tr>
+                </table>
+
+                <!-- Action Links for Admin -->
+                <div style="margin-top: 20px; padding-top: 18px; border-top: 1px solid #e2e8f0;">
+                  <a href="https://dashboard.razorpay.com" style="display: inline-block; background-color: #032E63; color: #ffffff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-size: 12px; font-weight: 600;">
+                    Open Razorpay Dashboard →
+                  </a>
+                  <a href="https://biovaco.in/ek-diya-aur#supporters" style="display: inline-block; background-color: #f1f5f9; color: #0f172a; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-size: 12px; font-weight: 600; margin-left: 8px;">
+                    View Live Campaign Wall ↗
+                  </a>
+                </div>
+
+              </div>
+
+              <!-- Admin Footer -->
+              <div style="background-color: #f8fafc; padding: 14px 24px; border-top: 1px solid #e2e8f0; font-size: 11px; color: #94a3b8; text-align: center;">
+                BiovaCo Nexus Pvt. Ltd. · Automated Admin Notification Service · <a href="https://biovaco.in" style="color: #94a3b8;">biovaco.in</a>
+              </div>
+
+            </div>
+          </body>
+          </html>
+        `,
+      };
+
+      // Dispatch BOTH emails concurrently via Brevo
+      const [donorRes, adminRes] = await Promise.allSettled([
+        fetch("https://api.brevo.com/v3/smtp/email", {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+            "api-key": brevoKey,
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(donorEmailPayload),
+        }),
+        fetch("https://api.brevo.com/v3/smtp/email", {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+            "api-key": brevoKey,
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(adminEmailPayload),
+        }),
+      ]);
+
+      // Check Donor Email status
+      if (donorRes.status === "fulfilled" && donorRes.value.ok) {
         emailSent = true;
-        console.log("Confirmation email successfully sent via Brevo from no-reply@biovaco.in to:", email);
+        console.log("Donor confirmation email sent successfully via Brevo to:", email);
+      } else {
+        const errText = donorRes.status === "fulfilled" ? await donorRes.value.text() : donorRes.reason;
+        console.error("Brevo donor email dispatch failed:", errText);
       }
+
+      // Check Admin Alert status
+      if (adminRes.status === "fulfilled" && adminRes.value.ok) {
+        adminAlertSent = true;
+        console.log("Admin alert email sent successfully via Brevo to:", ADMIN_EMAIL);
+      } else {
+        const errText = adminRes.status === "fulfilled" ? await adminRes.value.text() : adminRes.reason;
+        console.error("Brevo admin email dispatch failed:", errText);
+      }
+
     } catch (mailErr) {
       console.warn("Brevo mail dispatch network exception:", mailErr);
     }
@@ -308,5 +473,6 @@ export default async function handler(req, res) {
     gatewayFee: gatewayFee,
     paymentId: razorpayPaymentId,
     emailSent: emailSent,
+    adminAlertSent: adminAlertSent,
   });
 }
