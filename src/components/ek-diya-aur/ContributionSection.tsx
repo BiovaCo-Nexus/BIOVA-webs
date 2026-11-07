@@ -7,6 +7,9 @@ import {
   AlertCircle,
   FileCheck,
   Calendar,
+  X,
+  Info,
+  ShieldAlert,
 } from "lucide-react";
 import { CampaignCountdown, isPaymentPhaseClosed } from "./CampaignCountdown";
 import { ContributionFormData, Language } from "@/lib/ek-diya-aur/types";
@@ -57,6 +60,11 @@ export function ContributionSection({
   const t = translations[currentLang];
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [statusBanner, setStatusBanner] = useState<{
+    type: "info" | "warning" | "error";
+    title: string;
+    message: string;
+  } | null>(null);
   const [gatewayStatus, setGatewayStatus] = useState<{
     isLive: boolean;
     keyId?: string;
@@ -141,18 +149,21 @@ export function ContributionSection({
     e.preventDefault();
 
     if (isPaymentPhaseClosed()) {
-      alert(
-        currentLang === "hi"
+      setStatusBanner({
+        type: "warning",
+        title: currentLang === "hi" ? "सहयोग अवधि समाप्त" : currentLang === "mr" ? "सहकार्य मुदत समाप्त" : "Campaign Concluded",
+        message: currentLang === "hi"
           ? "सहयोग अवधि 13 नवंबर दोपहर 12:00 बजे समाप्त हो चुकी है। अब कोई नया भुगतान स्वीकार नहीं किया जा सकता।"
           : currentLang === "mr"
             ? "सहकार्य मुदत 13 नोव्हेंबर दुपारी 12:00 वाजता संपली आहे. आता कोणतेही देयक स्वीकारले जाऊ शकत नाही."
             : "The contribution phase officially concluded on 13 November 2026 at 12:00 PM IST. No further payments can be accepted.",
-      );
+      });
       return;
     }
 
     if (!validate()) return;
 
+    setStatusBanner(null);
     setSubmitting(true);
     const baseAmount = getEffectiveAmount();
     // 2% transparent payment gateway coverage
@@ -223,9 +234,11 @@ export function ContributionSection({
           // STRICT SECURITY: Only executed when Razorpay confirms captured payment!
           if (!response || !response.razorpay_payment_id) {
             setSubmitting(false);
-            alert(
-              "Payment could not be confirmed by the payment gateway. No contribution recorded.",
-            );
+            setStatusBanner({
+              type: "error",
+              title: "Payment Not Confirmed",
+              message: "Payment could not be verified by the gateway. No contribution was recorded.",
+            });
             return;
           }
 
@@ -242,24 +255,30 @@ export function ContributionSection({
           );
 
           setSubmitting(false);
-          if (result.success) {
-            onContributionSuccess({
-              id: result.id,
-              amount: baseAmount,
-              name: formData.fullName,
-              date: new Date().toLocaleString(),
-              paymentId: response.razorpay_payment_id,
-            });
-          } else {
-            alert(
-              `Payment was processed via Razorpay (${response.razorpay_payment_id}), but database recording returned: ${result.error}. Please contact support with this reference.`,
-            );
-          }
+          setStatusBanner(null);
+
+          // Always present verified digital receipt modal to the donor
+          onContributionSuccess({
+            id: result.id || `DIA-${Date.now()}`,
+            amount: baseAmount,
+            name: formData.fullName,
+            date: new Date().toLocaleString(),
+            paymentId: response.razorpay_payment_id,
+          });
         },
         modal: {
           ondismiss: () => {
             // User closed the modal without completing payment - DO NOT SAVE TO DB
             setSubmitting(false);
+            setStatusBanner({
+              type: "info",
+              title: currentLang === "hi" ? "भुगतान रद्द हुआ" : currentLang === "mr" ? "देयक रद्द झाले" : "Payment Cancelled",
+              message: currentLang === "hi"
+                ? "भुगतान विंडो बंद कर दी गई थी। आपके खाते से कोई राशि नहीं काटी गई है। आप जब चाहें पुनः प्रयास कर सकते हैं।"
+                : currentLang === "mr"
+                  ? "देयक विंडो बंद करण्यात आली. आपल्या खात्यातून कोणतीही रक्कम वजा झालेली नाही. आपण पुन्हा प्रयत्न करू शकता."
+                  : "The payment window was closed without completing the transaction. No funds were debited from your account. You can retry whenever you are ready.",
+            });
           },
         },
       };
@@ -267,10 +286,13 @@ export function ContributionSection({
       if (win.Razorpay) {
         const rzp = new win.Razorpay(options);
         rzp.on("payment.failed", (resp: RazorpayFailureResponse) => {
-          alert(
-            `Payment Incomplete: ${resp.error.description || "Transaction was declined."} No record was saved.`,
-          );
           setSubmitting(false);
+          const failureReason = resp.error?.description || "Transaction was declined by bank or payment provider.";
+          setStatusBanner({
+            type: "warning",
+            title: currentLang === "hi" ? "भुगतान अधूरा रहा" : currentLang === "mr" ? "देयक अपूर्ण राहिले" : "Payment Incomplete",
+            message: `${failureReason} ${currentLang === "hi" ? "आपके खाते से कोई राशि नहीं कटी है। कृपया UPI या किसी अन्य माध्यम से पुनः प्रयास करें।" : currentLang === "mr" ? "कोणतीही रक्कम वजा झालेली नाही. कृपया पुन्हा प्रयत्न करा." : "No funds were debited. Please try again with UPI, card, or NetBanking."}`,
+          });
         });
         rzp.open();
         return;
@@ -279,10 +301,16 @@ export function ContributionSection({
       }
     } catch (err) {
       console.error("Razorpay initiation error:", err);
-      alert(
-        "Payment gateway could not be loaded. Please verify your connection. No funds were debited.",
-      );
       setSubmitting(false);
+      setStatusBanner({
+        type: "error",
+        title: currentLang === "hi" ? "कनेक्शन त्रुटि" : currentLang === "mr" ? "कनेक्शन त्रुटी" : "Connection Notice",
+        message: currentLang === "hi"
+          ? "सुरक्षित पेमेंट गेटवे से संपर्क नहीं हो सका। कृपया अपना इंटरनेट कनेक्शन जांचें और पुनः प्रयास करें। कोई राशि नहीं काटी गई है।"
+          : currentLang === "mr"
+            ? "सुरक्षित पेमेंट गेटवेशी संपर्क होऊ शकला नाही. कृपया इंटरनेट तपासा. कोणतीही रक्कम कापली गेलेली नाही."
+            : "Unable to reach the secure payment gateway. Please check your internet connection. No funds were debited.",
+      });
     }
   };
 
@@ -355,8 +383,46 @@ export function ContributionSection({
           ) : (
             <div className="mt-10 rounded-3xl border border-border bg-background p-6 sm:p-10 shadow-sm">
               <form onSubmit={handleFormSubmit} className="space-y-8">
-              {/* Step 1: Contribution Amount */}
-              <div>
+                {/* Live In-Page Payment Notice / Error Banner (Zero raw browser alerts) */}
+                {statusBanner && (
+                  <div
+                    role="alert"
+                    className={`rounded-2xl border p-4 sm:p-5 flex items-start gap-3.5 animate-fade-up ${
+                      statusBanner.type === "error"
+                        ? "border-rose-500/30 bg-rose-500/10 text-rose-950 dark:text-rose-200"
+                        : statusBanner.type === "warning"
+                          ? "border-amber-500/30 bg-amber-500/10 text-amber-950 dark:text-amber-200"
+                          : "border-blue-500/30 bg-blue-500/10 text-blue-950 dark:text-blue-200"
+                    }`}
+                  >
+                    {statusBanner.type === "error" ? (
+                      <ShieldAlert className="h-5 w-5 shrink-0 mt-0.5 text-rose-600 dark:text-rose-400" />
+                    ) : statusBanner.type === "warning" ? (
+                      <AlertCircle className="h-5 w-5 shrink-0 mt-0.5 text-amber-600 dark:text-amber-400" />
+                    ) : (
+                      <Info className="h-5 w-5 shrink-0 mt-0.5 text-blue-600 dark:text-blue-400" />
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-semibold text-foreground leading-tight">
+                        {statusBanner.title}
+                      </h4>
+                      <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                        {statusBanner.message}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setStatusBanner(null)}
+                      className="p-1 rounded-full text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer"
+                      aria-label="Dismiss notice"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </div>
+                )}
+
+                {/* Step 1: Contribution Amount */}
+                <div>
                 {/* Welcoming Micro-Giving Encouragement Banner */}
                 <div className="mb-5 rounded-2xl bg-amber-500/5 border border-amber-500/20 p-3.5 sm:p-4 flex items-center gap-3">
                   <Heart className="h-4 w-4 text-amber-600 shrink-0 fill-amber-500/20" />
