@@ -1,36 +1,50 @@
+import { useId } from "react";
+
 interface DiyaVisualProps {
-  size?: "sm" | "md" | "lg";
   className?: string;
+  size?: "sm" | "md" | "lg" | "responsive";
 }
 
-export function DiyaVisual({ size = "md", className = "" }: DiyaVisualProps) {
-  // Responsive dimensions: compact on mobile, majestic on desktop
-  const dimensions =
+export function DiyaVisual({ className = "", size = "responsive" }: DiyaVisualProps) {
+  const uid = useId().replace(/:/g, "_");
+
+  // Dynamic scoped IDs to prevent any duplicate gradient collisions in SVG
+  const mittiBodyId = `mittiBody_${uid}`;
+  const mittiHighlightId = `mittiHighlight_${uid}`;
+  const rimEngravingId = `rimEngraving_${uid}`;
+  const oilWellId = `oilWell_${uid}`;
+  const flameOuterId = `flameOuter_${uid}`;
+  const flameCoreId = `flameCore_${uid}`;
+  const groundShadowId = `groundShadow_${uid}`;
+
+  // Responsive size container classes
+  const sizeClasses =
     size === "sm"
-      ? { width: 90, height: 70 }
-      : size === "lg"
-        ? { width: 180, height: 140 }
-        : { width: 130, height: 102 };
+      ? "w-24 h-20"
+      : size === "md"
+        ? "w-36 h-28"
+        : size === "lg"
+          ? "w-48 h-38"
+          : "w-24 h-20 sm:w-36 sm:h-28 md:w-44 md:h-36";
 
   return (
     <div
-      className={`relative inline-flex items-center justify-center select-none ${className}`}
+      className={`relative inline-flex items-center justify-center select-none ${sizeClasses} ${className}`}
       aria-label="Traditional illuminated terracotta Diya"
       role="img"
     >
       <style>{`
-        /* Natural sacred flame breathing motion */
         @keyframes sacredFlameBreath {
           0%, 100% {
             transform: scale(1) translateY(0);
-            filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.65)) drop-shadow(0 0 28px rgba(234, 88, 12, 0.35));
+            filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.75)) drop-shadow(0 0 32px rgba(234, 88, 12, 0.4));
           }
           50% {
-            transform: scale(1.04, 0.97) translateY(-1.5px);
-            filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.85)) drop-shadow(0 0 38px rgba(234, 88, 12, 0.45));
+            transform: scale(1.05, 0.96) translateY(-2px);
+            filter: drop-shadow(0 0 24px rgba(245, 158, 11, 0.9)) drop-shadow(0 0 44px rgba(234, 88, 12, 0.5));
           }
         }
-        .sacred-flame-group {
+        .sacred-flame-motion {
           transform-origin: 100px 75px;
           animation: sacredFlameBreath 2.6s ease-in-out infinite;
         }
@@ -38,40 +52,36 @@ export function DiyaVisual({ size = "md", className = "" }: DiyaVisualProps) {
 
       {/* Soft warm ambient background illumination - seamless, natural golden halo */}
       <div
-        className="absolute rounded-full pointer-events-none transition-all duration-700 blur-2xl opacity-40 dark:opacity-50"
+        className="absolute inset-0 -m-3 rounded-full pointer-events-none blur-2xl opacity-45 dark:opacity-60"
         style={{
-          width: dimensions.width * 1.3,
-          height: dimensions.height * 1.1,
           background:
-            "radial-gradient(circle, rgba(245, 158, 11, 0.45) 0%, rgba(217, 119, 6, 0.18) 50%, transparent 75%)",
+            "radial-gradient(circle, rgba(245, 158, 11, 0.5) 0%, rgba(217, 119, 6, 0.2) 50%, transparent 75%)",
         }}
       />
 
       <svg
-        width={dimensions.width}
-        height={dimensions.height}
         viewBox="0 0 200 155"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="relative z-10 max-w-full h-auto"
+        className="relative z-10 w-full h-full max-w-full drop-shadow-sm"
       >
         <defs>
           {/* Authentic Mitti (Clay) Shading */}
-          <linearGradient id="mittiBody" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#9A3412" />
-            <stop offset="35%" stopColor="#7C2D12" />
-            <stop offset="75%" stopColor="#5B2109" />
-            <stop offset="100%" stopColor="#3D1404" />
+          <linearGradient id={mittiBodyId} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#A0522D" />
+            <stop offset="35%" stopColor="#8B3A0F" />
+            <stop offset="75%" stopColor="#632607" />
+            <stop offset="100%" stopColor="#3E1504" />
           </linearGradient>
 
           {/* Mitti Highlight for 3D curved bowl depth */}
-          <radialGradient id="mittiHighlight" cx="50%" cy="30%" r="60%">
-            <stop offset="0%" stopColor="#C2410C" stopOpacity="0.8" />
+          <radialGradient id={mittiHighlightId} cx="50%" cy="30%" r="60%">
+            <stop offset="0%" stopColor="#C2410C" stopOpacity="0.85" />
             <stop offset="60%" stopColor="#7C2D12" stopOpacity="0" />
           </radialGradient>
 
           {/* Earthen Rim & Gold Filigree */}
-          <linearGradient id="rimEngraving" x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient id={rimEngravingId} x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#7C2D12" />
             <stop offset="25%" stopColor="#D97706" />
             <stop offset="50%" stopColor="#FBBF24" />
@@ -80,14 +90,14 @@ export function DiyaVisual({ size = "md", className = "" }: DiyaVisualProps) {
           </linearGradient>
 
           {/* Ghee / Mustard Oil Reservoir */}
-          <linearGradient id="oilWell" x1="0%" y1="0%" x2="0%" y2="100%">
+          <linearGradient id={oilWellId} x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="#B45309" />
             <stop offset="50%" stopColor="#92400E" />
             <stop offset="100%" stopColor="#713F12" />
           </linearGradient>
 
           {/* Flame Radiant Gradient */}
-          <radialGradient id="flameOuterGrad" cx="50%" cy="85%" r="85%">
+          <radialGradient id={flameOuterId} cx="50%" cy="85%" r="85%">
             <stop offset="0%" stopColor="#FFFFFF" />
             <stop offset="20%" stopColor="#FEF08A" />
             <stop offset="55%" stopColor="#F59E0B" />
@@ -96,33 +106,33 @@ export function DiyaVisual({ size = "md", className = "" }: DiyaVisualProps) {
           </radialGradient>
 
           {/* Flame Core Glow */}
-          <linearGradient id="flameCoreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+          <linearGradient id={flameCoreId} x1="0%" y1="100%" x2="0%" y2="0%">
             <stop offset="0%" stopColor="#F59E0B" />
             <stop offset="40%" stopColor="#FEF08A" />
             <stop offset="100%" stopColor="#FFFFFF" />
           </linearGradient>
 
           {/* Soft Diffuse Base Contact Shadow */}
-          <radialGradient id="softGroundShadow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#451A03" stopOpacity="0.32" />
+          <radialGradient id={groundShadowId} cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#451A03" stopOpacity="0.35" />
             <stop offset="65%" stopColor="#451A03" stopOpacity="0.12" />
             <stop offset="100%" stopColor="#451A03" stopOpacity="0" />
           </radialGradient>
         </defs>
 
-        {/* 1. Soft Natural Contact Ground Shadow (Subtle and realistic, no harsh black) */}
-        <ellipse cx="100" cy="144" rx="64" ry="8" fill="url(#softGroundShadow)" />
+        {/* 1. Soft Natural Contact Ground Shadow */}
+        <ellipse cx="100" cy="144" rx="64" ry="8" fill={`url(#${groundShadowId})`} />
 
         {/* 2. Diya Terracotta Clay Body (Authentic Indian Handcrafted Shape) */}
         <path
           d="M 28 106 C 36 138, 164 138, 172 106 C 176 100, 165 96, 150 98 C 118 102, 82 102, 50 98 C 35 96, 24 100, 28 106 Z"
-          fill="url(#mittiBody)"
+          fill={`url(#${mittiBodyId})`}
           stroke="#451A03"
           strokeWidth="1.2"
         />
         <path
           d="M 28 106 C 36 138, 164 138, 172 106 C 176 100, 165 96, 150 98 C 118 102, 82 102, 50 98 C 35 96, 24 100, 28 106 Z"
-          fill="url(#mittiHighlight)"
+          fill={`url(#${mittiHighlightId})`}
         />
 
         {/* 3. Traditional Clay Rim with Brass/Gold Accent Line */}
@@ -131,8 +141,8 @@ export function DiyaVisual({ size = "md", className = "" }: DiyaVisualProps) {
           cy="100"
           rx="68"
           ry="10.5"
-          fill="url(#oilWell)"
-          stroke="url(#rimEngraving)"
+          fill={`url(#${oilWellId})`}
+          stroke={`url(#${rimEngravingId})`}
           strokeWidth="1.8"
         />
 
@@ -160,18 +170,18 @@ export function DiyaVisual({ size = "md", className = "" }: DiyaVisualProps) {
         />
 
         {/* 6. Sacred Living Flame (Animated breathing with warm incandescent gradients) */}
-        <g className="sacred-flame-group">
+        <g className="sacred-flame-motion">
           {/* Flame Outer Soft Luminous Aura */}
           <path
             d="M 100 24 C 116 44, 118 66, 100 76 C 82 66, 84 44, 100 24 Z"
-            fill="url(#flameOuterGrad)"
+            fill={`url(#${flameOuterId})`}
             opacity="0.95"
           />
 
           {/* Flame Golden Core */}
           <path
             d="M 100 36 C 110 49, 111 63, 100 72 C 89 63, 90 49, 100 36 Z"
-            fill="url(#flameCoreGrad)"
+            fill={`url(#${flameCoreId})`}
             opacity="0.98"
           />
 

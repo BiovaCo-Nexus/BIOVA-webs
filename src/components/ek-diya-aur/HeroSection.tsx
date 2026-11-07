@@ -37,15 +37,9 @@ export function HeroSection({ currentLang, onContributeClick, onExploreClick }: 
             </span>
           </div>
 
-          {/* 2. Responsive Traditional Terracotta Diya */}
+          {/* 2. Responsive Traditional Terracotta Diya (Single instance, zero DOM collision) */}
           <div className="my-2 sm:my-3">
-            {/* Mobile: compact size; Tablet/Desktop: full majesty */}
-            <div className="block sm:hidden">
-              <DiyaVisual size="sm" />
-            </div>
-            <div className="hidden sm:block">
-              <DiyaVisual size="md" />
-            </div>
+            <DiyaVisual size="responsive" />
           </div>
 
           {/* 3. Campaign Title & Primary Tagline */}

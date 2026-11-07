@@ -71,3 +71,4 @@ export function StickyMobileContributionBar({
     </div>
   );
 }
+
